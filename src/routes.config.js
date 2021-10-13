@@ -1,13 +1,12 @@
 import React, {lazy} from "react";
 import {
- 
   Redirect,
   Route,
 } from "react-router-dom";
 
 import {shared} from './sharedConstants';
 
-const TestPage =lazy(()=>import('./TestPage/TestPage'));
+const TestPage =lazy(()=>import('./pages/TestPage/TestPage'));
 
 const paths ={...shared.routes}
 

@@ -1,10 +1,10 @@
 import React,{Suspense} from 'react';
 import { HashRouter as Switch } from "react-router-dom";
-import routes, {RouteWithSubRoutes} from './routes.config'
+import routes, {RouteWithSubRoutes} from '../../routes.config'
 
 
 
-function App() {
+const App = () => {
 
 
   return (
@@ -13,7 +13,7 @@ function App() {
        <Suspense fallback={<div/>}>
          <Switch>
            {routes.map((route,i) =>{
-           console.log( <RouteWithSubRoutes key={i} {...route}/>)
+           <RouteWithSubRoutes key={i} {...route}/>
            })}
          </Switch>
        </Suspense>
