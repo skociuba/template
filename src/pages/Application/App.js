@@ -1,27 +1,20 @@
-import React,{Suspense} from 'react';
+import React, { Suspense } from 'react';
 import { HashRouter as Switch } from "react-router-dom";
-import routes, {RouteWithSubRoutes} from '../../routes.config'
-
-
+import routes, { RouteWithSubRoutes } from '../../routes.config'
 
 const App = () => {
-
-
   return (
     <div className="App">
- 
-       <Suspense fallback={<div/>}>
-         <Switch>
-           {routes.map((route,i) =>{
-           <RouteWithSubRoutes key={i} {...route}/>
-           })}
-         </Switch>
-       </Suspense>
-   
+      <Suspense fallback={<div />}>
+        <Switch>
+          {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+        </Switch>
+      </Suspense>
+
     </div>
   );
 }
-App.defaultProps={
 
-}
+App.defaultProps = {}
+
 export default App;
