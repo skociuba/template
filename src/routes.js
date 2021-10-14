@@ -1,11 +1,11 @@
 import React from 'react';
 import { HashRouter as Router } from "react-router-dom";
-import App from './pages/Application/App';
+import Application from './pages/Application/Application';
 
 const Routing = () => (
   <Router>
     <React.StrictMode>
-      <App />
+      <Application />
     </React.StrictMode>
   </Router>
 );

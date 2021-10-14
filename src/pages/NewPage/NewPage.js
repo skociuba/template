@@ -1,17 +1,18 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
 import { shared } from "../../sharedConstants"
-const TestPage = () => {
+const NewPage = () => {
   const history = useHistory()
 
   const handleSwitch = () =>
-    history.push({ pathname: shared.routes.newPage.root })
-  const name = "Barbara"
+    history.push({ pathname: shared.routes.testPage.root })
+  const name = "Seba"
   return (
     <div>
-      {`hello ${name}!`} <button onClick={handleSwitch}>click</button>
+      {`hello ${name}!`}
+      <button onClick={handleSwitch}>click</button>
     </div>
   )
 }
 
-export default TestPage
+export default NewPage

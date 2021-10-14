@@ -1,12 +1,10 @@
-import React, { lazy } from 'react';
-import {
-  Redirect,
-  Route,
-} from 'react-router-dom';
+import React, { lazy } from "react"
+import { Redirect, Route } from "react-router-dom"
 
-import { shared } from './sharedConstants';
+import { shared } from "./sharedConstants"
 
-const TestPage = lazy(() => import('./pages/TestPage/TestPage'));
+const TestPage = lazy(() => import("./pages/TestPage/TestPage"))
+const NewPage = lazy(() => import("./pages/NewPage/NewPage"))
 const paths = { ...shared.routes }
 
 const routes = [
@@ -20,7 +18,12 @@ const routes = [
     component: TestPage,
     exact: true,
   },
-];
+  {
+    path: paths.newPage.root,
+    component: NewPage,
+    exact: true,
+  },
+]
 
 const allowRedirect = (props) => props.match.url === props.location.pathname
 
@@ -30,13 +33,13 @@ export const RouteWithSubRoutes = (route) => (
     path={route.path}
     params={route.params}
     render={(props) => {
-      return route.redirect && allowRedirect(props) ?
-        (<Redirect to={route.redirect} />) : (
-          <route.component {...route.props} routes={route.routes} />
-        )
+      return route.redirect && allowRedirect(props) ? (
+        <Redirect to={route.redirect} />
+      ) : (
+        <route.component {...route.props} routes={route.routes} />
+      )
     }}
   />
+)
 
-);
-
-export default routes;
+export default routes
