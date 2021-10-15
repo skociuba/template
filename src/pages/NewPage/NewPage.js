@@ -1,6 +1,8 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
 import { shared } from "../../sharedConstants"
+import { Button } from "@material/react-button"
+import "../../index.scss"
 const NewPage = () => {
   const history = useHistory()
 
@@ -9,8 +11,8 @@ const NewPage = () => {
   const name = "Seba"
   return (
     <div>
+      <Button onClick={handleSwitch}>to test page</Button>
       {`hello ${name}!`}
-      <button onClick={handleSwitch}>click</button>
     </div>
   )
 }
