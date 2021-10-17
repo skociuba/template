@@ -1,2 +1,6 @@
-export const button = `
-font-size: 40px;`
+import { css } from "@emotion/css"
+
+export const button = css`
+  font-size: 40px;
+`
+

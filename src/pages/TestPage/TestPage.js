@@ -2,6 +2,7 @@ import React from "react"
 import { useHistory } from "react-router-dom"
 import { shared } from "../../sharedConstants"
 import { Button } from "@material/react-button"
+import ThemeSwitcher from "../../components/themeSwitcher/themeSwitcher"
 import "../../index.scss"
 import { button } from "./TestPage.style"
 const TestPage = () => {
@@ -11,12 +12,14 @@ const TestPage = () => {
     history.push({ pathname: shared.routes.newPage.root })
   const name = "Barbara"
   return (
-    <div>
+    <ThemeSwitcher>
       <Button className={button} onClick={handleSwitch}>
         to new page
       </Button>
       {`hello ${name}!`}
-    </div>
+      <br />
+      <div>another component</div>
+    </ThemeSwitcher>
   )
 }
 
