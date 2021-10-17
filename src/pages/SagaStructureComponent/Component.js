@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import { shared } from "../../sharedConstants"
 import { Button } from "@material/react-button"
 import "../../index.scss"
-const NewPage = () => {
+const Component = () => {
   const history = useHistory()
 
   const handleSwitch = () =>
@@ -17,4 +17,4 @@ const NewPage = () => {
   )
 }
 
-export default NewPage
+export default Component

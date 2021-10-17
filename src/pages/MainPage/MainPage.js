@@ -4,8 +4,8 @@ import { shared } from "../../sharedConstants"
 import { Button } from "@material/react-button"
 import ThemeSwitcher from "../../components/themeSwitcher/themeSwitcher"
 import "../../index.scss"
-import { button } from "./TestPage.style"
-const TestPage = () => {
+import { button } from "./MainPage.style"
+const MainPage = () => {
   const history = useHistory()
 
   const handleSwitch = () =>
@@ -23,4 +23,4 @@ const TestPage = () => {
   )
 }
 
-export default TestPage
+export default MainPage

@@ -3,8 +3,8 @@ import { Redirect, Route } from "react-router-dom"
 
 import { shared } from "./sharedConstants"
 
-const TestPage = lazy(() => import("./pages/TestPage/TestPage"))
-const NewPage = lazy(() => import("./pages/NewPage/NewPage"))
+const TestPage = lazy(() => import("./pages/MainPage/MainPage"))
+const NewPage = lazy(() => import("./pages/SagaStructureComponent/Component"))
 const paths = { ...shared.routes }
 
 const routes = [
