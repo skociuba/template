@@ -1,20 +1,31 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { shared } from "../../sharedConstants"
+import PropTypes from "prop-types"
 import { Button } from "@material/react-button"
 import "../../index.scss"
-const Component = () => {
+const Component = ({
+  testDataSelector,
+  testLoadingSelector,
+  fetchTestData,
+}) => {
+  useEffect(() => {
+    fetchTestData()
+  }, [fetchTestData])
+
   const history = useHistory()
 
   const handleSwitch = () =>
     history.push({ pathname: shared.routes.testPage.root })
-  const name = "Seba"
+
   return (
     <div>
       <Button onClick={handleSwitch}>to test page</Button>
-      {`hello ${name}!`}
     </div>
   )
+}
+Component.propTypes = {
+  fetchTestData: PropTypes.func,
 }
 
 export default Component
