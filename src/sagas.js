@@ -1,5 +1,5 @@
 import { all, fork } from "redux-saga/effects"
-import test from "pages/SagaStructureComponent/sagas"
+import test from "./pages/SagaStructureComponent/sagas"
 
 const allSagas = [test]
 

@@ -13,7 +13,7 @@ const store =
     ? createStore(createRootReducer(), applyMiddleware(sagaMiddleware))
     : createStore(
         createRootReducer(),
-        composeEnhancers(applyMiddleware(sagaMiddleware))
+        composeEnhancers(applyMiddleware(sagaMiddleware)),
       )
 
 sagaMiddleware.run(rootSaga)

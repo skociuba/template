@@ -1,5 +1,5 @@
 import { createAction } from "redux-actions"
-import actionNames from "utils/actionNames"
+import actionNames from "../../utils/actionName"
 
 const FETCH_TEST = "FETCH_TEST"
 const FETCH_TEST_SUCCESS = "FETCH_TEST_SUCCESS"

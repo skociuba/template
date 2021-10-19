@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import test from "pages/SagaStructureComponent/reducers"
+import test from  "./pages/SagaStructureComponent/reducers"
 
 const rootReducer = () =>
   combineReducers({

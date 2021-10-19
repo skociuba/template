@@ -1,6 +1,5 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { call, put, all, select, takeLatest } from "redux-saga/effects"
-import { testAction,fetchTestSuccess,fetchTestFail } from "./action"
+import { testAction, fetchTestSuccess, fetchTestFail } from "./action"
 import { getTestData } from "./transport"
 
 export function* getTestSaga() {
@@ -17,6 +16,7 @@ export function* getTestSaga() {
   }
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function* () {
   yield all([takeLatest(testAction.FETCH_TEST, getTestSaga)])
 }
