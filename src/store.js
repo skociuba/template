@@ -7,14 +7,14 @@ import createRootReducer from "./reducers"
 
 const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = composeWithDevTools({ trace: true })
-
 const store =
   process.env.NODE_ENV !== "production"
     ? createStore(createRootReducer(), applyMiddleware(sagaMiddleware))
     : createStore(
         createRootReducer(),
-        composeEnhancers(applyMiddleware(sagaMiddleware)),
+        composeEnhancers(applyMiddleware(sagaMiddleware))
       )
 
 sagaMiddleware.run(rootSaga)
+
 export default store

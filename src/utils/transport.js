@@ -1,5 +1,5 @@
 import { isPlainObject } from "lodash"
-import { ENVS } from "config/constants"
+//import { ENVS } from "config/constants"
 import RequestError from "./../errors/RequestError"
 
 async function fetchWrapper(requestOptions) {
@@ -64,9 +64,10 @@ async function fetchWrapper(requestOptions) {
           error.message =
             error.message + ": " + errors.map(JSON.stringify).join(",")
         } catch (e) {
-          if (process.env.NODE_ENV !== ENVS.PRODUCTION) {
-            console.error(e)
-          }
+          console.error(e)
+          // if (process.env.NODE_ENV !== ENVS.PRODUCTION) {
+          //   console.error(e)
+          // }
         }
         throw error
       })
