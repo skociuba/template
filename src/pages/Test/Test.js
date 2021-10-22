@@ -4,11 +4,11 @@ import { shared } from "../../sharedConstants"
 import PropTypes from "prop-types"
 import { Button } from "@material/react-button"
 import "../../index.scss"
-const Component = ({ testData, testLoading, fetchTestData }) => {
+const Test = ({ testData, testLoading, fetchTestData }) => {
   useEffect(() => {
     fetchTestData()
   }, [fetchTestData])
-
+  console.log(fetchTestData())
   console.log(testData)
   console.log(testLoading)
 
@@ -23,12 +23,12 @@ const Component = ({ testData, testLoading, fetchTestData }) => {
     </div>
   )
 }
-Component.defaultProps = {
+Test.defaultProps = {
   fetchTestData: () => {},
 }
 
-Component.propTypes = {
+Test.propTypes = {
   fetchTestData: PropTypes.func,
 }
 
-export default Component
+export default Test

@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
-import Component from "./Component"
+import Test from "./Test"
 
-import { fetchTestData } from "./action"
+import { fetchTestData } from "./actions"
 import { testDataSelector, testLoadingSelector } from "./selectors"
 
 export const mapStateToProps = (state) => ({
@@ -11,5 +11,6 @@ export const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchTestData,
+  a: console.log(fetchTestData),
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Component)
+export default connect(mapStateToProps, mapDispatchToProps)(Test)

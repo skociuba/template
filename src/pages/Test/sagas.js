@@ -1,10 +1,11 @@
 import { call, put, all, select, takeLatest } from "redux-saga/effects"
-import { testAction, fetchTestSuccess, fetchTestFail } from "./action"
+import { testAction, fetchTestSuccess, fetchTestFail } from "./actions"
 import { getTestData } from "./transport"
 
 export function* getTestSaga() {
   try {
     const config = yield select(({ application }) => application.config)
+    console.log(config)
     const response = yield call(getTestData, { config })
     if (!response) {
       throw console.log("not found")

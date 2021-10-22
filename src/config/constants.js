@@ -1,10 +1,10 @@
-import actionNames from "./../utils/actionName"
+import actionNames from "./../utils/actionNames"
 
-export const valueToLover = (v) => v.toLoverCase()
+export const valueToLower = (v) => v.toLowerCase()
 export const LOCAL_SESSION_DURATION_SEC = 15 * 60
 export const ENVS = actionNames(
   ["PRODUCTION", "DEVELOPMENT", "TESTING", "QA"],
-  valueToLover
+  valueToLower
 )
-export const APP_ENVS = actionNames(["LOCAL", "TESTING"], valueToLover)
-export const APP_CHANNELS = actionNames(["STAFF", "CUSTOMER"], valueToLover)
+export const APP_ENVS = actionNames(["LOCAL", "TESTING"], valueToLower)
+export const APP_CHANNELS = actionNames(["STAFF", "CUSTOMER"], valueToLower)

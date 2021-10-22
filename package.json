@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@welldone-software/why-did-you-render": "^6.2.1",
     "concurrently": "^6.3.0",
     "env-cmd": "^10.1.0"
   }

@@ -7,7 +7,7 @@ export const appEnv = getAppEnv()
 export const appChannel = getAppChannel()
 
 const baseConfig = {
-  rotPrefix: getRootPrefix(),
+  rootPrefix: getRootPrefix(),
 }
 
 export const appBaseUrl = get(baseConfig, `environments.[${appEnv}.baseUrl]`)

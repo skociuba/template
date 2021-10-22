@@ -22,6 +22,7 @@ const Application = ({ appCheckConfig, config }) => {
 
 Application.defaultProps = {
   appCheckConfig: () => {},
+  config: {},
 }
 
 export default Application

@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router-dom"
 import { shared } from "./sharedConstants"
 
 const TestPage = lazy(() => import("./pages/MainPage/MainPage"))
-const NewPage = lazy(() => import("./pages/SagaStructureComponent/Component"))
+const NewPage = lazy(() => import("./pages/Test/Test"))
 const paths = { ...shared.routes }
 
 const routes = [
