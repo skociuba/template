@@ -11,6 +11,5 @@ export const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchTestData,
-  a: console.log(fetchTestData),
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Test)
