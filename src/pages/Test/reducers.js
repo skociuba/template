@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions"
 
-import { fetchTestData, fetchTestSuccess, fetchTestFail } from "./action"
+import { fetchTestData, fetchTestSuccess, fetchTestFail } from "./actions"
 
 export const initialState = {
   test: {

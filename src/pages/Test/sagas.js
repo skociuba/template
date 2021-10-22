@@ -5,7 +5,6 @@ import { getTestData } from "./transport"
 export function* getTestSaga() {
   try {
     const config = yield select(({ application }) => application.config)
-    console.log(config)
     const response = yield call(getTestData, { config })
     if (!response) {
       throw console.log("not found")
