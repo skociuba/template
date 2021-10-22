@@ -8,7 +8,7 @@ import createRootReducer from "./reducers"
 const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = composeWithDevTools({ trace: true })
 const store =
-  process.env.NODE_ENV !== "production"
+  process.env.NODE_ENV === "production"
     ? createStore(createRootReducer(), applyMiddleware(sagaMiddleware))
     : createStore(
         createRootReducer(),

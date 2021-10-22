@@ -1,8 +1,14 @@
-import React, { Suspense } from "react"
+import React, { Suspense, useLayoutEffect } from "react"
 import { HashRouter as Switch } from "react-router-dom"
 import routes, { RouteWithSubRoutes } from "../../routes.config"
 
-const Application = () => {
+const Application = ({ appCheckConfig, config }) => {
+  useLayoutEffect(() => {
+    if (!config || !("urls" in config)) {
+      appCheckConfig()
+    }
+  })
+
   return (
     <Suspense fallback={<div />}>
       <Switch>
@@ -14,6 +20,8 @@ const Application = () => {
   )
 }
 
-Application.defaultProps = {}
+Application.defaultProps = {
+  appCheckConfig: () => {},
+}
 
 export default Application
