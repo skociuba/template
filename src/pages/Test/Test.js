@@ -19,7 +19,7 @@ const Test = ({ testData, testLoading, fetchTestData }) => {
 
   return (
     <div>
-      <Button onClick={handleSwitch}>to test page</Button>
+      <Button onClick={handleSwitch}>go to main page</Button>
     </div>
   )
 }
