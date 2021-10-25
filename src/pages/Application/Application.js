@@ -1,13 +1,14 @@
-import React, { Suspense, useLayoutEffect } from "react"
-import { HashRouter as Switch } from "react-router-dom"
-import routes, { RouteWithSubRoutes } from "../../routes.config"
+import React, {Suspense, useLayoutEffect} from 'react';
+import {HashRouter as Switch} from 'react-router-dom';
 
-const Application = ({ appCheckConfig, config }) => {
+import routes, {RouteWithSubRoutes} from '../../routes.config';
+
+const Application = ({appCheckConfig, config}) => {
   useLayoutEffect(() => {
-    if (!config || !("urls" in config)) {
-      appCheckConfig()
+    if (!config || !('urls' in config)) {
+      appCheckConfig();
     }
-  })
+  });
 
   return (
     <Suspense fallback={<div />}>
@@ -17,12 +18,12 @@ const Application = ({ appCheckConfig, config }) => {
         ))}
       </Switch>
     </Suspense>
-  )
-}
+  );
+};
 
 Application.defaultProps = {
   appCheckConfig: () => {},
   config: {},
-}
+};
 
-export default Application
+export default Application;

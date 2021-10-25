@@ -52,7 +52,7 @@
     "react/self-closing-scope": "error",
     "react/jsx-wrap-multilines":["error",{"declaration":false,"assignment":false}],
     "prettier/prettier":"error",
-    "import/order":["error",{"groups":["builtin","external","internal","parent","sibling"],"newline-between":"always"}]
+    "import/order":["error",{"groups":["builtin","external","internal","parent","sibling"],"newlines-between":"always"}]
   }, 
 
   "settings": {

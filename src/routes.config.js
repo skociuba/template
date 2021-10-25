@@ -1,11 +1,11 @@
-import React, { lazy } from "react"
-import { Redirect, Route } from "react-router-dom"
+import React, {lazy} from 'react';
+import {Redirect, Route} from 'react-router-dom';
 
-import { shared } from "./sharedConstants"
+import {shared} from './sharedConstants';
 
-const TestPage = lazy(() => import("./pages/MainPage/MainPage"))
-const NewPage = lazy(() => import("./pages/Test/Test"))
-const paths = { ...shared.routes }
+const TestPage = lazy(() => import('./pages/MainPage/MainPage'));
+const NewPage = lazy(() => import('./pages/Test/Test'));
+const paths = {...shared.routes};
 
 const routes = [
   {
@@ -23,9 +23,9 @@ const routes = [
     component: NewPage,
     exact: true,
   },
-]
+];
 
-const allowRedirect = (props) => props.match.url === props.location.pathname
+const allowRedirect = (props) => props.match.url === props.location.pathname;
 
 export const RouteWithSubRoutes = (route) => (
   <Route
@@ -37,9 +37,9 @@ export const RouteWithSubRoutes = (route) => (
         <Redirect to={route.redirect} />
       ) : (
         <route.component {...route.props} routes={route.routes} />
-      )
+      );
     }}
   />
-)
+);
 
-export default routes
+export default routes;

@@ -1,8 +1,9 @@
-import React from "react"
-import { HashRouter as Router } from "react-router-dom"
-import { Provider } from "react-redux"
-import Application from "./pages/Application/Application"
-import store from "./store"
+import React from 'react';
+import {HashRouter as Router} from 'react-router-dom';
+import {Provider} from 'react-redux';
+
+import Application from './pages/Application/Application';
+import store from './store';
 
 const Routing = () => (
   <Provider store={store}>
@@ -12,6 +13,6 @@ const Routing = () => (
       </React.StrictMode>
     </Router>
   </Provider>
-)
+);
 
-export default Routing
+export default Routing;

@@ -1,7 +1,9 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { cx } from "../../emotion.instance"
-import { resultsList, resultRow } from "./List.style"
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import {cx} from '../../emotion.instance';
+
+import {resultsList, resultRow} from './List.style';
 
 const List = ({
   className,
@@ -24,12 +26,11 @@ const List = ({
                 isVertical,
                 isStriped,
                 hasSeparators,
-                flexDirection
-              )}
-            >
+                flexDirection,
+              )}>
               {child}
             </li>
-          )
+          ),
       )
     ) : (
       <li className={resultRow(isVertical, isStriped, hasSeparators)}>
@@ -37,7 +38,7 @@ const List = ({
       </li>
     )}
   </ul>
-)
+);
 
 List.defaultProps = {
   isVertical: false,
@@ -46,7 +47,7 @@ List.defaultProps = {
   hasSeparators: true,
   dark: false,
   flexDirection: false,
-}
+};
 
 List.propTypes = {
   className: PropTypes.string,
@@ -64,6 +65,6 @@ List.propTypes = {
     PropTypes.elementz1,
     PropTypes.arrayOf(PropTypes.elementz1),
   ]).isRequired,
-}
+};
 
-export default List
+export default List;

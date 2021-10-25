@@ -1,15 +1,15 @@
-const generatePrefixedRootContext = (path) => `/${path}`
+const generatePrefixedRootContext = (path) => `/${path}`;
 
 const shared = {
   routes: {
-    root: generatePrefixedRootContext(""),
+    root: generatePrefixedRootContext(''),
     testPage: {
-      root: generatePrefixedRootContext("test-page"),
+      root: generatePrefixedRootContext('test-page'),
     },
     newPage: {
-      root: generatePrefixedRootContext("new-page"),
+      root: generatePrefixedRootContext('new-page'),
     },
   },
-}
+};
 
-export { shared }
+export {shared};

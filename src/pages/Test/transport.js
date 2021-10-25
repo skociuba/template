@@ -1,9 +1,9 @@
-import { $get } from "../../utils/transport"
+import {$get} from '../../utils/transport';
 
-export const getTestData = ({ config }) => {
+export const getTestData = ({config}) => {
   const params = {
     url: config.urls.test,
-    headers: { ...config.headers },
-  }
-  return $get(params)
-}
+    headers: {...config.headers},
+  };
+  return $get(params);
+};

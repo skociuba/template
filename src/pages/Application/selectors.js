@@ -1,11 +1,11 @@
-import { createSelector } from "reselect"
+import {createSelector} from 'reselect';
 
-export const applicationSelector = (state) => state?.application || null
+export const applicationSelector = (state) => state?.application || null;
 
 export const paramsSelector = createSelector(applicationSelector, (app) => {
-  const { params } = app?.config || {}
+  const {params} = app?.config || {};
   if (!params) {
-    return null
+    return null;
   }
   const result = {
     locale: params.localeCode,
@@ -15,6 +15,6 @@ export const paramsSelector = createSelector(applicationSelector, (app) => {
     channelGroupMemberID: params.channelGroupMemberID,
     channelBusinessLine: params.channelBusinessLine,
     displayTimeZone: params.displayTimeZone,
-  }
-  return result
-})
+  };
+  return result;
+});
