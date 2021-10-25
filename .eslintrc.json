@@ -1,0 +1,81 @@
+{
+  "parser":"babel-eslint",
+  "plugins": [
+    "react","prettier","import","react-hooks"
+  ],
+
+  "extends": [
+  "eslint:recommended",
+  "plugin:react/recommended",
+  "plugin:prettier/recommended"
+  ]
+,
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  
+  "rules": {
+    "accessor-pairs":"off",
+    "brace-style":["error","1tbs"],
+    "comma-dangle":["error","always-multiline"],
+    "consistent-return":"off",
+    "dot-notation":["error",{"allowPattern":"^(error|warn)$"}],
+    "eol-last":"error",
+    "indent":"off",
+    "jsx-quotes":["error","prefer-double"],
+    "keyword-spacing":["error",{"after":true,"before":true}],
+    "no-bitwise":"off",
+    "no-inner-declarations":["error","functions"],
+    "no-multi-spaces":"error",
+    "no-restricted-syntax":["error","withStatement"],
+    "no-shadow":"error",
+    "no-unused-expressions":"error",
+    "no-unused-vars":["error",{"args":"none"}],
+    "no-use-before-define":"off",
+    "no-useless-concat":"off",
+    "eqeqeq":["error","allow-null"],
+    "quotes":["error","single",{"avoidEscape":true,"allowTemplateLiterals":true}],
+    "space-before-blocks":"error",
+    "space-before-function-paren":"off",
+    "valid-typeof": ["error",{"requireStringLiterals":true}],
+    "curly":"error",
+    "react/display-name":"off",
+    "react/jsx-boolean-value":["error","always"],
+    "react/jsx-no-undef":"error",
+    "react/prop-types": "off",
+    "react/jsx-sort-prop-types": "off",
+    "react/jsx-tag-spacing":2,
+    "react/jsx-user-react":"error",
+    "react/no-is-mounted": "off",
+    "react/react-in-jsx-scope": "error",
+    "react/self-closing-scope": "error",
+    "react/jsx-wrap-multilines":["error",{"declaration":false,"assignment":false}],
+    "prettier/prettier":"error",
+    "import/order":["error",{"groups":["builtin","external","internal","parent","sibling"],"newline-between":"always"}]
+  }, 
+
+  "settings": {
+    "react": {
+      "pragma":"React",
+      "version": "detect"
+    }
+  },
+
+   "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021":true,
+    "amd":true,
+    "jest":true,
+    "es6": true,
+    "node": true
+},
+"globals": {
+  "React":true,
+  "render":true,
+  "renderWithRouter":true,
+  "enhanceRender":true,
+  "act":true
+}
+}

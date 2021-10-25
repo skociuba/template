@@ -1,6 +1,12 @@
 {
   "name": "template",
   "version": "0.1.0",
+  "author": "Kociuba Sebastian",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skociuba/template/branches"
+  },
+  "main": "src/idex.js",
   "private": true,
   "dependencies": {
     "@emotion/css": "^11.1.3",
@@ -28,7 +34,14 @@
     "start:dev:staff": " \"env-cmd -f ./.env.dev.staff react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "check:code-quality":"run-s -c lint:js lint:style prettier",
+    "clean":"rm -rf ./node-modules ./build",
+    "lint:fix":"npm run lint:js -- --fix",
+    "lint.js":"eslint src",
+    "lint:style":"stylelint \"./src/**/*.style.js\"",
+    "prettier":"prettier \"./src/**/*.js\" --check"
+
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +64,13 @@
   "devDependencies": {
     "@welldone-software/why-did-you-render": "^6.2.1",
     "concurrently": "^6.3.0",
-    "env-cmd": "^10.1.0"
+    "env-cmd": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-flowtype": "^5.10.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "prettier": "^2.4.1"
   }
 }
