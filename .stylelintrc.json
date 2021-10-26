@@ -1,7 +1,12 @@
 {
-  "plugins": ["@emotion"],
-
+  "extends": ["@nake/stylelint-config/styled-components"],
   "rules": {
-    "@emotion/jsx-import": "error"
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "severity": "warning",
+        "ignore": ["flexbox"]
+      }
+    ]
   }
 }

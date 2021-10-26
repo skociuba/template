@@ -18,6 +18,6 @@ export function* getTestSaga() {
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default function* () {
+export default function*() {
   yield all([takeLatest(testAction.FETCH_TEST, getTestSaga)]);
 }

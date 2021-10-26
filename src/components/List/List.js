@@ -27,7 +27,8 @@ const List = ({
                 isStriped,
                 hasSeparators,
                 flexDirection,
-              )}>
+              )}
+            >
               {child}
             </li>
           ),

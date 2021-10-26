@@ -11,5 +11,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "prettier": "^1.15.3",
+    "stylelint": "^9.9.0"
   }
 }
