@@ -46,10 +46,10 @@
     "react/prop-types": "off",
     "react/jsx-sort-prop-types": "off",
     "react/jsx-tag-spacing":2,
-    "react/jsx-user-react":"error",
+    "react/jsx-uses-react":"error",
     "react/no-is-mounted": "off",
     "react/react-in-jsx-scope": "error",
-    "react/self-closing-scope": "error",
+    "react/self-closing-comp": "error",
     "react/jsx-wrap-multilines":["error",{"declaration":false,"assignment":false}],
     "prettier/prettier":"error",
     "import/order":["error",{"groups":["builtin","external","internal","parent","sibling"],"newlines-between":"always"}]

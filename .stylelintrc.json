@@ -1,3 +1,7 @@
 {
-  "rules": {}
+  "plugins": ["@emotion"],
+
+  "rules": {
+    "@emotion/jsx-import": "error"
+  }
 }
