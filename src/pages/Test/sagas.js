@@ -17,6 +17,6 @@ export function* getTestSaga() {
   }
 }
 
-export default function* () {
+export default function*() {
   yield all([takeLatest(testAction.FETCH_TEST, getTestSaga)]);
 }
