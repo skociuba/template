@@ -10,10 +10,7 @@ const composeEnhancers = composeWithDevTools({trace: true});
 const store =
   process.env.NODE_ENV === 'production'
     ? createStore(createRootReducer(), applyMiddleware(sagaMiddleware))
-    : createStore(
-        createRootReducer(),
-        composeEnhancers(applyMiddleware(sagaMiddleware)),
-      );
+    : createStore(createRootReducer(), composeEnhancers(applyMiddleware(sagaMiddleware)));
 
 sagaMiddleware.run(rootSaga);
 

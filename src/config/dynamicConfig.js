@@ -1,9 +1,4 @@
-const {
-  NODE_ENV,
-  REACT_APP_URLS_TEST,
-  REACT_APP_CHANNEL_TYPE,
-  REACT_APP_ENV_TYPE,
-} = process.env;
+const {NODE_ENV, REACT_APP_URLS_TEST, REACT_APP_CHANNEL_TYPE, REACT_APP_ENV_TYPE} = process.env;
 
 const dynamicConfig = {
   urls: {

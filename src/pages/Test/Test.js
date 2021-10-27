@@ -15,8 +15,7 @@ const Test = ({testData, testLoading, fetchTestData}) => {
 
   const history = useHistory();
 
-  const handleSwitch = () =>
-    history.push({pathname: shared.routes.testPage.root});
+  const handleSwitch = () => history.push({pathname: shared.routes.testPage.root});
 
   return (
     <div>

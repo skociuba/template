@@ -9,8 +9,7 @@ import {} from './MainPage.style';
 const MainPage = () => {
   const history = useHistory();
 
-  const handleSwitch = () =>
-    history.push({pathname: shared.routes.newPage.root});
+  const handleSwitch = () => history.push({pathname: shared.routes.newPage.root});
 
   return (
     <>

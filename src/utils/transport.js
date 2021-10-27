@@ -63,8 +63,7 @@ async function fetchWrapper(requestOptions) {
         try {
           const responseBody = JSON.parse(error.message);
           const errors = responseBody.errors;
-          error.message =
-            error.message + ': ' + errors.map(JSON.stringify).join(',');
+          error.message = error.message + ': ' + errors.map(JSON.stringify).join(',');
         } catch (e) {
           console.error(e);
           // if (process.env.NODE_ENV !== ENVS.PRODUCTION) {
