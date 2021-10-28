@@ -40,7 +40,7 @@ export const resultRowVerticalSeparators = css`
     padding-left: 0;
   }
 `;
-export const resultRow = (isStriped, hasSeparators, isVertical, flexDirection) => css`
+export const resultRow = (isVertical, isStriped, hasSeparators, flexDirection) => css`
   display: flex;
   flex-direction: ${flexDirection ? 'row' : 'column'};
   height: 100%;

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {Button} from '@material/react-button';
@@ -9,6 +9,12 @@ import {shared} from '../../sharedConstants';
 import '../../index.scss';
 
 const Test = ({testData, testLoading, fetchTestData}) => {
+  const [switcher, setSwitcher] = useState(false);
+
+  const handleListPositionChanger = () => {
+    setSwitcher(!switcher);
+  };
+
   useEffect(() => {
     fetchTestData();
   }, [fetchTestData]);
@@ -28,14 +34,15 @@ const Test = ({testData, testLoading, fetchTestData}) => {
         <Button onClick={handleSwitch}>go to main page</Button>
       </div>
       <List
-        isVertical={false}
+        isVertical={switcher}
         isBordered={true}
         isStriped={true}
-        hasSeparators={false}
+        hasSeparators={true}
         dark={true}
         flexDirection={true}>
         {arr}
       </List>
+      <Button onClick={handleListPositionChanger}>change List position</Button>
     </>
   );
 };
