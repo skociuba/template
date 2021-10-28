@@ -25,6 +25,6 @@ export function* checkConfigSaga() {
   }
 }
 
-export default function*() {
+export default function* () {
   yield all([takeLatest(appActions.CHECK_APP_CONFIG, checkConfigSaga)]);
 }

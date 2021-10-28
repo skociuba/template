@@ -45,3 +45,5 @@
 
   # for .prettierrc.json you should add in newest version
   "bracketSameLine":true
+
+  "check:code-quality": "run-s -c lint:js lint:style prettier",

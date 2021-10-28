@@ -22,8 +22,7 @@ const List = ({
           child && (
             <li
               key={index}
-              className={resultRow(isVertical, isStriped, hasSeparators, flexDirection)}
-            >
+              className={resultRow(isVertical, isStriped, hasSeparators, flexDirection)}>
               {child}
             </li>
           ),
