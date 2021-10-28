@@ -22,7 +22,8 @@ const List = ({
           child && (
             <li
               key={index}
-              className={resultRow(isVertical, isStriped, hasSeparators, flexDirection)}>
+              className={resultRow(isVertical, isStriped, hasSeparators, flexDirection)}
+            >
               {child}
             </li>
           ),
@@ -55,8 +56,8 @@ List.propTypes = {
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.number,
     PropTypes.arrayOf(PropTypes.number),
-    PropTypes.elementz1,
-    PropTypes.arrayOf(PropTypes.elementz1),
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
   ]).isRequired,
 };
 

@@ -6,6 +6,7 @@ import {shared} from '../../sharedConstants';
 
 import '../../index.scss';
 import {} from './MainPage.style';
+
 const MainPage = () => {
   const history = useHistory();
 
