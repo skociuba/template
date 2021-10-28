@@ -42,3 +42,6 @@
     "prettier"
     "stylelint"
   }
+
+  # for .prettierrc.json you should add in newest version
+  "bracketSameLine":true
