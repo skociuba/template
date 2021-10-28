@@ -1,12 +1,3 @@
 {
-  "extends": ["@nake/stylelint-config/styled-components"],
-  "rules": {
-    "plugin/no-unsupported-browser-features": [
-      true,
-      {
-        "severity": "warning",
-        "ignore": ["flexbox"]
-      }
-    ]
-  }
+  "rules": {}
 }
