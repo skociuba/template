@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {Button} from '@material/react-button';
-import List from 'components/List';
+import List, {ListItem} from 'components/List';
 
 import {shared} from '../../sharedConstants';
 
@@ -43,6 +43,16 @@ const Test = ({testData, testLoading, fetchTestData}) => {
         {arr}
       </List>
       <Button onClick={handleListPositionChanger}>change List position</Button>
+      <ListItem
+        title={'title'}
+        isVertical={false}
+        hasVerticalPadding={true}
+        hasFullWidth={true}
+        noMarginBottom={true}
+        hasTitleBorder={true}
+        hasPaddingLeft={true}>
+        {'hello'}
+      </ListItem>
     </>
   );
 };

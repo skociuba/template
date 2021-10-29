@@ -17,5 +17,22 @@ export const listItem = (hasVerticalPadding, hasFullWidth, noMarginBottom, isVer
     width: 100% !important;
   }
 `;
-export const listItemTitle = (hasTitleBorder, isVertical) => css``;
-export const listItemContent = (hasPaddingLeft, isVertical) => css``;
+export const listItemTitle = (hasTitleBorder, isVertical) => css`
+display-flex;
+font-size:16px
+font-weight:400;
+line-height:24px:
+letter-spacing:0;
+border-bottom:${hasTitleBorder ? '1px solid black' : 0}
+  padding: ${hasTitleBorder ? '0 0 8px' : 0};
+  margin: ${hasTitleBorder ? '8px 8px 8px 0' : '0 8px 8px 0'};
+ ${isVertical && 'width:50%'};
+`;
+export const listItemContent = (hasPaddingLeft, isVertical) => css`font-size:16px
+font-weight:500;
+line-height:24px:
+letter-spacing:0;
+color:grey;
+padding-left: ${hasPaddingLeft ? '12px' : 0};
+${isVertical && 'text-align:right; margin:8px 0 8px 8px 0; width:50%'};
+`;

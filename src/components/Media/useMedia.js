@@ -10,7 +10,9 @@ export const useMedia = (query) => {
     }
 
     const listener = setMatches(media.matches);
-    media.addListener(listener);
+    media.addEventListener('change', () => {
+      setMatches(media.matches);
+    });
 
     return () => media.removeListener(listener);
   }, [query]);
