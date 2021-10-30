@@ -1,10 +1,8 @@
 import React, {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {Button} from '@material/react-button';
 
 import {shared} from '../../sharedConstants';
-import '../../index.scss';
 const Test = ({testData, testLoading, fetchTestData}) => {
   useEffect(() => {
     fetchTestData();
@@ -19,7 +17,7 @@ const Test = ({testData, testLoading, fetchTestData}) => {
 
   return (
     <div>
-      <Button onClick={handleSwitch}>go to main page</Button>
+      <button onClick={handleSwitch}>go to main page</button>
     </div>
   );
 };

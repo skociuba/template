@@ -13,5 +13,5 @@ export const {
   cache,
 } = createEmotion({
   // The key option is required when there will be multiple instances in a single app
-  key: 'some-key',
+  key: 'template',
 });
