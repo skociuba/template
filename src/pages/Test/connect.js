@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import Test from './Test';
 import {fetchTestData} from './actions';
 import {testDataSelector, testLoadingSelector} from './selectors';
-
 export const mapStateToProps = (state) => ({
   testData: testDataSelector(state),
   testLoading: testLoadingSelector(state),

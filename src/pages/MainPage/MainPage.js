@@ -19,11 +19,13 @@ const MainPage = () => {
     }
   };
   const handleSwitch = () => history.push({pathname: shared.routes.newPage.root});
+  const handleSwitchToRedux = () => history.push({pathname: shared.routes.redux.root});
 
   return (
     <>
       <div>MAIN PAGE</div>
       <button onClick={handleSwitch}>to next page</button>
+      <button onClick={handleSwitchToRedux}>to Redux page</button>
       {deviceSize()}
     </>
   );

@@ -3,7 +3,6 @@ import {handleActions} from 'redux-actions';
 //import { parsePayload } from "./utils/parsePayload"
 
 import {appSetConfig} from './actions';
-
 export const initialState = {
   config: null,
   loading: [],

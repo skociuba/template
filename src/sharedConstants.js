@@ -9,6 +9,9 @@ const shared = {
     newPage: {
       root: generatePrefixedRootContext('new-page'),
     },
+    redux: {
+      root: generatePrefixedRootContext('redux'),
+    },
   },
 };
 

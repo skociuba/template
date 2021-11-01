@@ -1,6 +1,5 @@
 import {createAction} from 'redux-actions';
-
-import actionNames from '../../utils/actionNames';
+import actionNames from 'utils/actionNames';
 
 const CHECK_APP_CONFIG = 'CHECK_APP_CONFIG';
 const SET_CONFIG = 'SET_CONFIG';

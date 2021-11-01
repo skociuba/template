@@ -4,7 +4,6 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 
 import rootSaga from './sagas';
 import createRootReducer from './reducers';
-
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = composeWithDevTools({trace: true});
 const store =
