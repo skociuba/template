@@ -6,13 +6,14 @@ import {shared} from 'sharedConstants';
 import {fetchReduxData} from './actions';
 import Display from './Display';
 
-const Redux = () => {
+const Redux = ({cats, fetchRedux}) => {
   const history = useHistory();
   const handleSwitch = () => history.push({pathname: shared.routes.testPage.root});
 
   const dispatch = useDispatch();
+  console.log(cats);
+  console.log(fetchRedux);
   const users = useSelector((state) => state?.test2?.test2?.users);
-
   const loading = useSelector((state) => state?.test2?.test2?.loading);
   const error = useSelector((state) => state?.test2?.test2?.error);
 

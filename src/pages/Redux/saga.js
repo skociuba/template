@@ -1,27 +1,17 @@
-import {call, put, all, takeLatest} from 'redux-saga/effects';
+import {call, put, all, select, takeLatest} from 'redux-saga/effects';
 
 import {reduxAction, fetchReduxSuccess, fetchReduxFail} from './actions';
-//import {getTestData} from './transport';
-
-const apiUrl = `https://api.thecatapi.com/v1/images/search`;
-function getApi() {
-  return fetch(apiUrl, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => response.json())
-    .catch((error) => {
-      throw error;
-    });
-}
+import {getTestData} from './transport';
 
 function* fetchUsers() {
   try {
-    const users = yield call(getApi);
+    const config = yield select(({application}) => application.config);
+    const response = yield call(getTestData, {config});
+    if (!response) {
+      throw console.log('not found');
+    }
 
-    yield put(fetchReduxSuccess(users || null));
+    yield put(fetchReduxSuccess(response.payload || null));
   } catch (e) {
     yield put(fetchReduxFail(e));
   }
