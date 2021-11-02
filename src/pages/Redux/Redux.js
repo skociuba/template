@@ -1,45 +1,39 @@
-import React, {Fragment} from 'react';
-import {connect} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom';
+import {shared} from 'sharedConstants';
 
-import Hooks from './Hooks';
-import {fetchReduxData} from './Actions';
-class Redux extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-    this.handleFetchData = this.handleFetchData.bind(this);
-  }
-  handleFetchData() {
-    this.props.fetchReduxData();
-  }
-  render() {
-    // console.log(fetchReduxData());
-    // console.log(this.props.users);
-    // const postTitles = this?.props?.users?.map((title) => (
-    //   <div key={title.id}>
-    //     <p>
-    //       <img src={title.url} alt="cats" width="700" height="600" />
-    //     </p>
-    //   </div>
-    // ));
+import {fetchReduxData} from './actions';
+import Display from './Display';
 
-    return (
-      <Fragment>
-        <h2>REDUX METHOD</h2>
-        <button onClick={this.handleFetchData}>fetch</button>
+const Redux = () => {
+  const history = useHistory();
+  const handleSwitch = () => history.push({pathname: shared.routes.testPage.root});
 
-        <Hooks />
-      </Fragment>
-    );
-  }
-}
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state?.test2?.test2?.users);
 
-const mapStateToProps = (state) => ({
-  users: state?.users?.users,
-});
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchReduxData: () => dispatch(fetchReduxData()),
+  const loading = useSelector((state) => state?.test2?.test2?.loading);
+  const error = useSelector((state) => state?.test2?.test2?.error);
+
+  useEffect(() => {
+    dispatch(fetchReduxData());
+  }, [dispatch]);
+
+  const handleFetchData = () => {
+    fetchReduxData();
   };
+
+  return (
+    <>
+      <button onClick={handleFetchData}>fetch</button>
+      <button onClick={handleSwitch}>to main page</button>
+      {users?.loading && <p>Loading...</p>}
+      {users?.length === 0 && !loading && <p>No users available!</p>}
+      {error && !loading && <p>{error}</p>}
+      {users?.length > 0 && users.map((user) => <Display key={user.id} user={user} />)}
+    </>
+  );
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Redux);
+
+export default Redux;

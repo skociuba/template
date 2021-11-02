@@ -1,6 +1,6 @@
 import {call, put, all, takeLatest} from 'redux-saga/effects';
 
-import {reduxAction} from './Actions';
+import {reduxAction, fetchReduxSuccess, fetchReduxFail} from './actions';
 //import {getTestData} from './transport';
 
 const apiUrl = `https://api.thecatapi.com/v1/images/search`;
@@ -21,10 +21,9 @@ function* fetchUsers() {
   try {
     const users = yield call(getApi);
 
-    console.log(users);
-    yield put({type: 'GET_USERS_SUCCESS', users: users});
+    yield put(fetchReduxSuccess(users || null));
   } catch (e) {
-    yield put({type: 'GET_USERS_FAILED', message: e.message});
+    yield put(fetchReduxFail(e));
   }
 }
 export default function* () {

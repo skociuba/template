@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 
-import {fetchReduxData, fetchReduxSuccess, fetchReduxFail} from './Actions';
+import {fetchReduxData, fetchReduxSuccess, fetchReduxFail} from './actions';
 
 export const initialState = {
   test2: {
@@ -20,12 +20,12 @@ export default handleActions(
         },
       };
     },
-    [fetchReduxSuccess](state, {users}) {
+    [fetchReduxSuccess](state, {payload}) {
       return {
         ...state,
         test2: {
           ...state.test2,
-          users: users,
+          users: payload,
           loading: false,
           error: null,
         },
