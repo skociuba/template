@@ -5,6 +5,7 @@ import {shared} from './sharedConstants';
 
 const TestPage = lazy(() => import('./pages/MainPage/MainPage'));
 const NewPage = lazy(() => import('./pages/Test/Test'));
+const MockTest = lazy(() => import('./pages/MockTest/Test'));
 const Redux = lazy(() => import('./pages/Redux/Redux'));
 const paths = {...shared.routes};
 
@@ -27,6 +28,11 @@ const routes = [
   {
     path: paths.redux.root,
     component: Redux,
+    exact: true,
+  },
+  {
+    path: paths.mockTest.root,
+    component: MockTest,
     exact: true,
   },
 ];

@@ -9,7 +9,7 @@ export const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   appCheckConfig,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Application);

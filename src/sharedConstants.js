@@ -12,6 +12,9 @@ const shared = {
     redux: {
       root: generatePrefixedRootContext('redux'),
     },
+    mockTest: {
+      root: generatePrefixedRootContext('mock-test'),
+    },
   },
 };
 
