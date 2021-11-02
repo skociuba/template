@@ -1,15 +1,21 @@
 import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {shared} from '../../sharedConstants';
-const Test = ({testData, testLoading, fetchTestData}) => {
+
+import {fetchTestData} from './actions';
+const Test = () => {
+  const dispatch = useDispatch();
+
+  const testData = useSelector((state) => state?.test?.test?.data?.payload?.data);
+
   useEffect(() => {
-    fetchTestData();
-  }, [fetchTestData]);
-  console.log(fetchTestData());
+    dispatch(fetchTestData());
+  }, [dispatch]);
+
   console.log(testData);
-  console.log(testLoading);
 
   const history = useHistory();
 
@@ -18,6 +24,19 @@ const Test = ({testData, testLoading, fetchTestData}) => {
   return (
     <div>
       <button onClick={handleSwitch}>go to main page</button>
+      {testData?.length > 0 &&
+        testData.map((user) => (
+          <div key={user._id}>
+            {user.name}--{user.trips}
+            {user?.airline?.map((item) => (
+              <p key={item.id}>
+                {item.name}--{item.head_quaters}
+                <br />
+                <img src={item.logo} alt="Cats" width="70" height="60" />
+              </p>
+            ))}
+          </div>
+        ))}
     </div>
   );
 };
