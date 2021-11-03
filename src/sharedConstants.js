@@ -3,17 +3,11 @@ const generatePrefixedRootContext = (path) => `/${path}`;
 const shared = {
   routes: {
     root: generatePrefixedRootContext(''),
+    mainPage: {
+      root: generatePrefixedRootContext('main-page'),
+    },
     testPage: {
       root: generatePrefixedRootContext('test-page'),
-    },
-    newPage: {
-      root: generatePrefixedRootContext('new-page'),
-    },
-    redux: {
-      root: generatePrefixedRootContext('redux'),
-    },
-    mockTest: {
-      root: generatePrefixedRootContext('mock-test'),
     },
   },
 };

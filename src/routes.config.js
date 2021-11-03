@@ -3,36 +3,24 @@ import {Redirect, Route} from 'react-router-dom';
 
 import {shared} from './sharedConstants';
 
-const TestPage = lazy(() => import('./pages/MainPage/MainPage'));
-const NewPage = lazy(() => import('./pages/Test/Test'));
-const MockTest = lazy(() => import('./pages/MockTest/Test'));
-const Redux = lazy(() => import('./pages/Redux/Redux'));
+const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
+const TestPage = lazy(() => import('./pages/Test/Test'));
 const paths = {...shared.routes};
 
 const routes = [
   {
     path: paths.root,
-    redirect: paths.testPage.root,
+    redirect: paths.mainPage.root,
+    exact: true,
+  },
+  {
+    path: paths.mainPage.root,
+    component: MainPage,
     exact: true,
   },
   {
     path: paths.testPage.root,
     component: TestPage,
-    exact: true,
-  },
-  {
-    path: paths.newPage.root,
-    component: NewPage,
-    exact: true,
-  },
-  {
-    path: paths.redux.root,
-    component: Redux,
-    exact: true,
-  },
-  {
-    path: paths.mockTest.root,
-    component: MockTest,
     exact: true,
   },
 ];

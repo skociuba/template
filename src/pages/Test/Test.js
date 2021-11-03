@@ -22,7 +22,7 @@ const Test = () => {
 
   const history = useHistory();
 
-  const handleSwitch = () => history.push({pathname: shared.routes.testPage.root});
+  const handleSwitch = () => history.push({pathname: shared.routes.mainPage.root});
 
   return (
     <div>

@@ -18,14 +18,12 @@ const MainPage = () => {
       return `DESKTOP VERSION`;
     }
   };
-  const handleSwitch = () => history.push({pathname: shared.routes.newPage.root});
-  const handleSwitchToRedux = () => history.push({pathname: shared.routes.redux.root});
+  const handleSwitch = () => history.push({pathname: shared.routes.testPage.root});
 
   return (
     <>
       <div>MAIN PAGE</div>
       <button onClick={handleSwitch}>to next page</button>
-      <button onClick={handleSwitchToRedux}>to Redux page</button>
       {deviceSize()}
     </>
   );
