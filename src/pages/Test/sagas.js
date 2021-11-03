@@ -2,7 +2,7 @@ import {call, put, all, select, takeLatest} from 'redux-saga/effects';
 
 import {testAction, fetchTestSuccess, fetchTestFail} from './actions';
 import {getTestData} from './transport';
-
+import {getMappedTestResponse} from './responseMappers';
 export function* getTestSaga() {
   try {
     const config = yield select(({application}) => application.config);
@@ -10,7 +10,7 @@ export function* getTestSaga() {
     if (!response) {
       throw console.log('not found');
     }
-    yield put(fetchTestSuccess({data: response || null}));
+    yield put(fetchTestSuccess({data: getMappedTestResponse(response) || null}));
   } catch (e) {
     yield put(console.log(e.message));
     yield put(fetchTestFail(e));
