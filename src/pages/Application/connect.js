@@ -2,10 +2,10 @@ import {connect} from 'react-redux';
 
 import {appCheckConfig} from './actions';
 import Application from './Application';
-
+import {paramsSelector} from './selectors';
 export const mapStateToProps = (state) => {
   return {
-    config: state.application.config,
+    config: paramsSelector(state),
   };
 };
 
