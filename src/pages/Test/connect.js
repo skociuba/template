@@ -9,7 +9,7 @@ export const mapStateToProps = (state) => ({
   testLoading: testLoadingSelector(state),
 });
 
-export const mapDispatchToProps = {
+const mapDispatchToProps = {
   fetchTestData,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Test);

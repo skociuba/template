@@ -1,24 +1,13 @@
 import React, {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {shared} from '../../sharedConstants';
 
-import {fetchTestData} from './actions';
-import {testDataSelector, testExampleSelector, testLoadingSelector} from './selectors';
-const Test = () => {
-  const dispatch = useDispatch();
-
-  const testData = useSelector((state) => testDataSelector(state));
-  const testExample = useSelector((state) => testExampleSelector(state));
-  const testLoadingExample = useSelector((state) => testLoadingSelector(state));
-
-  console.log(testLoadingExample);
-
+const Test = (fetchTestData, testData, testExample) => {
   useEffect(() => {
-    dispatch(fetchTestData());
-  }, [dispatch]);
+    fetchTestData();
+  }, [fetchTestData]);
 
   const history = useHistory();
 
