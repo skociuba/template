@@ -1,6 +1,6 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import {shared} from 'sharedConstants';
+import {shared} from 'routesConstants';
 import {media, useMedia} from 'components/Media';
 
 import {} from './MainPage.style';

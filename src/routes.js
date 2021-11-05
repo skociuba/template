@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter as Router} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
 import history from './history';

@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import {shared} from '../../sharedConstants';
+import {shared} from '../../routesConstants';
 
 import {fetchTestData} from './actions';
 import {testDataSelector, testExampleSelector, testLoadingSelector} from './selectors';
@@ -25,10 +25,12 @@ const Test = () => {
   const handleSwitch = () => history.push({pathname: shared.routes.mainPage.root});
 
   return (
-    <div>
+    <div data-testid="header">
       {testExample}
       <br />
-      <button onClick={handleSwitch}>go to main page</button>
+      <button data-testid="button" onClick={handleSwitch}>
+        go to main page
+      </button>
       {testData?.length > 0 &&
         testData.map((user) => (
           <div key={user._id}>
