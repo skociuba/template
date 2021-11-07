@@ -3,8 +3,8 @@ Feature: Feature name
     Feature Description
 
 
-Scenario:...
+Scenario:Example scenario.
 
-  Given Given
-  When When
-  Then Then
+  Given Customer has successfully go to testPage
+  When He saw header with 'hello' name
+  Then Customer after clicking link went to the minePage

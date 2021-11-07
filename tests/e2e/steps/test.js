@@ -3,17 +3,18 @@ import {Selector} from 'testcafe';
 
 import config from '../config';
 
-//Scenario:...
-Given('Given', async (t) => {
-  await t.maximizeWindow().navigateTo(config.GET_APP_URL(config.routes.testPage.root));
+//Scenario:Example scenario.
+Given('Customer has successfully go to testPage', async (t) => {
+  // await t.maximizeWindow().navigateTo(config.GET_APP_URL(config.routes.testPage.root));
+  await t.maximizeWindow().navigateTo(config.GET_APP_URL(`/test-page`));
 });
 
-When('When', async (t, [expectedText]) => {
-  const header = await (await Selector('[data-testid="header"]').find('div').innerText).trim();
+When('He saw header with {string} name', async (t, [expectedText]) => {
+  const header = await (await Selector('[data-testid="header"]').innerText).trim();
   await t.expect(header).eql(expectedText);
 });
 
-Then('Then', async (t) => {
-  const button = await Selector('#button');
+Then('Customer after clicking link went to the minePage', async (t) => {
+  const button = await Selector('[data-testid="button"]');
   await t.click(button);
 });
