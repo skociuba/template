@@ -16,5 +16,5 @@ When('He saw header with {string} name', async (t, [expectedText]) => {
 
 Then('Customer after clicking link went to the minePage', async (t) => {
   const button = await Selector('[data-testid="button"]');
-  await t.click(button);
+  await t.click(button).takeScreenshot();
 });
