@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Test/> render without crashing 1`] = `
+<div
+  data-testid="test-container"
+>
+  <div
+    data-testid="header"
+  />
+  <br />
+  <button
+    data-testid="button"
+  >
+    go to main page
+  </button>
+</div>
+`;

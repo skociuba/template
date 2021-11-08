@@ -25,7 +25,7 @@ const Test = () => {
   const handleSwitch = () => history?.push({pathname: shared.routes.mainPage.root});
 
   return (
-    <div>
+    <div data-testid="test-container">
       <div data-testid="header">{testExample}</div>
       <br />
       <button data-testid="button" onClick={handleSwitch}>

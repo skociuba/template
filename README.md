@@ -94,3 +94,8 @@
 
   and run in package.json:
       "test:e2e": "cross-env ENV_TYPE=local gherkin-testcafe"
+
+
+
+  # "test": "cross-env NODE_ICU_DATA =node_modules/full-icu react-scripts test -u",
+  # "test:update-snapshot": "cross-env NODE_ICU_DATA =node_modules/full-icu react-scripts test -u",     
