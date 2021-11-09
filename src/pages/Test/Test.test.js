@@ -28,4 +28,54 @@ describe('<Test/>', () => {
     expect(container.firstChild).toMatchSnapshot();
     expect(getByTestId('test-container')).toBeInTheDocument();
   });
+  it('render without crashing with testLoadingSelector', () => {
+    const {container, getByTestId} = render(
+      <Test
+        fetchTestData={defaultProps.fetchTestData}
+        testDataSelector={defaultProps.testDataSelector}
+        testExampleSelector={defaultProps.testExampleSelector}
+        testLoadingSelector={true}
+      />,
+    );
+    expect(container.firstChild).toMatchSnapshot();
+    expect(getByTestId('test-container')).toBeInTheDocument();
+  });
+  it('render without crashing with testExampleSelector', () => {
+    const {container, getByTestId} = render(
+      <Test
+        fetchTestData={defaultProps.fetchTestData}
+        testDataSelector={defaultProps.testDataSelector}
+        testExampleSelector={null}
+        testLoadingSelector={defaultProps.testLoadingSelector}
+      />,
+    );
+    expect(container.firstChild).toMatchSnapshot();
+    expect(getByTestId('test-container')).toBeInTheDocument();
+  });
+  it('render without crashing with testDataSelector', () => {
+    const {container, getByTestId} = render(
+      <Test
+        fetchTestData={defaultProps.fetchTestData}
+        testDataSelector={null}
+        testExampleSelector={defaultProps.testExampleSelector}
+        testLoadingSelector={defaultProps.testLoadingSelector}
+      />,
+    );
+    expect(container.firstChild).toMatchSnapshot();
+    expect(getByTestId('test-container')).toBeInTheDocument();
+  });
+
+  it('handle fetch data action', () => {
+    const fetchTestData = jest.fn();
+    render(
+      <Test
+        fetchTestData={fetchTestData}
+        testDataSelector={defaultProps.testDataSelector}
+        testExampleSelector={defaultProps.testExampleSelector}
+        testLoadingSelector={null}
+      />,
+    );
+    expect(fetchTestData).toHaveBeenCalledTimes(0);
+    //expect(fetchTestData).toHaveBeenCalled();
+  });
 });

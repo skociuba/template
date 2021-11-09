@@ -15,3 +15,51 @@ exports[`<Test/> render without crashing 1`] = `
   </button>
 </div>
 `;
+
+exports[`<Test/> render without crashing with testDataSelector 1`] = `
+<div
+  data-testid="test-container"
+>
+  <div
+    data-testid="header"
+  />
+  <br />
+  <button
+    data-testid="button"
+  >
+    go to main page
+  </button>
+</div>
+`;
+
+exports[`<Test/> render without crashing with testExampleSelector 1`] = `
+<div
+  data-testid="test-container"
+>
+  <div
+    data-testid="header"
+  />
+  <br />
+  <button
+    data-testid="button"
+  >
+    go to main page
+  </button>
+</div>
+`;
+
+exports[`<Test/> render without crashing with testLoadingSelector 1`] = `
+<div
+  data-testid="test-container"
+>
+  <div
+    data-testid="header"
+  />
+  <br />
+  <button
+    data-testid="button"
+  >
+    go to main page
+  </button>
+</div>
+`;
