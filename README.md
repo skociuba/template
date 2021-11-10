@@ -4,7 +4,7 @@
   ` "clean": "rd /s /q node_modules build"`
 
  # "dependencies": {
-    "@emotion/css
+    "@emotion/css                                    is a library designed for writing css styles with JavaScript
 
     "@testing-library/jest-dom
     "@testing-library/react                          unit tests
@@ -21,16 +21,14 @@
     "redux-devtools-extension"
     "redux-saga"                                    redux saga needed
 
-    "reselect"  
-    "lodash"
+    "reselect"                                      to createSelectors in selectors 
+    "lodash"                                        to support iteration between environments for arrays, strings, and objects
   },
 # "devDependencies": {
     "@babel/preset-env"                              ES6 compiler
     "@babel/preset-react"
 
-    "@emotion/eslint-plugin"
-    "@nake/stylelint-config"
-    "@stylelint/postcss-css-in-js"
+  
     "@welldone-software/why-did-you-render"
     "concurrently"                                  run couple task in the same time
     "env-cmd"                                       using to run .env files
@@ -43,9 +41,12 @@
     "eslint-plugin-react"
     "prettier"
     "stylelint"
+    "@nake/stylelint-config"
+    "@stylelint/postcss-css-in-js"
+    "@emotion/eslint-plugin"
 
-    "nodemon"
-    "npm-run-all"
+    "nodemon"                                       to run mockserver
+    "npm-run-all"                                   run multiple npm-scripts in parallel or sequential
 
      "@cucumber/cucumber": "^7.3.1",
   - "cross-env": "^7.0.3",                         for e2e
