@@ -1,46 +1,61 @@
   # remove node-modules & build in mac
   `"clean": "rm -rf ./node-modules ./build"`
+  # on windows
+  ` "clean": "rd /s /q node_modules build"`
 
  # "dependencies": {
     "@emotion/css
-    "@material/react-button
-    "@material/react-switch
+
     "@testing-library/jest-dom
-    "@testing-library/react
+    "@testing-library/react                          unit tests
     "@testing-library/user-event
-    "lodash
-    "node-sass
+   
     "react"
-    "react-dom"
-    "react-redux"
+    "react-dom"                                      react needed  
     "react-router-dom"
     "react-scripts"
+
     "redux"
+    "react-redux"                                   redux needed  
     "redux-actions"
     "redux-devtools-extension"
-    "redux-saga"
-    "reselect"
-    "web-vitals"
+    "redux-saga"                                    redux saga needed
+
+    "reselect"  
+    "lodash"
   },
 # "devDependencies": {
-    "@babel/preset-env"
+    "@babel/preset-env"                              ES6 compiler
     "@babel/preset-react"
+
     "@emotion/eslint-plugin"
     "@nake/stylelint-config"
     "@stylelint/postcss-css-in-js"
     "@welldone-software/why-did-you-render"
-    "concurrently"                                - run couple task in the same time
-    "env-cmd"                                   - using to run .env files
+    "concurrently"                                  run couple task in the same time
+    "env-cmd"                                       using to run .env files
+
     "eslint"
     "eslint-config-prettier"
     "eslint-plugin-flowtype"
     "eslint-plugin-import"
-    "eslint-plugin-prettier"
+    "eslint-plugin-prettier"                        for linting
     "eslint-plugin-react"
-    "nodemon"
-    "npm-run-all"
     "prettier"
     "stylelint"
+
+    "nodemon"
+    "npm-run-all"
+
+     "@cucumber/cucumber": "^7.3.1",
+  - "cross-env": "^7.0.3",                         for e2e
+  - "gherkin-testcafe": "^5.1.0",
+  - "testcafe": "^1.16.1"
+  
+
+   "cross-env": "^7.0.3",                           run tests
+   "string.prototype.replaceall": "^1.0.6",         for unit tests tests
+
   }
 
   # for .prettierrc.json you should add in newest version
@@ -49,9 +64,9 @@
   "check:code-quality": "run-s -c lint:js lint:style prettier",
 
 
-  # e2e test
+  # ########################### e2e test ###########################################
 
-  1 packages:
+  I packages:
 
   - "@cucumber/cucumber": "^7.3.1", - remember this version!
   - "cross-env": "^7.0.3",
@@ -59,7 +74,9 @@
   - "testcafe": "^1.16.1"
 
 
-  2 setting testcaferc.json:
+ II setting files:
+ 
+  testcaferc.json:
  {
   "browsers": ["chrome"],
   "screenshots": {
@@ -92,10 +109,37 @@
   "proxyBypass": ["127.0.0.1"]
 }
 
-  and run in package.json:
+tests
+   e2e
+    scenarios
+       example.feature
+    steps 
+       example.js
+    screenshot
+    utils
+    reports 
+    config.js
+
+  III. run:
+
+
       "test:e2e": "cross-env ENV_TYPE=local gherkin-testcafe"
 
+# ##################### unit test ############################################
 
+I . packages:
 
-  # "test":                 "cross-env NODE_ICU_DATA =node_modules/full-icu react-scripts test -u",
-  # "test:update-snapshot": "cross-env NODE_ICU_DATA =node_modules/full-icu react-scripts test -u",     
+"cross-env": "^7.0.3",
+"string.prototype.replaceall": "^1.0.6",
+"@testing-library/jest-dom": "^5.14.1",
+"@testing-library/react": "^11.2.7",
+npm i full-icu 
+
+II. settings files:
+
+jest.config.json -> setupTests.js -> renderWithRouter.js & enhancedRender.js
+
+III. run:
+
+"test": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test",
+"test:update-snapshots": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test -u",
