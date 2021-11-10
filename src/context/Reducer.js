@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {v4} from 'uuid';
 export default (state, action) => {
   switch (action.type) {
