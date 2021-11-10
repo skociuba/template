@@ -1,13 +1,12 @@
 import React from 'react';
 import {Router} from 'react-router-dom';
-import {Provider} from 'react-redux';
 
+import Provider from './context/Provider';
 import history from './history';
 import Application from './pages/Application/Application';
-import store from './store';
 
 const Routing = () => (
-  <Provider store={store}>
+  <Provider>
     <Router history={history}>
       <Application />
     </Router>

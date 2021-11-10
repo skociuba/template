@@ -1,32 +1,27 @@
-import React from 'react';
-import {useHistory} from 'react-router-dom';
-import {shared} from 'routesConstants';
-import {media, useMedia} from 'components/Media';
+import React, {Fragment, useContext, useEffect} from 'react';
 
-import {} from './MainPage.style';
+import Context from '../../context/Context';
 const MainPage = () => {
-  const history = useHistory();
-  const isMobile = useMedia(media.device.mobile);
-  const isTablet = useMedia(media.device.tablet);
+  const {state, dispatch} = useContext(Context);
 
-  const deviceSize = () => {
-    if (isMobile) {
-      return `MOBILE VERSION`;
-    } else if (isTablet) {
-      return 'TABLET VERSION';
-    } else {
-      return `DESKTOP VERSION`;
-    }
-  };
-  const handleSwitch = () => history?.push({pathname: shared.routes.testPage.root});
+  useEffect(() => {}, [state.posts]);
 
-  return (
-    <>
-      <div>MAIN PAGE</div>
-      <button onClick={handleSwitch}>to next page</button>
-      {deviceSize()}
-    </>
-  );
+  const postTitles = state.posts.map((post) => (
+    <div key={post.id}>
+      <div>
+        {' '}
+        {post}
+        <button
+          onClick={() => {
+            dispatch({type: 'DELETE_NOTE', payload: post.id});
+          }}>
+          remove
+        </button>
+      </div>
+    </div>
+  ));
+
+  return <Fragment>{postTitles}</Fragment>;
 };
 
 export default MainPage;

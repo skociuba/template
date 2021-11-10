@@ -4,7 +4,6 @@ import {Redirect, Route} from 'react-router-dom';
 import {shared} from './routesConstants';
 
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
-const TestPage = lazy(() => import('./pages/Test/Test'));
 const paths = {...shared.routes};
 
 const routes = [
@@ -16,11 +15,6 @@ const routes = [
   {
     path: paths.mainPage.root,
     component: MainPage,
-    exact: true,
-  },
-  {
-    path: paths.testPage.root,
-    component: TestPage,
     exact: true,
   },
 ];
