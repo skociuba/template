@@ -2,19 +2,19 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Skeleton from 'react-loading-skeleton';
 
 import {shared} from '../../routesConstants';
 
+import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchTestData} from './actions';
-import {testDataSelector, testExampleSelector, testLoadingSelector} from './selectors';
+import {testDataSelector, testLoadingSelector} from './selectors';
 const Test = () => {
   const dispatch = useDispatch();
 
   const testData = useSelector((state) => testDataSelector(state));
-  const testExample = useSelector((state) => testExampleSelector(state));
-  const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
-  console.log(testLoadingExample);
+  const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
   useEffect(() => {
     dispatch(fetchTestData());
@@ -22,15 +22,14 @@ const Test = () => {
 
   const history = useHistory();
 
-  const handleSwitch = () => history?.push({pathname: shared.routes.mainPage.root});
+  const handleSwitch = () => history.push({pathname: shared.routes.mainPage.root});
 
-  return (
-    <div data-testid="test-container">
-      <div data-testid="header">{testExample}</div>
-      <br />
-      <button data-testid="button" onClick={handleSwitch}>
-        go to main page
-      </button>
+  const content = testLoadingExample ? (
+    <Skeleton count={100} />
+  ) : (
+    <>
+      <button onClick={handleSwitch}>go to main page</button>
+
       {testData?.length > 0 &&
         testData.map((user) => (
           <div key={user._id}>
@@ -39,16 +38,14 @@ const Test = () => {
               <p key={item.id}>
                 {item.name}--{item.head_quaters}
                 <br />
-                <img src={item.logo} alt="Cats" width="70" height="60" />
+                <img src={item.logo} alt="airlines" width="70" height="60" />
               </p>
             ))}
           </div>
         ))}
-    </div>
+    </>
   );
-};
-Test.defaultProps = {
-  fetchTestData: () => {},
+  return <div>{content}</div>;
 };
 
 Test.propTypes = {
