@@ -27,7 +27,7 @@ const Test = () => {
   const content = testLoadingExample ? (
     <Skeleton count={100} />
   ) : (
-    <>
+    <section data-testid="test-container">
       <button onClick={handleSwitch}>go to main page</button>
 
       {testData?.length > 0 &&
@@ -43,7 +43,7 @@ const Test = () => {
             ))}
           </div>
         ))}
-    </>
+    </section>
   );
   return <div>{content}</div>;
 };
