@@ -4,7 +4,7 @@ global.React = require('react');
 global.render = require('@testing-library/react').render;
 global.act = require('@testing-library/react').act;
 global.renderWithRouter = require('utils/tests/renderWithRouter');
-global.enhancedRender = require('utils/tests/enhancedRender');
+global.enhancedRender = require('utils/tests/enhancedRenderer');
 
 process.env.TZ = 'UTC';
 

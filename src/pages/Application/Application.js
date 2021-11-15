@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import routes, {RouteWithSubRoutes} from '../../routes.config';
 
 import {appCheckConfig} from './actions';
+import {applicationWrapper} from './Application.style';
 
 const Application = () => {
   const dispatch = useDispatch();
@@ -17,13 +18,15 @@ const Application = () => {
   });
 
   return (
-    <Suspense fallback={<div />}>
-      <Switch>
-        {routes.map((route, i) => (
-          <RouteWithSubRoutes key={i} {...route} />
-        ))}
-      </Switch>
-    </Suspense>
+    <div className={applicationWrapper} data-testid="applicationContainer">
+      <Suspense fallback={<div />}>
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
+      </Suspense>
+    </div>
   );
 };
 

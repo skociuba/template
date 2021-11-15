@@ -65,7 +65,7 @@ describe('<Test/>', () => {
     expect(getByTestId('test-container')).toBeInTheDocument();
   });
 
-  it('handle fetch data action', () => {
+  it('handle fetch fetchTestData', () => {
     const fetchTestData = jest.fn();
     render(
       <Test
