@@ -34,6 +34,7 @@
     "build": "react-scripts build",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test",
     "test:update-snapshots": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test -u",
+    "test:coverage": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "check:code-quality": "run-s -c lint:js prettier",
     "clean": "rd /s /q node_modules build",
