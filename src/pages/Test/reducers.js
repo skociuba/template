@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 
-import {fetchTestData, fetchTestSuccess, fetchTestFail} from './actions';
+import {fetchTestData, fetchTestSuccess, fetchTestFail, fetchBooleanChose} from './actions';
 
 export const initialState = {
   test: {
@@ -8,6 +8,8 @@ export const initialState = {
     loading: false,
     error: null,
   },
+
+  boolean: true,
 };
 export default handleActions(
   {
@@ -42,6 +44,12 @@ export default handleActions(
           loading: false,
           error: payload.message,
         },
+      };
+    },
+    [fetchBooleanChose](state, {payload}) {
+      return {
+        ...state,
+        boolean: payload,
       };
     },
   },
