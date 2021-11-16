@@ -16,7 +16,6 @@ const Application = () => {
       dispatch(appCheckConfig());
     }
   });
-
   return (
     <div className={applicationWrapper} data-testid="applicationContainer">
       <Suspense fallback={<div />}>

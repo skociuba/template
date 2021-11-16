@@ -10,7 +10,9 @@ const CommonProviders = ({children = []}, skipApplication = true) => (
     <Router>{(skipApplication && children) || <Application>{children}</Application>}</Router>
   </Provider>
 );
-const enhancedRenderer = (ui, options) => render(ui, {wrapper: CommonProviders, ...options});
+const enhancedRenderer = (ui, options) => {
+  render(ui, {wrapper: CommonProviders, ...options});
+};
 
 export default enhancedRenderer;
 
