@@ -21,7 +21,6 @@ const RadioDisplay = () => {
   return (
     <div className={booleanFromRedux ? lightTheme : darkTheme}>
       <div className={contentContainer}>
-        {' '}
         <Button onClick={handleSwitch}>go to main page</Button>
         <RadioWithReduxState />
         <RadioWithLocalState />
