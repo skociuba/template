@@ -2,7 +2,7 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import {shared} from 'routesConstants';
 import {media, useMedia} from 'components/Media';
-
+import Button from '@material/react-button';
 import {} from './MainPage.style';
 const MainPage = () => {
   const history = useHistory();
@@ -23,7 +23,7 @@ const MainPage = () => {
   return (
     <>
       <div>MAIN PAGE</div>
-      <button onClick={handleSwitch}>to next page</button>
+      <Button onClick={handleSwitch}>Radio</Button>
       {deviceSize()}
     </>
   );
