@@ -1,6 +1,6 @@
 import {render} from '@testing-library/react';
 
-import Test from './Test';
+import Test from './RadioDisplay';
 
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({

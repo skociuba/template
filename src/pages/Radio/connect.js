@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import Test from './Test';
+import Test from './RadioDisplay';
 import {fetchTestData} from './actions';
 import {testDataSelector, testLoadingSelector, testExampleSelector} from './selectors';
 export const mapStateToProps = (state) => ({

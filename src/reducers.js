@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 
-import test from './pages/Test/reducers';
+import test from './pages/Radio/reducers';
 import application from './pages/Application/reducers';
 
 const rootReducer = () =>

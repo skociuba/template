@@ -18,7 +18,7 @@ const MainPage = () => {
       return `DESKTOP VERSION`;
     }
   };
-  const handleSwitch = () => history?.push({pathname: shared.routes.testPage.root});
+  const handleSwitch = () => history?.push({pathname: shared.routes.radioPage.root});
 
   return (
     <>

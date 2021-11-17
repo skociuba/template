@@ -6,8 +6,8 @@ const shared = {
     mainPage: {
       root: generatePrefixedRootContext('main-page'),
     },
-    testPage: {
-      root: generatePrefixedRootContext('test-page'),
+    radioPage: {
+      root: generatePrefixedRootContext('radio-page'),
     },
   },
 };
