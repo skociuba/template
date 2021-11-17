@@ -44,11 +44,13 @@ const Application = () => {
     },
   };
 
-  const mappingHederData = headerData.menu.primary.map((item) => item);
-
   return (
     <div className={applicationWrapper} data-testid="applicationContainer">
-      <Menu data={mappingHederData} handleNavigation={(to) => handleNavigate(history, to)} />
+      <Menu
+        data={headerData}
+        handleNavigation={(to) => handleNavigate(history, to)}
+        rightSideMenuElements={<div />}
+      />
       <Suspense fallback={<div />}>
         <Switch>
           {routes.map((route, i) => (

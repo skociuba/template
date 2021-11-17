@@ -13,20 +13,17 @@ const Menu = ({data, handleNavigation}) => {
     setMenuSelected(false);
   };
 
-  const handleClick = () => {
-    handleNavigation(data[0].to);
-    isMenuSelected(data[0].to);
-  };
-
-  const menuItem = <li onClick={handleClick}>{data[0].name}</li>;
-  console.log(menuSelected);
-
-  return (
-    <div>
-      <Button color="secondary">HOME</Button>
-      <Button color="secondary">BUTTON</Button>
-      {menuItem}
+  const menuItem = data.menu.primary.map((item, i) => (
+    <div key={i}>
+      <Button
+        onClick={() => (
+          handleNavigation(item.to), isMenuSelected(item.to), window.location.reload(false)
+        )}>
+        {item.name}
+      </Button>
     </div>
-  );
+  ));
+  console.log(menuSelected);
+  return <div>{menuItem}</div>;
 };
 export default Menu;
