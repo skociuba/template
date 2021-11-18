@@ -1,11 +1,11 @@
 import {css} from 'emotion.instance';
 
 export const applicationWrapper = css`
-  width: 100%;
   min-height: 100vh;
-  background: grey;
+  background: #6a899c;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 15px;
+  padding: 20px;
+  margin: 20px;
 `;
