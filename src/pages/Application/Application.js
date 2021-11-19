@@ -2,6 +2,8 @@ import React, {Suspense, useLayoutEffect} from 'react';
 import {HashRouter as Switch, useHistory} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {shared} from 'sharedConstants';
+import {Cell, Grid, Row} from '@material/react-layout-grid';
+import {media, useMedia} from 'components/Media';
 
 import routes, {RouteWithSubRoutes} from '../../routes.config';
 
@@ -19,6 +21,7 @@ export const handleNavigate = (history, to) => {
 };
 
 const Application = () => {
+  const isMobile = useMedia(media.device.mobile);
   const dispatch = useDispatch();
   const history = useHistory();
   const config = useSelector((state) => state.application.config);
@@ -43,21 +46,56 @@ const Application = () => {
       ],
     },
   };
+  const content = () => {
+    if (isMobile) {
+      return (
+        <Grid>
+          <Row>
+            <Cell columns={2}>
+              <Menu
+                data={headerData}
+                handleNavigation={(to) => handleNavigate(history, to)}
+                rightSideMenuElements={<div />}
+              />
+            </Cell>
 
+            <Cell columns={7}>
+              <Suspense fallback={<div />}>
+                <Switch>
+                  {routes.map((route, i) => (
+                    <RouteWithSubRoutes key={i} {...route} />
+                  ))}
+                </Switch>
+              </Suspense>
+            </Cell>
+            <Cell>
+              <div />
+            </Cell>
+          </Row>
+        </Grid>
+      );
+    } else {
+      return (
+        <>
+          <Menu
+            data={headerData}
+            handleNavigation={(to) => handleNavigate(history, to)}
+            rightSideMenuElements={<div />}
+          />
+          <Suspense fallback={<div />}>
+            <Switch>
+              {routes.map((route, i) => (
+                <RouteWithSubRoutes key={i} {...route} />
+              ))}
+            </Switch>
+          </Suspense>
+        </>
+      );
+    }
+  };
   return (
     <div className={applicationWrapper} data-testid="applicationContainer">
-      <Menu
-        data={headerData}
-        handleNavigation={(to) => handleNavigate(history, to)}
-        rightSideMenuElements={<div />}
-      />
-      <Suspense fallback={<div />}>
-        <Switch>
-          {routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route} />
-          ))}
-        </Switch>
-      </Suspense>
+      {content()}
     </div>
   );
 };
