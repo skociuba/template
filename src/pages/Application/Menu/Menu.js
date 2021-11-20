@@ -5,7 +5,7 @@ import {Cell, Grid, Row} from '@material/react-layout-grid';
 import {media, useMedia} from 'components/Media';
 
 import '../../../index.scss';
-import {menuTheme} from './Menu.style';
+import {menuTheme, mobileMenuContainer} from './Menu.style';
 
 const Menu = ({data, handleNavigation}) => {
   const isMobile = useMedia(media.device.mobile);
@@ -42,7 +42,7 @@ const Menu = ({data, handleNavigation}) => {
     </Cell>
   ));
   const menu = isMobile ? (
-    menuMobile
+    <div className={mobileMenuContainer}> {menuMobile}</div>
   ) : (
     <Grid>
       <Row>{menuDesktop}</Row>

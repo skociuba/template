@@ -5,6 +5,5 @@ export const applicationWrapper = css`
   background: #6a899c;
   flex-direction: column;
   overflow: hidden;
-  padding: 20px;
   margin: 20px;
 `;
