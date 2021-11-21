@@ -8,29 +8,34 @@ import {shared} from 'routesConstants';
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchResponseData} from './actions';
 import {responseDataSelector} from './selectors';
-import {contentContainer} from './ResponseWithBodyOutput.style';
+import {contentContainer} from './RequestWithBodyOutput.style';
 
 const ResponseWithBodyOutput = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const {example} = useParams();
+  const {nameOne, nameTwo} = useParams();
   const params = encodeQueryData({
-    example,
+    nameOne,
+    nameTwo,
   });
-  console.log(params);
+
   useEffect(() => {
     dispatch(fetchResponseData(params));
   }, [dispatch]);
 
-  const testData = useSelector((state) => responseDataSelector(state));
+  const names = useSelector((state) => responseDataSelector(state));
 
-  const handleSwitch = () => history?.push({pathname: shared.routes.responseWithBody.root});
+  const handleSwitch = () => history?.push({pathname: shared.routes.requestWithBody.root});
 
   const content = (
     <>
       <button onClick={handleSwitch}>to next page</button>
-      <section data-testid="test-container">{testData?.length > 0 && testData}</section>
+      <section data-testid="test-container">
+        {names?.nameOne?.length > 0 && names?.nameOne}
+        <p />
+        {names?.nameTwo?.length > 0 && names?.nameTwo}
+      </section>
     </>
   );
 

@@ -8,13 +8,14 @@ import {shared} from 'routesConstants';
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchTestData} from './actions';
 import {testDataSelector, testLoadingSelector} from './selectors';
-import {contentContainer} from './ResponseWithBody.style';
+import {contentContainer} from './RequestWithBody.style';
 
 const ResponseWithBody = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const testData = useSelector((state) => testDataSelector(state));
-  const exampleData = testData?.length > 0 && testData[1].name;
+  const nameOne = testData?.length > 0 && testData[1].name;
+  const nameTwo = testData?.length > 0 && testData[2].name;
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const ResponseWithBody = () => {
 
   const handleSwitch = () =>
     history?.push({
-      pathname: `${shared.routes.responseWithBodyOutput.root}?example=${exampleData}`,
+      pathname: `${shared.routes.requestWithBodyOutput.root}?nameOne=${nameOne}&nameTwo=${nameTwo}`,
     });
 
   const content = testLoadingExample ? (

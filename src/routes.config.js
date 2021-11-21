@@ -5,9 +5,9 @@ import {shared} from './routesConstants';
 
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 const RadioPage = lazy(() => import('./pages/Radio/RadioDisplay'));
-const ResponseWithBody = lazy(() => import('./pages/ResponseWithBody/ResponseWithBody'));
-const ResponseWithBodyOutput = lazy(() =>
-  import('./pages/ResponseWithBodyOutput/ResponseWithBodyOutput'),
+const RequestWithBody = lazy(() => import('./pages/RequestWithBody/RequestWithBody'));
+const RequestWithBodyOutput = lazy(() =>
+  import('./pages/RequestWithBodyOutput/RequestWithBodyOutput'),
 );
 const paths = {...shared.routes};
 
@@ -28,13 +28,13 @@ const routes = [
     exact: true,
   },
   {
-    path: paths.responseWithBody.root,
-    component: ResponseWithBody,
+    path: paths.requestWithBody.root,
+    component: RequestWithBody,
     exact: true,
   },
   {
-    path: paths.responseWithBodyOutput.root,
-    component: ResponseWithBodyOutput,
+    path: paths.requestWithBodyOutput.root,
+    component: RequestWithBodyOutput,
     exact: true,
   },
 ];

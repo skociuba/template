@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 
 import test from './pages/Radio/reducers';
-import response from './pages/ResponseWithBody/reducers';
-import responseOutput from './pages/ResponseWithBodyOutput/reducers';
+import response from './pages/RequestWithBody/reducers';
+import responseOutput from './pages/RequestWithBodyOutput/reducers';
 import application from './pages/Application/reducers';
 
 const rootReducer = () =>

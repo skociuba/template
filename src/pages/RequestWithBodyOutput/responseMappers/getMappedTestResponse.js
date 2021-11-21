@@ -1,12 +1,10 @@
 export const getMappedTestResponse = (response) => {
-  if (!response?.payload?.args?.body) {
+  if (!response?.payload?.args) {
     return null;
   }
   const {
-    payload: {
-      args: {body},
-    },
+    payload: {args},
   } = response;
 
-  return {body};
+  return {args};
 };

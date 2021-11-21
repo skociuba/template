@@ -1,6 +1,6 @@
 import {render} from '@testing-library/react';
 
-import Test from './ResponseWithBody';
+import Test from './RequestWithBody';
 
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({

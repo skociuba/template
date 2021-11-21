@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import Test from './ResponseWithBodyOutput';
+import Test from './RequestWithBody';
 import {fetchTestData} from './actions';
 import {testDataSelector, testLoadingSelector, testExampleSelector} from './selectors';
 export const mapStateToProps = (state) => ({

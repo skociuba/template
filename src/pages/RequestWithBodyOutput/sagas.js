@@ -10,7 +10,6 @@ export function* getTestSaga(action) {
     if (!response) {
       throw console.log('not found');
     }
-
     yield put(fetchResponseSuccess({data: getMappedTestResponse(response) || null}));
   } catch (e) {
     yield put(console.log(e.message));

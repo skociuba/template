@@ -9,11 +9,11 @@ const shared = {
     radioPage: {
       root: generatePrefixedRootContext('radio-page'),
     },
-    responseWithBody: {
-      root: generatePrefixedRootContext('response-with-body'),
+    requestWithBody: {
+      root: generatePrefixedRootContext('request-with-body'),
     },
-    responseWithBodyOutput: {
-      root: generatePrefixedRootContext('response-with-body-output/:example'),
+    requestWithBodyOutput: {
+      root: generatePrefixedRootContext('request-with-body-output/:nameOne/:nameTwo'),
     },
   },
 };
