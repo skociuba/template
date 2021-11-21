@@ -22,7 +22,9 @@ const ResponseWithBody = () => {
   }, [dispatch]);
 
   const handleSwitch = () =>
-    history?.push({pathname: `${shared.routes.responseWithBodyOutput.root}?test=${exampleData}`});
+    history?.push({
+      pathname: `${shared.routes.responseWithBodyOutput.root}?example=${exampleData}`,
+    });
 
   const content = testLoadingExample ? (
     <Skeleton count={100} />

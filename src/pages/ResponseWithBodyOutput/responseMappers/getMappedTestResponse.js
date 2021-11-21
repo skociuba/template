@@ -8,5 +8,5 @@ export const getMappedTestResponse = (response) => {
     },
   } = response;
 
-  return console.log({body});
+  return {body};
 };

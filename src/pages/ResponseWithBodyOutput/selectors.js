@@ -1,17 +1,8 @@
 import {createSelector} from 'reselect';
 
-export const testSelector = (state) => console.log(state.response) || null;
+export const responseSelector = (state) => state.responseOutput || null;
 
-export const testDataSelector = createSelector(
-  testSelector,
-  (test) => test?.test?.data?.data || null,
-);
-
-export const testExampleSelector = createSelector(
-  testSelector,
-  (test) => test?.test?.data?.example || null,
-);
-
-export const testLoadingSelector = createSelector(testSelector, (test) =>
-  test?.test?.loading === undefined ? true : test?.test?.loading,
+export const responseDataSelector = createSelector(
+  responseSelector,
+  (response) => response?.request?.data?.data?.body || null,
 );

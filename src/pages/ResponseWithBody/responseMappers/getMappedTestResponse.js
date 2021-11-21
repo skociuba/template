@@ -6,5 +6,5 @@ export const getMappedTestResponse = (response) => {
     payload: {data},
   } = response;
 
-  return {data, example: 'hello'};
+  return {data};
 };

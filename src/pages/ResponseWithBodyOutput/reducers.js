@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 
-import {fetchTestData, fetchTestSuccess, fetchTestFail} from './actions';
+import {fetchResponseData, fetchResponseSuccess, fetchResponseFail} from './actions';
 
 export const initialState = {
   request: {
@@ -11,7 +11,7 @@ export const initialState = {
 };
 export default handleActions(
   {
-    [fetchTestData](state) {
+    [fetchResponseData](state) {
       return {
         ...state,
         request: {
@@ -22,18 +22,18 @@ export default handleActions(
         },
       };
     },
-    [fetchTestSuccess](state, {payload}) {
+    [fetchResponseSuccess](state, {payload}) {
       return {
         ...state,
         request: {
           ...state.request,
-          data: console.log(payload),
+          data: payload,
           loading: false,
           error: null,
         },
       };
     },
-    [fetchTestFail](state, {payload}) {
+    [fetchResponseFail](state, {payload}) {
       return {
         ...state,
         request: {

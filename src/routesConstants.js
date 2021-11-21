@@ -13,7 +13,7 @@ const shared = {
       root: generatePrefixedRootContext('response-with-body'),
     },
     responseWithBodyOutput: {
-      root: generatePrefixedRootContext('response-with-body-output/:test'),
+      root: generatePrefixedRootContext('response-with-body-output/:example'),
     },
   },
 };
