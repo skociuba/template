@@ -2,8 +2,7 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
-import {useHistory} from 'react-router-dom';
-import {shared} from 'routesConstants';
+import {Link} from 'react-router-dom';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchTestData} from './actions';
@@ -12,7 +11,6 @@ import {contentContainer} from './RequestWithBody.style';
 
 const ResponseWithBody = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const testData = useSelector((state) => testDataSelector(state));
   const nameOne = testData?.length > 0 && testData[1].name;
   const nameTwo = testData?.length > 0 && testData[2].name;
@@ -22,16 +20,13 @@ const ResponseWithBody = () => {
     dispatch(fetchTestData());
   }, [dispatch]);
 
-  const handleSwitch = () =>
-    history?.push({
-      pathname: `${shared.routes.requestWithBodyOutput.root}?nameOne=${nameOne}&nameTwo=${nameTwo}`,
-    });
-
   const content = testLoadingExample ? (
     <Skeleton count={100} />
   ) : (
     <section data-testid="test-container">
-      <button onClick={handleSwitch}>to next page</button>
+      <Link to={`request-with-body-output/${nameOne}/${nameTwo}`}>
+        <button>to next page</button>
+      </Link>
       {testData?.length > 0 &&
         testData.map((user) => (
           <div key={user._id}>

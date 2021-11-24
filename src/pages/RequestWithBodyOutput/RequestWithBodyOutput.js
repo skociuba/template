@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {encodeQueryData} from 'utils/url';
 import {useHistory, useParams} from 'react-router-dom';
 import {shared} from 'routesConstants';
+import Button from '@material/react-button';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchResponseData} from './actions';
@@ -30,7 +31,7 @@ const ResponseWithBodyOutput = () => {
 
   const content = (
     <>
-      <button onClick={handleSwitch}>to next page</button>
+      <Button onClick={handleSwitch}>back to request</Button>
       <section data-testid="test-container">
         {names?.nameOne?.length > 0 && names?.nameOne}
         <p />
