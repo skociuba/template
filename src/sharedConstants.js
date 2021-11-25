@@ -5,6 +5,7 @@ const shared = {
         {name: 'Main', to: '#/main-page'},
         {name: 'Radio', to: '#/radio-page'},
         {name: 'Checkbox', to: '#/checkbox-page'},
+        {name: 'UseImperativeHandler', to: '#/use-imperative-handler-page'},
         {name: 'RequestWithBody', to: '#/request-with-body'},
       ],
     },

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Skeleton from 'react-loading-skeleton';
-
+import Checkbox from '@material/react-checkbox';
 import '../../../index.scss';
 
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -51,8 +51,8 @@ const CheckboxWithLocalState = () => {
       <p>CHECKBOX WITH LOCAL STATE </p>
       <div>
         <form>
-          <input
-            type="checkbox"
+          <Checkbox
+            nativeControlId="my-checkbox"
             checked={checked}
             onChange={() => {
               handleContent();

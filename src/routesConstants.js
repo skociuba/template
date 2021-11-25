@@ -12,6 +12,9 @@ const shared = {
     checkboxPage: {
       root: generatePrefixedRootContext('checkbox-page'),
     },
+    useImperativeHandler: {
+      root: generatePrefixedRootContext('use-imperative-handler-page'),
+    },
     requestWithBody: {
       root: generatePrefixedRootContext('request-with-body'),
     },
