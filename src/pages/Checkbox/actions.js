@@ -5,16 +5,16 @@ import actionNames from '../../utils/actionNames';
 export const FETCH_TEST = 'FETCH_TEST';
 export const FETCH_TEST_SUCCESS = 'FETCH_TEST_SUCCESS';
 export const FETCH_TEST_FAIL = 'FETCH_TEST_FAIL';
-export const BOOLEAN_CHOSE = 'BOOLEAN_CHOSE';
+export const CHECKBOX_CHOSE = 'CHECKBOX_CHOSE';
 
 export const testAction = actionNames([
   FETCH_TEST,
   FETCH_TEST_SUCCESS,
   FETCH_TEST_FAIL,
-  BOOLEAN_CHOSE,
+  CHECKBOX_CHOSE,
 ]);
 
 export const fetchTestData = createAction(testAction.FETCH_TEST);
 export const fetchTestSuccess = createAction(testAction.FETCH_TEST_SUCCESS);
 export const fetchTestFail = createAction(testAction.FETCH_TEST_FAIL);
-export const fetchBooleanChose = createAction(testAction.BOOLEAN_CHOSE);
+export const fetchCheckboxChose = createAction(testAction.CHECKBOX_CHOSE);

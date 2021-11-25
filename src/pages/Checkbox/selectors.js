@@ -1,19 +1,17 @@
 import {createSelector} from 'reselect';
 
-export const testSelector = (state) => state.test || null;
+export const testSelector = (state) => state.checkbox || null;
 
 export const testDataSelector = createSelector(
   testSelector,
-  (test) => test?.test?.data?.data || null,
+  (checkbox) => checkbox?.checkbox?.data?.data || null,
 );
 
-export const testExampleSelector = createSelector(
+export const testBooleanSelector = createSelector(
   testSelector,
-  (test) => test?.test?.data?.example || null,
+  (checkbox) => checkbox?.boolean || null,
 );
 
-export const testBooleanSelector = createSelector(testSelector, (test) => test?.boolean || null);
-
-export const testLoadingSelector = createSelector(testSelector, (test) =>
-  test?.test?.loading === undefined ? true : test?.test?.loading,
+export const testLoadingSelector = createSelector(testSelector, (checkbox) =>
+  checkbox?.checkbox?.loading === undefined ? true : checkbox?.checkbox?.loading,
 );

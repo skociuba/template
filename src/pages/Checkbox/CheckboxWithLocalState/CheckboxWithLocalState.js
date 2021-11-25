@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-expressions */
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import Checkbox from '@material/react-checkbox';
 import Skeleton from 'react-loading-skeleton';
 
 import '../../../index.scss';
@@ -50,17 +48,20 @@ const CheckboxWithLocalState = () => {
 
   return (
     <div>
-      <p>RADIO WITH LOCAL STATE </p>
+      <p>CHECKBOX WITH LOCAL STATE </p>
       <div>
-        <Checkbox
-          checked={checked}
-          onChange={() => {
-            handleContent();
-          }}
-        />
-        <label htmlFor="my-checkbox">My Checkbox</label>
+        <form>
+          <input
+            type="checkbox"
+            checked={checked}
+            onChange={() => {
+              handleContent();
+            }}
+          />
+          <label htmlFor="my-checkbox">My Checkbox</label>
+        </form>
+        {checked ? data : ''}
       </div>
-      {checked ? data : ''}
     </div>
   );
 };

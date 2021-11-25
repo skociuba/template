@@ -12,7 +12,7 @@ const CheckboxDisplay = () => {
   const booleanFromRedux = useSelector((state) => testBooleanSelector(state));
 
   return (
-    <div className={booleanFromRedux ? lightTheme : darkTheme}>
+    <div className={booleanFromRedux ? darkTheme : lightTheme}>
       <div className={contentContainer}>
         <CheckboxWithReduxState />
         <CheckboxWithLocalState />

@@ -24,5 +24,4 @@ export const CHANNEL_TYPE = REACT_APP_CHANNEL_TYPE;
 export const ENV_TYPE = NODE_ENV;
 export const ROOT_PREFIX = '';
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {...dynamicConfig};

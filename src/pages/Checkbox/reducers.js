@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 
-import {fetchTestData, fetchTestSuccess, fetchTestFail, fetchBooleanChose} from './actions';
+import {fetchTestData, fetchTestSuccess, fetchTestFail, fetchCheckboxChose} from './actions';
 
 export const initialState = {
   checkbox: {
@@ -46,7 +46,7 @@ export default handleActions(
         },
       };
     },
-    [fetchBooleanChose](state, {payload}) {
+    [fetchCheckboxChose](state, {payload}) {
       return {
         ...state,
         boolean: payload,
