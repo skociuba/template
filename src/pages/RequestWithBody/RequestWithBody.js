@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import {Link} from 'react-router-dom';
+import Button from '@material/react-button';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchTestData} from './actions';
@@ -25,7 +26,7 @@ const ResponseWithBody = () => {
   ) : (
     <section data-testid="test-container">
       <Link to={`request-with-body-output/${nameOne}/${nameTwo}`}>
-        <button>to next page</button>
+        <Button>to next page</Button>
       </Link>
       {testData?.length > 0 &&
         testData.map((user) => (

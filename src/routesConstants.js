@@ -9,6 +9,9 @@ const shared = {
     radioPage: {
       root: generatePrefixedRootContext('radio-page'),
     },
+    checkboxPage: {
+      root: generatePrefixedRootContext('checkbox-page'),
+    },
     requestWithBody: {
       root: generatePrefixedRootContext('request-with-body'),
     },
