@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Radio, {NativeRadioControl} from '@material/react-radio';
 
@@ -12,8 +12,6 @@ const RadioWithReduxState = () => {
 
   const initBoolean = useSelector((state) => testBooleanSelector(state));
 
-  const [boolean, setBoolean] = useState(initBoolean);
-
   return (
     <div>
       <p>RADIO WITH STATE IN REDUX</p>
@@ -21,20 +19,18 @@ const RadioWithReduxState = () => {
         <Radio label="true" key="true">
           <NativeRadioControl
             id="true"
-            checked={boolean === true}
+            checked={initBoolean === true}
             onChange={() => {
-              setBoolean(true);
-              dispatch(fetchBooleanChose(true));
+              dispatch(fetchBooleanChose(!initBoolean));
             }}
           />
         </Radio>
         <Radio label="false" key="falsea">
           <NativeRadioControl
             id="false"
-            checked={boolean === false}
+            checked={initBoolean === false}
             onChange={() => {
-              setBoolean(false);
-              dispatch(fetchBooleanChose(false));
+              dispatch(fetchBooleanChose(!initBoolean));
             }}
           />
         </Radio>

@@ -21,6 +21,11 @@ const ResponseWithBodyOutput = () => {
     nameTwo,
   });
 
+  //  const params = {
+  //   nameOne,        when we got complicated structure
+  //   nameTwo,
+  // };
+
   useEffect(() => {
     dispatch(fetchResponseData(params));
   }, [dispatch]);

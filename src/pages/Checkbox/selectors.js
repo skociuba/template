@@ -7,9 +7,9 @@ export const testDataSelector = createSelector(
   (checkbox) => checkbox?.checkbox?.data?.data || null,
 );
 
-export const testBooleanSelector = createSelector(
+export const testCheckboxSelector = createSelector(
   testSelector,
-  (checkbox) => checkbox?.boolean || null,
+  (checkbox) => checkbox?.boolean || false,
 );
 
 export const testLoadingSelector = createSelector(testSelector, (checkbox) =>

@@ -1,26 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 //import Checkbox from '@material/react-checkbox';
 import '../../../index.scss';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchCheckboxChose} from '../actions';
-import {testBooleanSelector} from '../selectors';
+import {testCheckboxSelector} from '../selectors';
 const CheckboxWithReduxState = () => {
   const dispatch = useDispatch();
 
-  const initBoolean = useSelector((state) => testBooleanSelector(state));
-  const [boolean, setBoolean] = useState(initBoolean);
+  const initBoolean = useSelector((state) => testCheckboxSelector(state));
 
   const handleBoolean = (e) => {
-    if (boolean) {
-      //setBoolean(!boolean);   or
-      setBoolean(e?.target?.boolean);
-      dispatch(fetchCheckboxChose(!boolean));
+    if (initBoolean) {
+      dispatch(fetchCheckboxChose(!initBoolean));
     } else {
-      //setBoolean(!boolean);   or
-      setBoolean(!e?.target?.boolean);
-      dispatch(fetchCheckboxChose(!boolean));
+      dispatch(fetchCheckboxChose(!initBoolean));
     }
   };
   return (
@@ -30,7 +25,7 @@ const CheckboxWithReduxState = () => {
         <form>
           <input
             type="checkbox"
-            checked={boolean}
+            checked={initBoolean}
             onChange={() => {
               handleBoolean();
             }}
