@@ -15,6 +15,9 @@ const shared = {
     useImperativeHandler: {
       root: generatePrefixedRootContext('use-imperative-handler-page'),
     },
+    passingDataToParent: {
+      root: generatePrefixedRootContext('passing-data-to-parent'),
+    },
     requestWithBody: {
       root: generatePrefixedRootContext('request-with-body'),
     },

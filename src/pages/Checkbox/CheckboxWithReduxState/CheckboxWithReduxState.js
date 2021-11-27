@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-//import Checkbox from '@material/react-checkbox';
+import Checkbox from '@material/react-checkbox';
 import '../../../index.scss';
 
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -22,16 +22,13 @@ const CheckboxWithReduxState = () => {
     <div>
       <p>CHECKBOX WITH STATE IN REDUX</p>
       <div>
-        <form>
-          <input
-            type="checkbox"
-            checked={initBoolean}
-            onChange={() => {
-              handleBoolean();
-            }}
-          />
-          <label htmlFor="my-checkbox">My Checkbox</label>
-        </form>
+        <Checkbox
+          checked={initBoolean}
+          onChange={() => {
+            handleBoolean();
+          }}
+        />
+        <label htmlFor="my-checkbox">My Checkbox</label>
       </div>
     </div>
   );

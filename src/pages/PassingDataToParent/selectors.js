@@ -12,7 +12,7 @@ export const testExampleSelector = createSelector(
   (test) => test?.test?.data?.example || null,
 );
 
-export const testBooleanSelector = createSelector(testSelector, (test) => test?.boolean || false);
+export const testBooleanSelector = createSelector(testSelector, (test) => test?.boolean || null);
 
 export const testLoadingSelector = createSelector(testSelector, (test) =>
   test?.test?.loading === undefined ? true : test?.test?.loading,

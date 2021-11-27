@@ -11,7 +11,7 @@ const RadioWithReduxState = () => {
   const dispatch = useDispatch();
 
   const initBoolean = useSelector((state) => testBooleanSelector(state));
-
+  console.log(initBoolean);
   return (
     <div>
       <p>RADIO WITH STATE IN REDUX</p>
