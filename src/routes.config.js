@@ -6,6 +6,7 @@ import {shared} from './routesConstants';
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 const RadioPage = lazy(() => import('./pages/Radio/RadioDisplay'));
 const CheckboxPage = lazy(() => import('./pages/Checkbox/CheckboxDisplay'));
+const Select = lazy(() => import('./pages/Select/SelectDisplay'));
 const UseImperativeHandler = lazy(() => import('./pages/UseImperativeHandler/Parent'));
 const PassingDataToParent = lazy(() => import('./pages/PassingDataToParent/Parent'));
 const RequestWithBody = lazy(() => import('./pages/RequestWithBody/RequestWithBody'));
@@ -43,6 +44,11 @@ const routes = [
   {
     path: paths.passingDataToParent.root,
     component: PassingDataToParent,
+    exact: true,
+  },
+  {
+    path: paths.select.root,
+    component: Select,
     exact: true,
   },
   {

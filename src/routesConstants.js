@@ -12,6 +12,9 @@ const shared = {
     checkboxPage: {
       root: generatePrefixedRootContext('checkbox-page'),
     },
+    select: {
+      root: generatePrefixedRootContext('select-page'),
+    },
     useImperativeHandler: {
       root: generatePrefixedRootContext('use-imperative-handler-page'),
     },
