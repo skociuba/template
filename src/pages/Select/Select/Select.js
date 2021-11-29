@@ -6,7 +6,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchSelectData} from '../actions';
 import {testDataSelector} from '../selectors';
 
-const SelectExample = () => {
+const SelectExample = ({namesFromSibling}) => {
   const dispatch = useDispatch();
   const [names, setNames] = useState(null);
   const testData = useSelector((state) => testDataSelector(state));
@@ -30,6 +30,7 @@ const SelectExample = () => {
       </select>
       {names}
       <p> everything happening in child component</p>
+      {namesFromSibling}
     </div>
   );
 };

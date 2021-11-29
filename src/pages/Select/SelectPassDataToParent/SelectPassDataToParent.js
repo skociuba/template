@@ -5,24 +5,24 @@ import '../../../index.scss';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const SelectPassDataToParent = ({testData, nameChange, names}) => {
-  const handleNameChange = ({value}) => {
-    console.log(nameChange(testData[value]));
+  const handleNameChange = (e) => {
+    nameChange(testData[e.target.value]?.name);
   };
   const createSelectAccountOption = (option) => {
     if (!option) {
       return null;
     }
-    const {name, id} = option;
+    const {name, _id} = option;
 
     const label = `${name}`;
     return {
       children: label,
       label,
-      value: id,
+      value: _id,
       isDisabled: false,
     };
   };
-  console.log(names);
+
   return (
     <div>
       <select value={createSelectAccountOption(names)} onChange={handleNameChange}>

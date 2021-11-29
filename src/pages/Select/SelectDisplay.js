@@ -25,7 +25,7 @@ const SelectDisplay = () => {
     <div>
       <div className={contentContainer}>
         <SelectPassDataToParent testData={testData} nameChange={nameChange} names={names} />
-        <SelectExample />
+        <SelectExample namesFromSibling={`pass name to sibling:${names}`} />
       </div>
       {names}
     </div>
