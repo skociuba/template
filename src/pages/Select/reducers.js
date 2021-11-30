@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 
-import {fetchSelectData, fetchSelectSuccess, fetchSelectFail} from './actions';
+import {fetchSelectData, fetchSelectSuccess, fetchSelectFail, fetchSelectChose} from './actions';
 
 export const initialState = {
   select: {
@@ -8,6 +8,7 @@ export const initialState = {
     loading: false,
     error: null,
   },
+  dataFromSelect: [],
 };
 export default handleActions(
   {
@@ -42,6 +43,12 @@ export default handleActions(
           loading: false,
           error: payload.message,
         },
+      };
+    },
+    [fetchSelectChose](state, {payload}) {
+      return {
+        ...state,
+        dataFromSelect: payload,
       };
     },
   },

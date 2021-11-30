@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import '../../../index.scss';
 
 import 'react-loading-skeleton/dist/skeleton.css';
-import {fetchSelectData} from '../actions';
+import {fetchSelectData, fetchSelectChose} from '../actions';
 import {testDataSelector} from '../selectors';
 
-const SelectExample = () => {
+const SelectWithRedux = () => {
   const dispatch = useDispatch();
-  const [names, setNames] = useState(null);
+
   const testData = useSelector((state) => testDataSelector(state));
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const SelectExample = () => {
   }, [dispatch]);
 
   const handleNameChange = (e) => {
-    setNames(testData[e.target.value]?.name);
+    dispatch(fetchSelectChose(testData[e.target.value]?.name));
   };
 
   return (
@@ -28,10 +28,10 @@ const SelectExample = () => {
           </option>
         ))}
       </select>
-      {names}
-      <p> everything happening in child component</p>
+
+      <p>select with redux</p>
     </div>
   );
 };
 
-export default SelectExample;
+export default SelectWithRedux;
