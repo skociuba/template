@@ -15,8 +15,8 @@ const InputWithReduxWithoutSubmit = () => {
   return (
     <form>
       <label>
-        Name:
         <input type="text" onChange={handleNameChange} />
+        <p> pass data from input to redux</p>
       </label>
     </form>
   );

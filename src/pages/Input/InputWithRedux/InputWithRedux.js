@@ -23,6 +23,7 @@ const InputWithRedux = () => {
       <input type="text" value={name} onChange={handleNameChange} />
 
       <button type="submit">Add </button>
+      <p>pass data from input by redux and submit</p>
     </form>
   );
 };
