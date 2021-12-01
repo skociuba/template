@@ -7,6 +7,7 @@ const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 const RadioPage = lazy(() => import('./pages/Radio/RadioDisplay'));
 const CheckboxPage = lazy(() => import('./pages/Checkbox/CheckboxDisplay'));
 const Select = lazy(() => import('./pages/Select/SelectDisplay'));
+const Input = lazy(() => import('./pages/Input/InputDisplay'));
 const UseImperativeHandler = lazy(() => import('./pages/UseImperativeHandler/Parent'));
 const PassingDataToParent = lazy(() => import('./pages/PassingDataToParent/Parent'));
 const RequestWithBody = lazy(() => import('./pages/RequestWithBody/RequestWithBody'));
@@ -49,6 +50,11 @@ const routes = [
   {
     path: paths.select.root,
     component: Select,
+    exact: true,
+  },
+  {
+    path: paths.input.root,
+    component: Input,
     exact: true,
   },
   {

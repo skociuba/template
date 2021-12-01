@@ -6,9 +6,11 @@ import select from './pages/Select/reducers';
 import response from './pages/RequestWithBody/reducers';
 import responseOutput from './pages/RequestWithBodyOutput/reducers';
 import application from './pages/Application/reducers';
+import input from './pages/Input/reducers';
 
 const rootReducer = () =>
   combineReducers({
+    input,
     checkbox,
     test,
     select,

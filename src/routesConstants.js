@@ -15,6 +15,9 @@ const shared = {
     select: {
       root: generatePrefixedRootContext('select-page'),
     },
+    input: {
+      root: generatePrefixedRootContext('input-page'),
+    },
     useImperativeHandler: {
       root: generatePrefixedRootContext('use-imperative-handler-page'),
     },
