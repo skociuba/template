@@ -10,7 +10,7 @@ export const contentContainer = css`
 `;
 
 export const lightTheme = css`
-  background-color: white;
+  background-color: #6a899c;
   color: black;
   height: 100vh;
 `;
