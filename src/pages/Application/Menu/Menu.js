@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import React, {useState} from 'react';
 import Button from '@material/react-button';
 import {Cell, Grid, Row} from '@material/react-layout-grid';
@@ -32,7 +31,7 @@ const Menu = ({data, handleNavigation}) => {
   ));
 
   const menuDesktop = data.menu.primary.map((item, i) => (
-    <Cell columns={1} key={i}>
+    <Cell columns={3} key={i}>
       <Button
         onClick={() => (
           handleNavigation(item.to), isMenuSelected(item.to), window.location.reload(false)
@@ -42,7 +41,7 @@ const Menu = ({data, handleNavigation}) => {
     </Cell>
   ));
   const menu = isMobile ? (
-    <div className={mobileMenuContainer}> {menuMobile}</div>
+    <div className={mobileMenuContainer}>{menuMobile}</div>
   ) : (
     <Grid>
       <Row>{menuDesktop}</Row>
