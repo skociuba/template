@@ -41,7 +41,7 @@ const Menu = ({data, handleNavigation}) => {
     </Cell>
   ));
   const menu = isMobile ? (
-    <div className={mobileMenuContainer}> {menuMobile}</div>
+    <div className={mobileMenuContainer}>{menuMobile}</div>
   ) : (
     <Grid>
       <Row>{menuDesktop}</Row>

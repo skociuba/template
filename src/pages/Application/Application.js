@@ -1,9 +1,10 @@
-import React, {Suspense, useLayoutEffect} from 'react';
+import React, {Suspense, useLayoutEffect, useState} from 'react';
 import {HashRouter as Switch, useHistory} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {shared} from 'sharedConstants';
 import {Cell, Grid, Row} from '@material/react-layout-grid';
 import {media, useMedia} from 'components/Media';
+import Button from '@material/react-button';
 
 import routes, {RouteWithSubRoutes} from '../../routes.config';
 
@@ -21,6 +22,7 @@ export const handleNavigate = (history, to) => {
 };
 
 const Application = () => {
+  const [checked, setChecked] = useState(true);
   const isMobile = useMedia(media.device.mobile);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -31,6 +33,15 @@ const Application = () => {
       dispatch(appCheckConfig());
     }
   });
+
+  const handleContent = () => {
+    if (checked) {
+      setChecked(!checked);
+    } else {
+      setChecked(!checked);
+    }
+  };
+  console.log(checked);
 
   const headerData = {
     ...shared.header,
@@ -51,16 +62,21 @@ const Application = () => {
       return (
         <Grid>
           <Row>
-            <Cell columns={3}>
-              <Menu
-                data={headerData}
-                handleNavigation={(to) => handleNavigate(history, to)}
-                rightSideMenuElements={<div />}
-              />
-            </Cell>
+            {checked ? (
+              ''
+            ) : (
+              <Cell columns={3}>
+                <Menu
+                  data={headerData}
+                  handleNavigation={(to) => handleNavigate(history, to)}
+                  rightSideMenuElements={<div />}
+                />
+              </Cell>
+            )}
 
-            <Cell columns={5}>
+            <Cell columns={checked ? 8 : 5}>
               <div className={mobileApplicationWrapper}>
+                <Button onClick={() => handleContent()}>|||</Button>
                 <Suspense fallback={<div />}>
                   <Switch>
                     {routes.map((route, i) => (
