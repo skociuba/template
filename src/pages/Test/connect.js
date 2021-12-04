@@ -2,10 +2,9 @@ import {connect} from 'react-redux';
 
 import Test from './Test';
 import {fetchTestData} from './actions';
-import {testDataSelector, testLoadingSelector, testExampleSelector} from './selectors';
+import {testDataSelector, testLoadingSelector} from './selectors';
 export const mapStateToProps = (state) => ({
   testData: testDataSelector(state),
-  testExample: testExampleSelector(state),
   testLoading: testLoadingSelector(state),
 });
 
