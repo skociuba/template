@@ -5,6 +5,7 @@ import {shared} from './routesConstants';
 
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 const TestPage = lazy(() => import('./pages/Test/Test'));
+const ExamplePage = lazy(() => import('./pages/Example/Example'));
 const paths = {...shared.routes};
 
 const routes = [
@@ -21,6 +22,11 @@ const routes = [
   {
     path: paths.testPage.root,
     component: TestPage,
+    exact: true,
+  },
+  {
+    path: paths.examplePage.root,
+    component: ExamplePage,
     exact: true,
   },
 ];

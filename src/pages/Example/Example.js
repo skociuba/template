@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {testDataSelector, testLoadingSelector} from './selectors';
 import {fetchTestData} from './actions';
 import 'react-loading-skeleton/dist/skeleton.css';
-import {contentContainer} from './Test.style';
+import {contentContainer} from './Example.style';
 class Test extends React.Component {
   UNSAFE_componentWillMount() {
     this.props.fetchTestData();
