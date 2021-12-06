@@ -1,47 +1,30 @@
 import {handleActions} from 'redux-actions';
 
-import {fetchTestData, fetchTestSuccess, fetchTestFail} from './actions';
+import {fetchTitles, addTitles, removeTitles} from './actions';
 
 export const initialState = {
-  test: {
-    data: null,
-    loading: false,
-    error: null,
-  },
+  example: [],
 };
 export default handleActions(
   {
-    [fetchTestData](state) {
+    [fetchTitles](state) {
       return {
         ...state,
-        test: {
-          ...state.test,
-          data: null,
-          loading: true,
-          error: null,
-        },
+        example: state.example,
       };
     },
-    [fetchTestSuccess](state, {payload}) {
+    [addTitles](state, {payload}) {
       return {
         ...state,
-        test: {
-          ...state.test,
-          data: payload.data,
-          loading: false,
-          error: null,
-        },
+
+        example: [...state.example, payload],
       };
     },
-    [fetchTestFail](state, {payload}) {
+    [removeTitles](state, {payload}) {
+      const newState = state.example.filter((item, i) => i !== payload);
       return {
         ...state,
-        test: {
-          ...state.test,
-          data: null,
-          loading: false,
-          error: payload.message,
-        },
+        example: newState,
       };
     },
   },
