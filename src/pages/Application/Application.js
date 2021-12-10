@@ -41,7 +41,6 @@ const Application = () => {
       setChecked(!checked);
     }
   };
-  console.log(checked);
 
   const headerData = {
     ...shared.header,

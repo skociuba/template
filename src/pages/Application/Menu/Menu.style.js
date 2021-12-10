@@ -7,3 +7,7 @@ export const menuTheme = css`
 export const mobileMenuContainer = css`
   min-height: 100vh;
 `;
+export const activeButton = css`
+  background: black;
+  color: white;
+`;
