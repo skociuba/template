@@ -1,10 +1,12 @@
-import React, {Fragment} from 'react';
-import {connect} from 'react-redux';
+import React, {Fragment, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {fetchTitles, addTitles, removeTitles} from './actions';
+import {testDataSelector} from './selectors';
+import {fetchTitles, removeTitles} from './actions';
 import ReduxInput from './AddToDo';
+import ReduxEditor from './Editor';
 const StyledButton = styled.button`
   background-color: #226de6;
   border: 1px solid black;
@@ -53,48 +55,44 @@ const Item = styled.div`
   width: 100%;
 `;
 
-class Example extends React.Component {
-  UNSAFE_componentWillMount() {
-    this.props.fetchTitles();
-  }
+const Example = () => {
+  const dispatch = useDispatch();
 
-  render() {
-    const onDelete = (id) => {
-      this.props.removeTitles(id);
-    };
+  useEffect(() => {
+    dispatch(fetchTitles());
+  }, [dispatch]);
 
-    const postTitles = this.props.example.map((title, i) => (
+  const example = useSelector((state) => testDataSelector(state));
+
+  const onDelete = (id) => {
+    dispatch(removeTitles(id));
+  };
+
+  const postTitles =
+    example?.length &&
+    example?.map((title, i) => (
       <div key={i}>
         <h3>
           {title} <StyledButton onClick={() => onDelete(i)}>X </StyledButton>
+          <ReduxEditor post={title} />
         </h3>
       </div>
     ));
 
-    return (
-      <Fragment>
-        <Info>
-          <Item>
-            <ReduxInput />
-            {postTitles}
-          </Item>
-        </Info>
-      </Fragment>
-    );
-  }
-}
-Example.propTypes = {
-  example: PropTypes.array.isRequired,
+  return (
+    <Fragment>
+      <Info>
+        <Item>
+          <ReduxInput />
+          {postTitles}
+        </Item>
+      </Info>
+    </Fragment>
+  );
 };
-const mapStateToProps = (state) => ({
-  example: state.example.example,
-});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchTitles: () => dispatch(fetchTitles()),
-    addTitles: () => dispatch(addTitles()),
-    removeTitles: (id) => dispatch(removeTitles(id)),
-  };
+Example.propTypes = {
+  example: PropTypes.array,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Example);
+
+export default Example;
