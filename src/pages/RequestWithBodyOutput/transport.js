@@ -5,9 +5,14 @@ export const getTestData = ({config, queryParams}) => {
     url: `${config.urls.request}?${queryParams}`,
     headers: {...config.headers},
   };
+
+  //   const names= {
+  //     nameOne:queryParams?.nameOne,
+  //     nameTwo:queryParams?.nameTwo,          when we have complicated structure
+  //   };
   // const params = {
-  //   url: `${config.urls.request}?${encodeURIComponent(JSON.stringify(queryParams))}`,
-  //   headers: {...config.headers},          when we have complicated structure
+  //   url: `${config.urls.request}?${encodeURIComponent(JSON.stringify(names))}`,
+  //   headers: {...config.headers},
   // };
   return $get(params);
 };

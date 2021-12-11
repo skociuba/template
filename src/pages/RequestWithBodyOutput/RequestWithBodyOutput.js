@@ -16,15 +16,16 @@ const ResponseWithBodyOutput = () => {
   const dispatch = useDispatch();
 
   const {nameOne, nameTwo} = useParams();
+
   const params = encodeQueryData({
     nameOne,
     nameTwo,
   });
 
   //  const params = {
-  //   nameOne,        when we got complicated structure
-  //   nameTwo,
-  // };
+  //     nameOne, // when we got complicated structure
+  //     nameTwo,
+  //   };
 
   useEffect(() => {
     dispatch(fetchResponseData(params));
