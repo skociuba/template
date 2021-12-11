@@ -3,8 +3,7 @@ const shared = {
     menu: {
       primary: [
         {name: 'Main', to: '#/main-page'},
-        {name: 'Test', to: '#/test-page'},
-        {name: 'Example', to: '#/example-page'},
+        {name: 'ToDo', to: '#/example-page'},
       ],
     },
   },

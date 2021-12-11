@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {useDispatch} from 'react-redux';
 
@@ -25,61 +25,51 @@ const Info = styled.div`
   opacity: 1;
   background-color: black;
 `;
-export default ({post}) => {
+export default ({post, id}) => {
   const [show, setShow] = useState(true);
-  const [posts, setPost] = useState('');
+  const [newPost, setNewPost] = useState(post);
   const dispatch = useDispatch();
-  const myFunc = () => {
+
+  const handleHide = () => {
     setShow(!show);
   };
 
-  let ref = useRef();
   useEffect(() => {
-    ref.current.focus();
-  });
-
-  const handleEdit = (id) => {
-    dispatch(editTitles(id));
-  };
+    dispatch(editTitles());
+  }, [dispatch]);
 
   const handleChange = (event) => {
-    setPost(event.target.value);
+    setNewPost(event.target.value);
   };
-  console.log(handleEdit());
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (posts.trim() === '') {
+    if (newPost.trim() === '') {
       setShow(!show);
     } else {
-      handleEdit(posts);
-      setPost('');
+      dispatch(editTitles(newPost, id));
+      setNewPost('');
       setShow(!show);
     }
   };
-
-  const button = posts.trim() === '' ? `close` : `update`;
+  console.log(editTitles(newPost, id));
+  const button = newPost?.trim() === '' ? `close` : `update`;
   const showing = show ? (
     <StyledButton
-      ref={ref}
       onClick={() => {
-        myFunc();
+        handleHide();
       }}>
       Edit
     </StyledButton>
   ) : (
     <div className="note-form">
-      <form onSubmit={handleSubmit} action="">
+      <form onSubmit={handleSubmit}>
         <Info>
-          {' '}
-          <input ref={ref} onChange={handleChange} value={posts} name="" id="" />
+          <input onChange={handleChange} value={newPost} />
         </Info>
-        <StyledButton>{button}</StyledButton>
+        <StyledButton type="submit">{button}</StyledButton>
       </form>
     </div>
   );
-  return (
-    <div>
-      <p>{showing}</p>
-    </div>
-  );
+  return <div>{showing}</div>;
 };

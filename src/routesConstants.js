@@ -6,9 +6,6 @@ const shared = {
     mainPage: {
       root: generatePrefixedRootContext('main-page'),
     },
-    testPage: {
-      root: generatePrefixedRootContext('test-page'),
-    },
     examplePage: {
       root: generatePrefixedRootContext('example-page'),
     },

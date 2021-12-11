@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 
-import {fetchTitles, addTitles, removeTitles} from './actions';
+import {fetchTitles, addTitles, removeTitles, editTitles} from './actions';
 
 export const initialState = {
   example: [],
@@ -21,11 +21,20 @@ export default handleActions(
       };
     },
     [removeTitles](state, {payload}) {
-      const newState = state.example.filter((item, i) => i !== payload);
+      const newState = state.example.filter((i) => i !== payload);
       return {
         ...state,
         example: newState,
       };
+    },
+    [editTitles](state, {payload}) {
+      const newState = state.example.map((todo) => {
+        if (console.log(todo) === payload) {
+          return {...state, example: newState};
+        }
+        return todo;
+      });
+      return newState;
     },
   },
   initialState,

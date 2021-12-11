@@ -69,15 +69,17 @@ const Example = () => {
   };
 
   const postTitles =
-    example?.length &&
-    example?.map((title, i) => (
-      <div key={i}>
-        <h3>
-          {title} <StyledButton onClick={() => onDelete(i)}>X </StyledButton>
-          <ReduxEditor post={title} />
-        </h3>
-      </div>
-    ));
+    example?.length === 0
+      ? ''
+      : example?.length &&
+        example?.map((title, i) => (
+          <div key={i}>
+            <h3>
+              {title} <StyledButton onClick={() => onDelete(i)}>X </StyledButton>
+              <ReduxEditor post={title} id={i} />
+            </h3>
+          </div>
+        ));
 
   return (
     <Fragment>

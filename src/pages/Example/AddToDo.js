@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -16,24 +16,25 @@ const StyledButton = styled.button`
     color: white;
   }
 `;
-const ReduxInput = (props) => {
+const ReduxInput = () => {
+  const dispatch = useDispatch();
   const movieInput = React.createRef();
 
-  const addMovie = (event) => {
+  const addItem = (event) => {
     event.preventDefault();
-    props.addTitles(movieInput.current.value);
+    dispatch(addTitles(movieInput.current.value));
     movieInput.current.value = '';
   };
 
   return (
-    <form onSubmit={addMovie}>
+    <form onSubmit={addItem}>
       <input ref={movieInput} />
       <StyledButton type="submit">Add </StyledButton>
     </form>
   );
 };
 ReduxInput.propTypes = {
-  addTitles: PropTypes.func.isRequired,
+  addTitles: PropTypes.func,
 };
 
-export default connect(null, {addTitles})(ReduxInput);
+export default ReduxInput;
