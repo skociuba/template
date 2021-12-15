@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import styled from 'styled-components';
 import {useDispatch} from 'react-redux';
 
@@ -30,13 +30,14 @@ export default ({post, id}) => {
   const [newPost, setNewPost] = useState(post);
   const dispatch = useDispatch();
 
+  let ref = useRef();
+  useEffect(() => {
+    ref.current?.focus();
+  });
+
   const handleHide = () => {
     setShow(!show);
   };
-
-  useEffect(() => {
-    dispatch(editTitles());
-  }, [dispatch]);
 
   const handleChange = (event) => {
     setNewPost(event.target.value);
@@ -44,15 +45,15 @@ export default ({post, id}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (newPost.trim() === '') {
+    if (newPost?.trim() === '') {
       setShow(!show);
     } else {
-      dispatch(editTitles(newPost, id));
+      dispatch(editTitles({payload: newPost, id}));
       setNewPost('');
       setShow(!show);
     }
   };
-  console.log(editTitles(newPost, id));
+
   const button = newPost?.trim() === '' ? `close` : `update`;
   const showing = show ? (
     <StyledButton
@@ -65,7 +66,7 @@ export default ({post, id}) => {
     <div className="note-form">
       <form onSubmit={handleSubmit}>
         <Info>
-          <input onChange={handleChange} value={newPost} />
+          <input ref={ref} onChange={handleChange} value={newPost} />
         </Info>
         <StyledButton type="submit">{button}</StyledButton>
       </form>

@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {testDataSelector} from './selectors';
-import {fetchTitles, removeTitles} from './actions';
+import {fetchTitles, removeTitles, resetTitles} from './actions';
 import ReduxInput from './AddToDo';
 import ReduxEditor from './Editor';
+import Checkbox from './Checkbox.js';
 const StyledButton = styled.button`
   background-color: #226de6;
   border: 1px solid black;
@@ -20,10 +21,12 @@ const StyledButton = styled.button`
   }
 `;
 
-const Info = styled.div`
+const Board = styled.div`
   border: 2px solid white;
+  justify-content: center;
+  align-items: center;
   padding-right: 10px;
-  padding-left: 10px;
+  padding-left: 20px;
   padding-top: 10px;
   border-radius: 8px;
   margin-top: 10px;
@@ -36,11 +39,21 @@ const Info = styled.div`
   flex-direction: column;
   @media (min-width: 800px) {
     flex-direction: row;
+    padding-right: 10px;
+  }
+`;
+const Item = styled.div`
+  border: 2px solid white;
+  padding: 10px 10px 0 10px;
+  border-radius: 8px;
+  background-color: #002f75;
+  @media (min-width: 800px) {
+    flex-direction: row;
     padding-right: 0px;
   }
 `;
 
-const Item = styled.div`
+const Content = styled.div`
   display: grid;
   justify-content: center;
   align-items: center;
@@ -52,7 +65,7 @@ const Item = styled.div`
   background: #833ab4;
   background: -webkit-linear-gradient(to right, #2980b9, #6dd5fa, #ffffff);
   background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff);
-  width: 100%;
+  width: 95%;
 `;
 
 const Example = () => {
@@ -68,27 +81,34 @@ const Example = () => {
     dispatch(removeTitles(id));
   };
 
+  const onReset = () => {
+    dispatch(resetTitles());
+  };
+
   const postTitles =
     example?.length === 0
       ? ''
       : example?.length &&
-        example?.map((title, i) => (
-          <div key={i}>
-            <h3>
-              {title} <StyledButton onClick={() => onDelete(i)}>X </StyledButton>
-              <ReduxEditor post={title} id={i} />
-            </h3>
+        example?.map((title) => (
+          <div key={title?.id}>
+            <Item>
+              {title?.payload} <Checkbox id={title?.id} />
+              <p />
+              <StyledButton onClick={() => onDelete(title?.id)}>X </StyledButton>
+              <ReduxEditor post={title?.payload} id={title?.id} />
+            </Item>
           </div>
         ));
 
   return (
     <Fragment>
-      <Info>
-        <Item>
+      <Board>
+        <Content>
+          <StyledButton onClick={() => onReset()}>Reset </StyledButton>
           <ReduxInput />
           {postTitles}
-        </Item>
-      </Info>
+        </Content>
+      </Board>
     </Fragment>
   );
 };

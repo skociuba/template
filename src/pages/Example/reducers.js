@@ -1,6 +1,7 @@
 import {handleActions} from 'redux-actions';
+import {v4} from 'uuid';
 
-import {fetchTitles, addTitles, removeTitles, editTitles} from './actions';
+import {fetchTitles, addTitles, removeTitles, editTitles, resetTitles, doneTask} from './actions';
 
 export const initialState = {
   example: [],
@@ -13,28 +14,48 @@ export default handleActions(
         example: state.example,
       };
     },
+
+    [resetTitles]() {
+      return initialState;
+    },
+
     [addTitles](state, {payload}) {
+      const id = v4();
       return {
         ...state,
 
-        example: [...state.example, payload],
+        example: [...state.example, {payload, id, done: false}],
       };
     },
     [removeTitles](state, {payload}) {
-      const newState = state.example.filter((i) => i !== payload);
+      const newState = state?.example.filter((item) => item.id !== payload);
       return {
         ...state,
         example: newState,
       };
     },
+
+    [doneTask](state, {payload}) {
+      const done = state?.example.map((item) =>
+        item.id === payload.id ? {...item, done: !item.done, id: item.id} : item,
+      );
+      return {
+        ...state,
+        example: done,
+      };
+    },
+
     [editTitles](state, {payload}) {
       const newState = state.example.map((todo) => {
-        if (console.log(todo) === payload) {
-          return {...state, example: newState};
+        if (todo.id === payload.id) {
+          return payload;
         }
         return todo;
       });
-      return newState;
+      return {
+        ...state,
+        example: newState,
+      };
     },
   },
   initialState,
