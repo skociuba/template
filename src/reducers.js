@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 
-import example from './pages/Example/reducers';
+import example from './pages/ToDo/reducers';
 import application from './pages/Application/reducers';
 
 const rootReducer = () =>

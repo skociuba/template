@@ -1,7 +1,15 @@
 import {handleActions} from 'redux-actions';
 import {v4} from 'uuid';
 
-import {fetchTitles, addTitles, removeTitles, editTitles, resetTitles, doneTask} from './actions';
+import {
+  fetchTitles,
+  addTitles,
+  removeTitles,
+  editTitles,
+  resetTitles,
+  doneTask,
+  filterTask,
+} from './actions';
 
 export const initialState = {
   example: [],
@@ -52,6 +60,13 @@ export default handleActions(
         }
         return todo;
       });
+      return {
+        ...state,
+        example: newState,
+      };
+    },
+    [filterTask](state, {payload}) {
+      const newState = state?.example.filter((item) => item.payload === payload.payload);
       return {
         ...state,
         example: newState,

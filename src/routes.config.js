@@ -4,7 +4,7 @@ import {Redirect, Route} from 'react-router-dom';
 import {shared} from './routesConstants';
 
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
-const ExamplePage = lazy(() => import('./pages/Example/Example'));
+const ExamplePage = lazy(() => import('./pages/ToDo/DisplayComponent'));
 const paths = {...shared.routes};
 
 const routes = [

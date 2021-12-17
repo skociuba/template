@@ -7,6 +7,8 @@ import {testDataSelector} from './selectors';
 import {fetchTitles, removeTitles, resetTitles} from './actions';
 import ReduxInput from './AddToDo';
 import ReduxEditor from './Editor';
+import FilterFromReducer from './FilterFromReducer';
+import FilterFromComponent from './FilterFromComponent';
 import Checkbox from './Checkbox.js';
 const StyledButton = styled.button`
   background-color: #226de6;
@@ -107,6 +109,12 @@ const Example = () => {
           <StyledButton onClick={() => onReset()}>Reset </StyledButton>
           <ReduxInput />
           {postTitles}
+        </Content>
+        <Content>
+          <FilterFromReducer />
+        </Content>
+        <Content>
+          <FilterFromComponent />
         </Content>
       </Board>
     </Fragment>
