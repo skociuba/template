@@ -51,8 +51,8 @@ const Filter = () => {
   };
   return (
     <Fragment>
+      <p>Filtering in component:</p>
       <form>
-        {' '}
         <div className="form-group-collection">
           <div className="form-group">
             <label htmlFor="formGroupExampleInput" />

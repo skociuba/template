@@ -66,7 +66,9 @@ export default handleActions(
       };
     },
     [filterTask](state, {payload}) {
-      const newState = state?.example.filter((item) => item.payload === payload.payload);
+      const newState = state?.example.filter((item) =>
+        item.payload.toLowerCase().includes(payload.payload.toLowerCase()),
+      );
       return {
         ...state,
         example: newState,
