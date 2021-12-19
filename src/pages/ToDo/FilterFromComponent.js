@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState, Fragment, useEffect} from 'react';
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
 
@@ -28,49 +28,48 @@ const StyledButton = styled.button`
 `;
 
 const Filter = () => {
-  const example2 = useSelector((state) => testDataSelector(state));
-  console.log(example2);
+  const titles = useSelector((state) => testDataSelector(state));
 
-  const example = ['tottenham', 'arsenal', 'man utd', 'liverpool', 'chelsea', 'west ham'];
+  const [filteredUsers, setUsers] = useState(
+    useEffect(() => {
+      setUsers(titles);
+    }, [titles]),
+  );
 
-  const [data, setData] = useState(example);
-  const [search, setSearch] = useState('');
+  function getFilteredUsersForText(text) {
+    return titles.filter((user) => user.payload.toLowerCase().includes(text.toLowerCase()));
+  }
 
-  const reset = () => {
-    setSearch('');
-    setData(example);
+  const filterUsers = (e) => {
+    const text = e.currentTarget.value;
+    const score = getFilteredUsersForText(text);
+    setUsers(score);
   };
-
+  const reset = (e) => {
+    e.persist();
+    setUsers(titles); // using e.persist instead e.preventDefault and  type='reset' defaultValue='Reset' to reset input and filter
+  };
   return (
     <Fragment>
-      <div className="form-group-collection">
-        <input
-          onChange={(e) => {
-            const test = example?.filter((item) => {
-              return item.toLowerCase().includes(e.target.value.toLowerCase());
-            });
-            setData(test);
-            setSearch(e.target.value);
-          }}
-          type="text"
-          value={search}
-        />
-      </div>
-      <StyledButton type="reset" defaultValue="Reset" onClick={reset}>
-        Reset filter
-      </StyledButton>
-
+      <form>
+        {' '}
+        <div className="form-group-collection">
+          <div className="form-group">
+            <label htmlFor="formGroupExampleInput" />
+            <input type="text" name="payload" onInput={filterUsers} className="form-control" />
+          </div>
+          <StyledButton type="reset" defaultValue="Reset" onClick={reset}>
+            Reset filter
+          </StyledButton>
+        </div>
+      </form>
       <Item>
         <h3>My tasks:</h3>
-        {data?.length > 0 ? (
+        {filteredUsers?.length > 0 ? (
           <ul>
-            {data.map((elem) => {
-              return (
-                <h4 key={elem.id}>
-                  <li>{elem}</li>
-                </h4>
-              );
-            })}
+            {filteredUsers.map((user) => (
+              <li key={user.id}>{user.payload}</li>
+            ))}
           </ul>
         ) : (
           <h4> No results </h4>
