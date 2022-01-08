@@ -1,13 +1,15 @@
 import React, {Suspense, useLayoutEffect} from 'react';
-import {HashRouter as Switch} from 'react-router-dom';
+//import {useNavigate, useLocation} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 
-import routes, {RouteWithSubRoutes} from '../../routes.config';
+import {Routing} from '../../routes.config';
 
 import {appCheckConfig} from './actions';
 import {applicationWrapper} from './Application.style';
 
 const Application = () => {
+  // const navigate = useNavigate();
+  // const location = useLocation();
   const dispatch = useDispatch();
   const config = useSelector((state) => state.application.config);
 
@@ -19,11 +21,7 @@ const Application = () => {
   return (
     <div className={applicationWrapper} data-testid="applicationContainer">
       <Suspense fallback={<div />}>
-        <Switch>
-          {routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route} />
-          ))}
-        </Switch>
+        <Routing />
       </Suspense>
     </div>
   );

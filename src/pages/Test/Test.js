@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
-
-import {shared} from '../../routesConstants';
+import {shared} from 'sharedConstants';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchTestData} from './actions';
@@ -20,9 +19,9 @@ const Test = () => {
     dispatch(fetchTestData());
   }, [dispatch]);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const handleSwitch = () => history.push({pathname: shared.routes.mainPage.root});
+  const handleSwitch = () => navigate({pathname: shared.routes.mainPage.root});
 
   const content = testLoadingExample ? (
     <Skeleton count={100} />
