@@ -5,6 +5,7 @@ import {shared} from './routesConstants';
 
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 const RadioPage = lazy(() => import('./pages/Radio/RadioDisplay'));
+const Grid = lazy(() => import('./pages/Grid/Grid'));
 const CheckboxPage = lazy(() => import('./pages/Checkbox/CheckboxDisplay'));
 const RequestWithBody = lazy(() => import('./pages/RequestWithBody/RequestWithBody'));
 const RequestWithBodyOutput = lazy(() =>
@@ -26,6 +27,11 @@ const routes = [
   {
     path: paths.radioPage.root,
     component: RadioPage,
+    exact: true,
+  },
+  {
+    path: paths.gridPage.root,
+    component: Grid,
     exact: true,
   },
   {
