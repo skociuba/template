@@ -11,12 +11,12 @@ const Menu = ({data, handleNavigation, activeButton}) => {
   const [menuSelected, setMenuSelected] = useState(false);
 
   const isMenuSelected = (to) => {
-    if (window.location.hash && window.location.hash.substring(1) === to) {
+    if (window.location.hash && window.location.hash.substring(0) === to) {
       setMenuSelected(true);
     }
     setMenuSelected(false);
   };
-  console.log(window.location.hash.substring(1));
+  console.log(window.location.hash.substring(0));
   const menuMobile = data.menu.primary.map((item, i) => (
     <Row key={i}>
       <Cell columns={1}>
@@ -31,9 +31,7 @@ const Menu = ({data, handleNavigation, activeButton}) => {
     <Cell columns={3} key={i}>
       <Button
         className={console.log(menuSelected) ? activeButton : ''}
-        onClick={() => (
-          handleNavigation(item.to), isMenuSelected(item.to), window.location.reload(false)
-        )}>
+        onClick={() => (handleNavigation(item.to), isMenuSelected(item.to))}>
         {item.name}
       </Button>
     </Cell>
