@@ -18,6 +18,9 @@ const shared = {
     input: {
       root: generatePrefixedRootContext('input-page'),
     },
+    grid: {
+      root: generatePrefixedRootContext('grid'),
+    },
     useImperativeHandler: {
       root: generatePrefixedRootContext('use-imperative-handler-page'),
     },
