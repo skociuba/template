@@ -1,8 +1,7 @@
 import React, {lazy} from 'react';
-import {Redirect, Route} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
-import {shared} from './routesConstants';
-
+import {shared} from './sharedConstants';
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 const RadioPage = lazy(() => import('./pages/Radio/RadioDisplay'));
 const CheckboxPage = lazy(() => import('./pages/Checkbox/CheckboxDisplay'));
@@ -19,77 +18,51 @@ const paths = {...shared.routes};
 
 const routes = [
   {
-    path: paths.root,
-    redirect: paths.mainPage.root,
-    exact: true,
-  },
-  {
     path: paths.mainPage.root,
-    component: MainPage,
-    exact: true,
+    element: MainPage,
   },
   {
     path: paths.radioPage.root,
-    component: RadioPage,
-    exact: true,
+    element: RadioPage,
   },
   {
     path: paths.checkboxPage.root,
-    component: CheckboxPage,
-    exact: true,
+    element: CheckboxPage,
   },
   {
     path: paths.useImperativeHandler.root,
-    component: UseImperativeHandler,
-    exact: true,
+    element: UseImperativeHandler,
   },
   {
     path: paths.passingDataToParent.root,
-    component: PassingDataToParent,
-    exact: true,
+    element: PassingDataToParent,
   },
   {
     path: paths.select.root,
-    component: Select,
-    exact: true,
+    element: Select,
   },
   {
     path: paths.input.root,
-    component: Input,
-    exact: true,
+    element: Input,
   },
   {
     path: paths.grid.root,
-    component: Grid,
-    exact: true,
+    element: Grid,
   },
   {
     path: paths.requestWithBody.root,
-    component: RequestWithBody,
-    exact: true,
+    element: RequestWithBody,
   },
   {
     path: paths.requestWithBodyOutput.root,
-    component: RequestWithBodyOutput,
-    exact: true,
+    element: RequestWithBodyOutput,
   },
 ];
 
-const allowRedirect = (props) => props.match.url === props.location.pathname;
-
-export const RouteWithSubRoutes = (route) => (
-  <Route
-    exact={route.exact}
-    path={route.path}
-    params={route.params}
-    render={(props) => {
-      return route.redirect && allowRedirect(props) ? (
-        <Redirect to={route.redirect} />
-      ) : (
-        <route.component {...route.props} routes={route.routes} />
-      );
-    }}
-  />
+export const Routing = () => (
+  <Routes>
+    {routes.map((route, i) => (
+      <Route key={i} path={route.path} element={<route.element />} />
+    ))}
+  </Routes>
 );
-
-export default routes;

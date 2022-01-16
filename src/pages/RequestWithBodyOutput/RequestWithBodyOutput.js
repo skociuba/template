@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import {encodeQueryData} from 'utils/url';
-import {useHistory, useParams} from 'react-router-dom';
-import {shared} from 'routesConstants';
+import {useNavigate, useParams} from 'react-router-dom';
+import {shared} from 'sharedConstants';
 import Button from '@material/react-button';
 
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -12,7 +12,7 @@ import {responseDataSelector} from './selectors';
 import {contentContainer} from './RequestWithBodyOutput.style';
 
 const ResponseWithBodyOutput = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {nameOne, nameTwo} = useParams();
@@ -33,7 +33,7 @@ const ResponseWithBodyOutput = () => {
 
   const names = useSelector((state) => responseDataSelector(state));
 
-  const handleSwitch = () => history?.push({pathname: shared.routes.requestWithBody.root});
+  const handleSwitch = () => navigate({pathname: shared.routes.requestWithBody.root});
 
   const content = (
     <>
