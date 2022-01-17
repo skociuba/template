@@ -26,6 +26,9 @@ const routes = {
   passingDataToParent: {
     root: generatePrefixedRootContext('passing-data-to-parent'),
   },
+  passingDataWithURL: {
+    root: generatePrefixedRootContext('passing-data-with-URL'),
+  },
   requestWithBody: {
     root: generatePrefixedRootContext('request-with-body'),
   },

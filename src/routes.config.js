@@ -9,6 +9,7 @@ const Select = lazy(() => import('./pages/Select/SelectDisplay'));
 const Input = lazy(() => import('./pages/Input/InputDisplay'));
 const Grid = lazy(() => import('./pages/Grid/Grid'));
 const UseImperativeHandler = lazy(() => import('./pages/UseImperativeHandler/Parent'));
+const PassingDataWithURL = lazy(() => import('./pages/PassingDataWithURL/PassingDataWithURL'));
 const PassingDataToParent = lazy(() => import('./pages/PassingDataToParent/Parent'));
 const RequestWithBody = lazy(() => import('./pages/RequestWithBody/RequestWithBody'));
 const RequestWithBodyOutput = lazy(() =>
@@ -56,6 +57,10 @@ const routes = [
   {
     path: paths.requestWithBodyOutput.root,
     element: RequestWithBodyOutput,
+  },
+  {
+    path: paths.passingDataWithURL.root,
+    element: PassingDataWithURL,
   },
 ];
 

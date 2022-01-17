@@ -14,6 +14,7 @@ const shared = {
         {name: 'UseImperativeHandler', to: 'use-imperative-handler-page'},
         {name: 'PassingDataToParent', to: 'passing-data-to-parent'},
         {name: 'RequestWithBody', to: 'request-with-body'},
+        {name: 'PassingDataWithURL', to: 'passing-data-with-URL'},
       ],
     },
   },
