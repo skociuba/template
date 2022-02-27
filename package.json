@@ -32,6 +32,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:dev:staff": " \"env-cmd -f ./.env.dev.staff react-scripts start\"",
+    "start:dev:customer": " \"env-cmd -f ./.env.dev.customer react-scripts start\"",
     "start:mock": "concurrently \"npm run mock-server\" \"env-cmd -f ./.env.mock react-scripts start\"",
     "mock-server": "nodemon ./mock-server/index.js",
     "build": "react-scripts build",
