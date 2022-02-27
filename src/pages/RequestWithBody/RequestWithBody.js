@@ -25,7 +25,7 @@ const ResponseWithBody = () => {
     <Skeleton count={100} />
   ) : (
     <section data-testid="test-container">
-      <Link to={`request-with-body-output/${nameOne}/${nameTwo}`}>
+      <Link to={`/request-with-body-output/${nameOne}/${nameTwo}`}>
         <Button>to next page</Button>
       </Link>
       {testData?.length > 0 &&
