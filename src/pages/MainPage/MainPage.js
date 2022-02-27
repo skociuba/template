@@ -1,5 +1,6 @@
 import React from 'react';
 import {media, useMedia} from 'components/Media';
+import {IS_STAFF} from 'config/constants';
 
 import {contentContainer} from './MainPage.style';
 const MainPage = () => {
@@ -18,7 +19,7 @@ const MainPage = () => {
 
   return (
     <div className={contentContainer}>
-      <div>MAIN PAGE</div>
+      {IS_STAFF ? <div>MAIN PAGE for staff</div> : <div>MAIN PAGE for customer</div>}
 
       {deviceSize()}
     </div>

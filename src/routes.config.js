@@ -7,25 +7,30 @@ const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 const TestPage = lazy(() => import('./pages/Test/Test'));
 const paths = {...shared.routes};
 
-const routes = [
+let routes = [
   {
     path: paths.root,
     element: MainPage,
+    exact: true,
   },
   {
     path: paths.mainPage.root,
     element: MainPage,
+    exact: true,
   },
   {
     path: paths.testPage.root,
     element: TestPage,
+    exact: true,
   },
 ];
 
-export const Routing = () => (
+export const RouteWithSubRoutes = () => (
   <Routes>
     {routes.map((route, i) => (
-      <Route key={i} path={route.path} element={<route.element />} />
+      <Route path={route.path} key={i} element={<route.element />} />
     ))}
   </Routes>
 );
+
+export default routes;
