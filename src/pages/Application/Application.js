@@ -6,7 +6,7 @@ import {Cell, Grid, Row} from '@material/react-layout-grid';
 import {media, useMedia} from 'components/Media';
 import Button from '@material/react-button';
 
-import {Routing} from '../../routes.config';
+import {RouteWithSubRoutes} from '../../routes.config';
 
 import Menu from './Menu/Menu';
 import {appCheckConfig} from './actions';
@@ -44,6 +44,7 @@ const Application = () => {
   };
   const handleNavigation = (to) => {
     handleNavigate(navigate, to);
+    handleContent();
   };
 
   const headerData = {
@@ -81,7 +82,7 @@ const Application = () => {
               <div className={mobileApplicationWrapper}>
                 <Button onClick={() => handleContent()}>|||</Button>
                 <Suspense fallback={<div />}>
-                  <Routing />
+                  <RouteWithSubRoutes />
                 </Suspense>
               </div>
             </Cell>
@@ -101,7 +102,7 @@ const Application = () => {
           />
           <div className={applicationWrapper}>
             <Suspense fallback={<div />}>
-              <Routing />
+              <RouteWithSubRoutes />
             </Suspense>
           </div>
         </>
