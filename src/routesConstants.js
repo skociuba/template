@@ -6,7 +6,7 @@ const routes = {
     root: generatePrefixedRootContext('main-page'),
   },
   testPage: {
-    root: generatePrefixedRootContext('test-page'),
+    root: generatePrefixedRootContext('test-page/:id'),
   },
 };
 

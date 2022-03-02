@@ -1,27 +1,34 @@
 import React from 'react';
-import {media, useMedia} from 'components/Media';
-import {IS_STAFF} from 'config/constants';
+import {useLocationState} from 'utils/hooks/useLocationState';
+import {Link} from 'react-router-dom';
+
+const data = {
+  market: 'Pl',
+  productAlternativeClassificationCode: 'Q',
+  productAlternativeNumber: '10',
+  productTypeCode: 'example',
+};
 
 import {contentContainer} from './MainPage.style';
 const MainPage = () => {
-  const isMobile = useMedia(media.device.mobile);
-  const isTablet = useMedia(media.device.tablet);
+  const {updateLocationState} = useLocationState();
 
-  const deviceSize = () => {
-    if (isMobile) {
-      return `MOBILE VERSION`;
-    } else if (isTablet) {
-      return 'TABLET VERSION';
-    } else {
-      return `DESKTOP VERSION`;
-    }
+  const handleMouseDown = () => {
+    updateLocationState({
+      market: data.market,
+      productAlternativeClassificationCode: data.productAlternativeClassificationCode,
+      productAlternativeNumber: data.productAlternativeNumber,
+      productTypeCode: data.productTypeCode,
+    });
   };
 
   return (
     <div className={contentContainer}>
-      {IS_STAFF ? <div>MAIN PAGE for staff</div> : <div>MAIN PAGE for customer</div>}
-
-      {deviceSize()}
+      <Link
+        to={`/test-page/${data.productAlternativeNumber}`}
+        onMouseDown={() => handleMouseDown(data)}>
+        updateLocationState
+      </Link>
     </div>
   );
 };
