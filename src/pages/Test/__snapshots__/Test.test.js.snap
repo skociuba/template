@@ -1,49 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Test/> render without crashing 1`] = `
-<div>
+<div
+  class="template-fdton7"
+>
   <section
     data-testid="test-container"
-  >
-    <button>
-      go to main page
-    </button>
-  </section>
+  />
 </div>
 `;
 
 exports[`<Test/> render without crashing with testDataSelector 1`] = `
-<div>
+<div
+  class="template-fdton7"
+>
   <section
     data-testid="test-container"
-  >
-    <button>
-      go to main page
-    </button>
-  </section>
+  />
 </div>
 `;
 
 exports[`<Test/> render without crashing with testExampleSelector 1`] = `
-<div>
+<div
+  class="template-fdton7"
+>
   <section
     data-testid="test-container"
-  >
-    <button>
-      go to main page
-    </button>
-  </section>
+  />
 </div>
 `;
 
 exports[`<Test/> render without crashing with testLoadingSelector 1`] = `
-<div>
+<div
+  class="template-fdton7"
+>
   <section
     data-testid="test-container"
-  >
-    <button>
-      go to main page
-    </button>
-  </section>
+  />
 </div>
 `;

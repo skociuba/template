@@ -29,6 +29,18 @@ Object.defineProperty(window, 'matchMedia', {
     removeListener: jest.fn(), //deprecated
     addEventListener: jest.fn(),
     removeEventListener: jest.fn(),
-    dispatchListener: jest.fn(),
+    dispatchEvent: jest.fn(),
   }),
+});
+
+jest.mock('react-router-dom', () => {
+  const originalModule = jest.requireActual('react-router-dom');
+
+  return {
+    _esModule: true,
+    ...originalModule,
+    useSearchParams: () => [{get: () => jest.fn().mockReturnValue(5)}, jest.fn()],
+    useNavigate: () => jest.fn(),
+    useLocation: () => jest.fn(),
+  };
 });

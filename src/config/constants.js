@@ -1,4 +1,4 @@
-import actionNames from './../utils/actionNames';
+import actionNames from 'utils/actionNames';
 
 export const valueToLower = (v) => v.toLowerCase();
 export const LOCAL_SESSION_DURATION_SEC = 15 * 60;

@@ -109,6 +109,6 @@ const Application = () => {
       );
     }
   };
-  return <> {content()}</>;
+  return <div data-testid="applicationContainer"> {content()}</div>;
 };
 export default Application;

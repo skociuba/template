@@ -1,5 +1,3 @@
-import {render} from '@testing-library/react';
-
 import Test from './Test';
 
 const mockDispatch = jest.fn();

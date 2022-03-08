@@ -1,11 +1,14 @@
 import React from 'react';
 import {media, useMedia} from 'components/Media';
 import {IS_STAFF} from 'config/constants';
+import {getMapping} from 'utils/mappingHelpers/index';
 
 import {contentContainer} from './MainPage.style';
 const MainPage = () => {
   const isMobile = useMedia(media.device.mobile);
   const isTablet = useMedia(media.device.tablet);
+
+  console.log(getMapping('testData'));
 
   const deviceSize = () => {
     if (isMobile) {

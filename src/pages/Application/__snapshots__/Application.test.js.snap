@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Application /> render without crashing 1`] = `
+<div
+  data-testid="applicationContainer"
+>
+   
+  <div
+    class="mdc-layout-grid"
+  >
+    <div
+      class="mdc-layout-grid__inner"
+    >
+      
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8"
+      >
+        <div
+          class="template-1um37w"
+        >
+          <button
+            class="mdc-button"
+          >
+            <span
+              class="mdc-button__label"
+            >
+              |||
+            </span>
+          </button>
+          <div />
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell"
+      >
+        <div />
+      </div>
+    </div>
+  </div>
+</div>
+`;

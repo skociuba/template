@@ -10,6 +10,7 @@ const shared = {
       ],
     },
   },
+  mapping: [{value: 'testData', label: 'MappedData'}],
 };
 
 export {shared};

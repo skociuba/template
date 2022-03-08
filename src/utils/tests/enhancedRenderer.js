@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router} from 'react-router-dom';
+import {HashRouter as Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {render} from '@testing-library/react';
 import Application from 'pages/Application';
@@ -10,10 +10,8 @@ const CommonProviders = ({children = []}, skipApplication = true) => (
     <Router>{(skipApplication && children) || <Application>{children}</Application>}</Router>
   </Provider>
 );
-const enhancedRenderer = (ui, options) => {
-  render(ui, {wrapper: CommonProviders, ...options});
-};
+const enhancedRenderer = (ui, options) => render(ui, {wrapper: CommonProviders, ...options});
 
 export default enhancedRenderer;
 
-module.export = enhancedRenderer;
+module.exports = enhancedRenderer;

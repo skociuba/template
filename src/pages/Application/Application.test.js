@@ -15,6 +15,7 @@ describe('<Application />', () => {
         config={defaultProps.config}
       />,
     );
+
     const {getByTestId, container} = wrapper;
     expect(getByTestId(testId)).toBeInTheDocument();
     expect(container.firstChild).toMatchSnapshot();
