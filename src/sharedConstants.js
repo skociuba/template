@@ -11,6 +11,14 @@ const shared = {
     },
   },
   mapping: [{value: 'testData', label: 'MappedData'}],
+  statuses: {
+    B: {
+      title: 'BUY',
+    },
+    S: {
+      title: 'SELL',
+    },
+  },
 };
 
 export {shared};

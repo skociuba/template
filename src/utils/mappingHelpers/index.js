@@ -1,3 +1,3 @@
-import {getMapping} from './mappingHelpers';
+import {getMapping, simpleMappersExample} from './mappingHelpers';
 
-export {getMapping};
+export {getMapping, simpleMappersExample};
