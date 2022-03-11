@@ -13,9 +13,9 @@ const MainPage = () => {
 
   const deviceSize = () => {
     if (isMobile) {
-               return `MOBILE VERSION`;
+      return `MOBILE VERSION`;
     } else if (isTablet) {
-      return 'TABLET VERSION';
+         return 'TABLET VERSION';
     } else {
       return `DESKTOP VERSION`;
     }
