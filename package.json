@@ -37,6 +37,7 @@
     "mock-server": "nodemon ./mock-server/index.js",
     "build": "react-scripts build",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test",
+    "test:ci": "cross-env CI=true NODE_ICU_DATA=node_modules/full-icu react-scripts test --coverage",
     "test:update-snapshots": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test -u",
     "test:coverage": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
