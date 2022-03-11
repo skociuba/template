@@ -1,6 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Application /> render without crashing 1`] = `
+.emotion-0 {
+  min-height: 100vh;
+  background: #6a899c;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow: hidden;
+  margin-left: 10px;
+  position: relative;
+}
+
 <div
   data-testid="applicationContainer"
 >
@@ -16,7 +27,7 @@ exports[`<Application /> render without crashing 1`] = `
         class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8"
       >
         <div
-          class="template-1um37w"
+          class="emotion-0"
         >
           <button
             class="mdc-button"
@@ -27,7 +38,6 @@ exports[`<Application /> render without crashing 1`] = `
               |||
             </span>
           </button>
-          <div />
         </div>
       </div>
       <div

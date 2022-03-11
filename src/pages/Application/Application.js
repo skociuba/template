@@ -6,8 +6,6 @@ import {Cell, Grid, Row} from '@material/react-layout-grid';
 import {media, useMedia} from 'components/Media';
 import Button from '@material/react-button';
 
-import {RouteWithSubRoutes} from '../../routes.config';
-
 import Menu from './Menu/Menu';
 import {appCheckConfig} from './actions';
 import {applicationWrapper, mobileApplicationWrapper} from './Application.style';
@@ -22,7 +20,7 @@ export const handleNavigate = (navigate, to) => {
   }
 };
 
-const Application = () => {
+const Application = ({children}) => {
   const [checked, setChecked] = useState(true);
   const isMobile = useMedia(media.device.mobile);
   const dispatch = useDispatch();
@@ -35,7 +33,7 @@ const Application = () => {
     }
   });
 
-  const handleContent = () => {
+  const handleContent     = () => {
     if (checked) {
       setChecked(!checked);
     } else {
@@ -81,9 +79,7 @@ const Application = () => {
             <Cell columns={checked ? 8 : 5}>
               <div className={mobileApplicationWrapper}>
                 <Button onClick={() => handleContent()}>|||</Button>
-                <Suspense fallback={<div />}>
-                  <RouteWithSubRoutes />
-                </Suspense>
+                <Suspense fallback={<div />}>{children}</Suspense>
               </div>
             </Cell>
             <Cell>
@@ -101,9 +97,7 @@ const Application = () => {
             rightSideMenuElements={<div />}
           />
           <div className={applicationWrapper}>
-            <Suspense fallback={<div />}>
-              <RouteWithSubRoutes />
-            </Suspense>
+            <Suspense fallback={<div />}>{children}</Suspense>
           </div>
         </>
       );

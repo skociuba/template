@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Routing from './routes';
+import Routing from './routing/routes';
 
 if (process.env.NODE_ENV !== 'production') {
   const whyDidyouRender = require('@welldone-software/why-did-you-render');

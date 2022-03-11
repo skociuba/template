@@ -2,15 +2,16 @@ import React from 'react';
 import {HashRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
-import Application from './pages/Application/Application';
-import store from './store';
+import store from '../store';
 
-const Routing = () => (
+import {Routing} from './routes.config';
+
+const Routes = () => (
   <Provider store={store}>
     <HashRouter>
-      <Application />
+      <Routing />
     </HashRouter>
   </Provider>
 );
 
-export default Routing;
+export default Routes;
