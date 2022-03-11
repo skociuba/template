@@ -33,7 +33,7 @@ const Application = ({children}) => {
     }
   });
 
-  const handleContent     = () => {
+  const handleContent = () => {
     if (checked) {
       setChecked(!checked);
     } else {
