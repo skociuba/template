@@ -50,11 +50,15 @@
     "test:e2e": "cross-env ENV_TYPE=local gherkin-testcafe",
     "prepare": "husky install"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "jest": {
+    "snapshotSerializers": [
+      "@emotion/jest/serializer"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 74
+      }
+    }
   },
   "husky": {
     "hooks": {
