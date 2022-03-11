@@ -1,11 +1,13 @@
 {
   "name": "example",
-  "coverageThreshold": {
-    "global": {
-      "branches": 40,
-      "functions": 40,
-      "lines": 40,
-      "statements": -10
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 40,
+        "functions": 40,
+        "lines": 40,
+        "statements": -10
+      }
     }
   },
   "setupFileAfterEnv": ["./src/setupTests.js"],
