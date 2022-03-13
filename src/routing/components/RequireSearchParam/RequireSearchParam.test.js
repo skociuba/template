@@ -6,7 +6,7 @@ const paths = {...shared.routes};
 
 const defaultProps = {
   children: <div>Page</div>,
-  path: paths.mainPage.root,
+  path: paths.testPage.root,
 };
 
 describe('<RequireSearchParam/>', () => {
