@@ -23,7 +23,7 @@ const Test = () => {
   ) : (
     <section data-testid="test-container">
       {testData?.length > 0 &&
-        testData.map((user       ) => (
+        testData.map((user) => (
           <div key={user._id}>
             {user.name}--{user.trips}
             {user?.airline?.map((item) => (
