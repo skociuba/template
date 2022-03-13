@@ -5,13 +5,14 @@ import {getParsedChildItemFromStorage} from 'utils/hooks/useLocationState';
 
 const LOCATION_STATE_KEY = 'locationState';
 
-const RequireParam = ({children, isLocationStateRequire, redirectTo}) => {
-  if (!isLocationStateRequire) {
+const RequireParam = ({children, isLocationStateRequired, redirectTo}) => {
+  if (!isLocationStateRequired) {
     return children;
   }
 
   try {
     const {id} = useParams();
+
     const hasStoredParam = !!(
       getParsedChildItemFromStorage(localStorage, LOCATION_STATE_KEY, id) ||
       sessionStorage.getItem(id)
@@ -24,7 +25,7 @@ const RequireParam = ({children, isLocationStateRequire, redirectTo}) => {
 
 RequireParam.propTypes = {
   children: PropTypes.element.isRequired,
-  isLocationStateRequire: PropTypes.bool.isRequired,
+  isLocationStateRequired: PropTypes.bool.isRequired,
   redirectTo: PropTypes.string.isRequired,
 };
 

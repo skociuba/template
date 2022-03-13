@@ -1,6 +1,8 @@
 import React, {lazy} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import RouteNotFound from 'routing/components/RouteNotFound';
+import RequireParam from 'routing/components/RequireParam';
+import RequireSearchParam from 'routing/components/RequireSearchParam';
 
 import Application from '../pages/Application/Application';
 import {shared} from '../sharedConstants';
@@ -13,22 +15,22 @@ let routes = [
   {
     path: paths.root,
     element: MainPage,
-    exact: true,
+    isLocationStateRequire: false,
   },
   {
     path: paths.mainPage.root,
     element: MainPage,
-    exact: true,
+    isLocationStateRequire: false,
   },
   {
     path: paths.testPage.root,
     element: TestPage,
-    exact: true,
+    isLocationStateRequire: true,
   },
   {
     path: '*',
     element: MainPage,
-    exact: true,
+    isLocationStateRequire: false,
   },
 ];
 
@@ -39,11 +41,17 @@ export const Routing = () => (
         path={route.path}
         key={i}
         element={
-          <RouteNotFound path={route.path} redirectTo={paths.mainPage.root}>
-            <Application>
-              <route.element />
-            </Application>
-          </RouteNotFound>
+          <RequireSearchParam path={route.path}>
+            <RequireParam
+              isLocationStateRequire={route.isLocationStateRequire}
+              redirectTo={paths.mainPage}>
+              <RouteNotFound path={route.path} redirectTo={paths.mainPage.root}>
+                <Application>
+                  <route.element />
+                </Application>
+              </RouteNotFound>
+            </RequireParam>
+          </RequireSearchParam>
         }
       />
     ))}

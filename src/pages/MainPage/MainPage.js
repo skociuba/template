@@ -1,31 +1,28 @@
 import React from 'react';
-import {media, useMedia} from 'components/Media';
-import {IS_STAFF} from 'config/constants';
-import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
+import {useLocationState} from 'utils/hooks/useLocationState';
+import {Link} from 'react-router-dom';
+
+const data = {
+  paramForUrl: 'testingParameterPassingViaUrl',
+  paramForComponent: 'testingData',
+};
 
 import {contentContainer} from './MainPage.style';
 const MainPage = () => {
-  const isMobile = useMedia(media.device.mobile);
-  const isTablet = useMedia(media.device.tablet);
+  const {updateLocationState} = useLocationState();
 
-  console.log(getMapping('testData'));
-  console.log(simpleMappersExample('B')?.title);
-
-  const deviceSize = () => {
-    if (isMobile) {
-      return `MOBILE VERSION`;
-    } else if (isTablet) {
-      return 'TABLET VERSION';
-    } else {
-      return `DESKTOP VERSION`;
-    }
+  const handleMouseDown = () => {
+    updateLocationState({
+      paramForUrl: data.paramForUrl,
+      paramForComponent: data.paramForComponent,
+    });
   };
-  //process.env.REACT_APP_CHANNEL_TYPE === 'staff' better way then IS_STAFF
+
   return (
     <div className={contentContainer}>
-      {IS_STAFF ? <div>MAIN PAGE for staff</div> : <div>MAIN PAGE for customer</div>}
-
-      {deviceSize()}
+      <Link to={`/test-page/${data.paramForUrl}`} onMouseDown={() => handleMouseDown(data)}>
+        updateLocationState
+      </Link>
     </div>
   );
 };

@@ -15,10 +15,10 @@ exports[`<Test/> render without crashing 1`] = `
 
 <div
   class="emotion-0"
+  data-testid="test-container"
 >
-  <section
-    data-testid="test-container"
-  />
+  <br />
+  <br />
 </div>
 `;
 
@@ -37,10 +37,10 @@ exports[`<Test/> render without crashing with testDataSelector 1`] = `
 
 <div
   class="emotion-0"
+  data-testid="test-container"
 >
-  <section
-    data-testid="test-container"
-  />
+  <br />
+  <br />
 </div>
 `;
 
@@ -59,10 +59,10 @@ exports[`<Test/> render without crashing with testExampleSelector 1`] = `
 
 <div
   class="emotion-0"
+  data-testid="test-container"
 >
-  <section
-    data-testid="test-container"
-  />
+  <br />
+  <br />
 </div>
 `;
 
@@ -81,9 +81,9 @@ exports[`<Test/> render without crashing with testLoadingSelector 1`] = `
 
 <div
   class="emotion-0"
+  data-testid="test-container"
 >
-  <section
-    data-testid="test-container"
-  />
+  <br />
+  <br />
 </div>
 `;

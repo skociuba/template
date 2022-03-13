@@ -12,12 +12,11 @@ export const getParsedChildItemFromStorage = (storage, parentKey, childKey) => {
   return parseItem ? parseItem[childKey] : undefined;
 };
 
-export const createLocationStateKey = (productAlternativeNumber) =>
-  productAlternativeNumber ? productAlternativeNumber : null;
+export const createLocationStateKey = (paramForUrl) => (paramForUrl ? paramForUrl : null);
 
 export const updateLocationState = (params) => {
-  const {productAlternativeNumber} = params || {};
-  const key = createLocationStateKey(productAlternativeNumber);
+  const {paramForUrl} = params || {};
+  const key = createLocationStateKey(paramForUrl);
 
   if (!key) {
     return;
