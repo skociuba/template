@@ -8,9 +8,11 @@ import {Routing} from './routes.config';
 
 const Routes = () => (
   <Provider store={store}>
-    <HashRouter>
-      <Routing />
-    </HashRouter>
+    <React.StrictMode>
+      <HashRouter>
+        <Routing />
+      </HashRouter>
+    </React.StrictMode>
   </Provider>
 );
 

@@ -7,8 +7,8 @@ import RequireSearchParam from 'routing/components/RequireSearchParam';
 import Application from '../pages/Application/Application';
 import {shared} from '../sharedConstants';
 
-const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
-const TestPage = lazy(() => import('../pages/Test/Test'));
+const MainPage = lazy(() => import('pages/MainPage'));
+const TestPage = lazy(() => import('pages/Test'));
 const paths = {...shared.routes};
 
 let routes = [
