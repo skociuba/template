@@ -8,7 +8,7 @@ const paths = {...shared.routes};
 const RequireSearchParam = ({children, path}) => {
   const [searchParam] = useSearchParams();
 
-  if (path === paths.mainPage.root) {
+  if (path === paths.testPageDefault.root) {
     try {
       const paramForUrl = searchParam.get('paramForUrl');
       const paramForComponent = searchParam.get('paramForComponent');
@@ -20,13 +20,13 @@ const RequireSearchParam = ({children, path}) => {
             paramForComponent,
           }),
         );
-        return <Navigate to={`${paths.testPage.root}/${paramForUrl}`} />;
+        return <Navigate to={`${paths.testPageDefault.root}/${paramForUrl}`} />;
       } else {
-        return <Navigate to={paths.mainPage.root} />;
+        return <Navigate to={paths.mainPage.root} />; //mean homePage
       }
     } catch (error) {
       console.error('session storage is unavailable', error);
-      return <Navigate to={paths.mainPage.root} />;
+      return <Navigate to={paths.mainPage.root} />; //mean homepage
     }
   }
 

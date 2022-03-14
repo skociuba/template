@@ -15,22 +15,27 @@ let routes = [
   {
     path: paths.root,
     element: MainPage,
-    isLocationStateRequire: false,
+    isLocationStateRequired: false,
   },
   {
     path: paths.mainPage.root,
     element: MainPage,
-    isLocationStateRequire: false,
+    isLocationStateRequired: false,
+  },
+  {
+    path: paths.testPageDefault.root,
+    element: TestPage,
+    isLocationStateRequired: false,
   },
   {
     path: paths.testPage.root,
     element: TestPage,
-    isLocationStateRequire: true,
+    isLocationStateRequired: true,
   },
   {
     path: '*',
     element: MainPage,
-    isLocationStateRequire: false,
+    isLocationStateRequired: false,
   },
 ];
 
@@ -43,8 +48,8 @@ export const Routing = () => (
         element={
           <RequireSearchParam path={route.path}>
             <RequireParam
-              isLocationStateRequire={route.isLocationStateRequire}
-              redirectTo={paths.mainPage}>
+              isLocationStateRequired={route.isLocationStateRequired}
+              redirectTo={paths.mainPage.root}>
               <RouteNotFound path={route.path} redirectTo={paths.mainPage.root}>
                 <Application>
                   <route.element />
