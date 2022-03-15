@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Test/> render without crashing 1`] = `
+.emotion-0 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+<div
+  class="emotion-0"
+  data-testid="test-container"
+>
+  <br />
+  <br />
+</div>
+`;
+
+exports[`<Test/> render without crashing with testDataSelector 1`] = `
+.emotion-0 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+<div
+  class="emotion-0"
+  data-testid="test-container"
+>
+  <br />
+  <br />
+</div>
+`;
+
+exports[`<Test/> render without crashing with testExampleSelector 1`] = `
+.emotion-0 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+<div
+  class="emotion-0"
+  data-testid="test-container"
+>
+  <br />
+  <br />
+</div>
+`;
+
+exports[`<Test/> render without crashing with testLoadingSelector 1`] = `
+.emotion-0 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+<div
+  class="emotion-0"
+  data-testid="test-container"
+>
+  <br />
+  <br />
+</div>
+`;

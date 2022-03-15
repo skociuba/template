@@ -5,8 +5,10 @@ const shared = {
   header: {
     menu: {
       primary: [
+        {name: 'LandingPage', to: '/landing-page'},
         {name: 'Main', to: '/main-page'},
         {name: 'Test', to: '/test-page'},
+        {name: 'Test2', to: '/test-page2'},
       ],
     },
   },

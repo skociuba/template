@@ -22,11 +22,11 @@ const RequireSearchParam = ({children, path}) => {
         );
         return <Navigate to={`${paths.testPageDefault.root}/${paramForUrl}`} />;
       } else {
-        return <Navigate to={paths.mainPage.root} />; //mean homePage
+        return <Navigate to={paths.landingPage.root} />;
       }
     } catch (error) {
       console.error('session storage is unavailable', error);
-      return <Navigate to={paths.mainPage.root} />; //mean homepage
+      return <Navigate to={paths.landingPage.root} />;
     }
   }
 

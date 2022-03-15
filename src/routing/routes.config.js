@@ -8,13 +8,20 @@ import Application from '../pages/Application/Application';
 import {shared} from '../sharedConstants';
 
 const MainPage = lazy(() => import('pages/MainPage'));
+const LandingPage = lazy(() => import('pages/LandingPage'));
 const TestPage = lazy(() => import('pages/Test'));
+const TestPage2 = lazy(() => import('pages/Test2'));
 const paths = {...shared.routes};
 
 let routes = [
   {
     path: paths.root,
-    element: MainPage,
+    element: LandingPage,
+    isLocationStateRequired: false,
+  },
+  {
+    path: paths.landingPage.root,
+    element: LandingPage,
     isLocationStateRequired: false,
   },
   {
@@ -33,8 +40,13 @@ let routes = [
     isLocationStateRequired: true,
   },
   {
+    path: paths.testPage2.root,
+    element: TestPage2,
+    isLocationStateRequired: true,
+  },
+  {
     path: '*',
-    element: MainPage,
+    element: LandingPage,
     isLocationStateRequired: false,
   },
 ];
