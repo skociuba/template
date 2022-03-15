@@ -17,6 +17,8 @@ exports[`<Test/> render without crashing 1`] = `
   class="emotion-0"
   data-testid="test-container"
 >
+  test2
+  <br />
   <br />
   <br />
 </div>
@@ -39,6 +41,8 @@ exports[`<Test/> render without crashing with testDataSelector 1`] = `
   class="emotion-0"
   data-testid="test-container"
 >
+  test2
+  <br />
   <br />
   <br />
 </div>
@@ -61,6 +65,8 @@ exports[`<Test/> render without crashing with testExampleSelector 1`] = `
   class="emotion-0"
   data-testid="test-container"
 >
+  test2
+  <br />
   <br />
   <br />
 </div>
@@ -83,6 +89,8 @@ exports[`<Test/> render without crashing with testLoadingSelector 1`] = `
   class="emotion-0"
   data-testid="test-container"
 >
+  test2
+  <br />
   <br />
   <br />
 </div>
