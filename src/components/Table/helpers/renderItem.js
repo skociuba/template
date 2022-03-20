@@ -8,8 +8,8 @@ const renderItem = (item) => {
   switch (item.type) {
     case 'one':
       return <div>{item?.value}</div>;
-    case 'two':
-      return <div>{item?.value}</div>;
+    case 'bigLetter':
+      return <div>{item?.value.toUpperCase()}</div>;
     default:
       return <div>{item?.value}</div>;
   }

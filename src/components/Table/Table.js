@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useSearchParams} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import renderItem from './helpers/renderItem';
 import TableForDevice from './TableForDevice';
@@ -9,14 +10,14 @@ const Table = ({
   headerData,
   bodyData,
   loading,
-  sortingEnabled,
+  withSorting,
   handleSorting,
   className,
   dataTestId,
   totalNumberOfRecords,
   handleSideEffect,
 }) => {
-  const recordPerPage = 15;
+  const recordPerPage = 2; //add to sharedConstants
   const [dataSlicePage, setDataSlicePage] = useState(1);
   const [dataSlice, setDataSlice] = useState([]);
   const [queryParams, setQueryParams] = useSearchParams();
@@ -27,12 +28,10 @@ const Table = ({
     );
   }, [dataSlicePage, bodyData]);
 
-  console.log(dataSlice);
-
   const handleNext = () => {
     setDataSlicePage(dataSlicePage + 1);
   };
-  const handlePrevious = () => {
+  const handlePrev = () => {
     setDataSlicePage(dataSlicePage - 1);
   };
   const handleJumpToPage = (page) => {
@@ -57,19 +56,20 @@ const Table = ({
             renderItem={renderItem}
             headerData={headerData}
             bodyData={handleSideEffect ? bodyData : dataSlice}
-            sortingEnabled={sortingEnabled}
+            withSorting={withSorting}
             handleSorting={handleSorting}
             dataTestId={'table'}
           />
           {(totalNumberOfRecords || bodyData?.length) > recordPerPage && (
             <Pagination
               handleNext={handleNext}
-              handlePrevious={handlePrevious}
+              handlePrev={handlePrev}
               handleJumpToPage={handleJumpToPage}
               handleSideEffect={handleSideEffect}
-              totalNumberOfRecords={totalNumberOfRecords}
+              totalNumberOfRecords={totalNumberOfRecords || bodyData?.length}
               recordPerPage={recordPerPage}
               handleCurrentPage={handleCurrentPage}
+              currentPage={dataSlicePage}
             />
           )}
         </>
@@ -77,5 +77,28 @@ const Table = ({
     </div>
   );
 };
+
+Table.propTypes = {
+  headerData: PropTypes.object,
+  bodyData: PropTypes.array,
+  loading: PropTypes.bool,
+  className: PropTypes.string,
+  withSorting: PropTypes.bool,
+  handleSorting: PropTypes.func,
+  dataTestId: PropTypes.string,
+  totalNumberOfRecords: PropTypes.number,
+  handleSideEffect: PropTypes.func,
+};
+
+Table.defaultProps = {
+  headerData: {},
+  bodyData: [],
+  loading: true,
+  className: '',
+  withSorting: true,
+  dataTestId: 'table',
+};
+
+Table.displayName = 'Table';
 
 export default Table;

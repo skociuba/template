@@ -19,7 +19,9 @@ exports[`<Test/> render without crashing 1`] = `
   <section
     data-testid="test-container"
   >
-    <div>
+    <div
+      data-testid="table"
+    >
       <div>
         NO DATA
       </div>
@@ -47,7 +49,9 @@ exports[`<Test/> render without crashing with testDataSelector 1`] = `
   <section
     data-testid="test-container"
   >
-    <div>
+    <div
+      data-testid="table"
+    >
       <div>
         NO DATA
       </div>
@@ -75,7 +79,9 @@ exports[`<Test/> render without crashing with testExampleSelector 1`] = `
   <section
     data-testid="test-container"
   >
-    <div>
+    <div
+      data-testid="table"
+    >
       <div>
         NO DATA
       </div>
@@ -103,7 +109,9 @@ exports[`<Test/> render without crashing with testLoadingSelector 1`] = `
   <section
     data-testid="test-container"
   >
-    <div>
+    <div
+      data-testid="table"
+    >
       <div>
         NO DATA
       </div>
