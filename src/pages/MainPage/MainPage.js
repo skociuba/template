@@ -2,6 +2,7 @@ import React from 'react';
 import {media, useMedia} from 'components/Media';
 import {IS_STAFF} from 'config/constants';
 import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
+import {roundNumber, currencyFormatter, positiveInteger} from 'utils/numbers/index';
 
 import {contentContainer} from './MainPage.style';
 const MainPage = () => {
@@ -10,6 +11,9 @@ const MainPage = () => {
 
   console.log(getMapping('testData'));
   console.log(simpleMappersExample('B')?.title);
+  console.log(positiveInteger(-222.5, 'intParam'));
+  console.log(roundNumber(222.44444445));
+  console.log(currencyFormatter(222333.3335));
 
   const deviceSize = () => {
     if (isMobile) {
