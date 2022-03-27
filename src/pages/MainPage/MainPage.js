@@ -4,6 +4,7 @@ import {IS_STAFF} from 'config/constants';
 import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
 import {roundNumber, currencyFormatter, positiveInteger} from 'utils/numbers/index';
 
+//import ComponentWrapper from 'seba-container-wrapper';
 import {contentContainer} from './MainPage.style';
 const MainPage = () => {
   const isMobile = useMedia(media.device.mobile);
