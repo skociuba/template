@@ -7,7 +7,7 @@ const paths = {...shared.routes};
 const defaultProps = {
   children: <div>Page</div>,
   isLocationStateRequired: false,
-  redirectTo: paths.testPage.root,
+  redirectTo: paths.frontendPaginationSorting.root,
 };
 
 describe('<RequireParam/>', () => {
