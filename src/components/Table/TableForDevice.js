@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material/react-button';
+import {BsChevronDoubleUp, BsChevronDoubleDown} from 'react-icons/bs';
 
-const MAP_SORTING_OPTION = ['default', 'asc', 'undefined'];
+const MAP_SORTING_OPTION = ['default', 'desc', 'asc'];
 
 import {sorterContainer, sortingContainer, dataContainer} from './TableForDevice.style';
 const TableForDevice = ({
@@ -13,15 +13,18 @@ const TableForDevice = ({
   withSorting,
   handleSorting,
   dataTestId,
-  ...props
+  defaultSortingIndex,
+  defaultSortingStatus,
 }) => {
-  const [sortingIndex, setSortingIndex] = useState(null);
-  const [currentSortingStatus, setCurrentSortingStatus] = useState(0);
+  const [sortingIndex, setSortingIndex] = useState(defaultSortingIndex);
+  const [currentSortingStatus, setCurrentSortingStatus] = useState(defaultSortingStatus);
 
   const Sorter = ({index}) => (
     <div className={sorterContainer(index === sortingIndex ? currentSortingStatus : 0)}>
-      <Button>top</Button>
-      <Button>down</Button>
+      <p>
+        <BsChevronDoubleUp />
+        <BsChevronDoubleDown />
+      </p>
     </div>
   );
 
@@ -31,11 +34,12 @@ const TableForDevice = ({
     setSortingIndex(index);
     setCurrentSortingStatus(sortingStatus);
     if (handleSorting) {
-      handleSorting(item, MAP_SORTING_OPTION[sortingStatus]);
+      handleSorting(item, MAP_SORTING_OPTION[sortingStatus], index, sortingStatus);
     }
   };
+
   return (
-    <table data-testid={dataTestId} {...props}>
+    <table data-testid={dataTestId}>
       <thead>
         <tr>
           {Object.keys(headerData).map((itemKey, index) => (
@@ -86,6 +90,8 @@ TableForDevice.defaultProps = {
   className: '',
   withSorting: true,
   dataTestId: 'table',
+  defaultSortingIndex: 0,
+  defaultSortingStatus: 0,
 };
 
 export default TableForDevice;

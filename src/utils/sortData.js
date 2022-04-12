@@ -22,8 +22,8 @@ export const sortData = (elements, columnIndex, sortingType) => {
     return element;
   };
   return [...elements].sort((a, b) => {
-    const firstElement = getElement(a[columnIndex].value);
-    const secondElement = getElement(b[columnIndex].value);
+    const firstElement = getElement(a[columnIndex]?.value);
+    const secondElement = getElement(b[columnIndex]?.value);
 
     if (sortingType === 'asc') {
       if (firstElement.constructor === Number && secondElement.constructor === Number) {

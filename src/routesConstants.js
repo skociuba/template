@@ -8,6 +8,12 @@ const routes = {
   testPage: {
     root: generatePrefixedRootContext('test-page'),
   },
+  staticTable: {
+    root: generatePrefixedRootContext('static-table-page'),
+  },
+  backendSorting: {
+    root: generatePrefixedRootContext('backend-sorting-page'),
+  },
 };
 
 export {routes};

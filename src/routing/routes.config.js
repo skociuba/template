@@ -7,6 +7,8 @@ import {shared} from '../sharedConstants';
 
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const TestPage = lazy(() => import('../pages/Test/Test'));
+const StaticTable = lazy(() => import('../pages/StaticTable/StaticTable'));
+const BackendSorting = lazy(() => import('../pages/BackendSorting/BackendSorting'));
 const paths = {...shared.routes};
 
 let routes = [
@@ -23,6 +25,16 @@ let routes = [
   {
     path: paths.testPage.root,
     element: TestPage,
+    exact: true,
+  },
+  {
+    path: paths.staticTable.root,
+    element: StaticTable,
+    exact: true,
+  },
+  {
+    path: paths.backendSorting.root,
+    element: BackendSorting,
     exact: true,
   },
   {

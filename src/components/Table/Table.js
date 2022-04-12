@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {useSearchParams} from 'react-router-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import renderItem from './helpers/renderItem';
 import TableForDevice from './TableForDevice';
-import Pagination from './Pagination';
 
 const Table = ({
   headerData,
@@ -14,37 +12,9 @@ const Table = ({
   handleSorting,
   className,
   dataTestId,
-  totalNumberOfRecords,
-  handleSideEffect,
+  defaultSortingIndex,
+  defaultSortingStatus,
 }) => {
-  const recordPerPage = 2; //add to sharedConstants
-  const [dataSlicePage, setDataSlicePage] = useState(1);
-  const [dataSlice, setDataSlice] = useState([]);
-  const [queryParams, setQueryParams] = useSearchParams();
-
-  useEffect(() => {
-    setDataSlice(
-      bodyData.slice((dataSlicePage - 1) * recordPerPage, dataSlicePage * recordPerPage),
-    );
-  }, [dataSlicePage, bodyData]);
-
-  const handleNext = () => {
-    setDataSlicePage(dataSlicePage + 1);
-  };
-  const handlePrev = () => {
-    setDataSlicePage(dataSlicePage - 1);
-  };
-  const handleJumpToPage = (page) => {
-    setDataSlicePage(page);
-  };
-  const handleCurrentPage = (page) => {
-    if (page) {
-      setQueryParams({page: page});
-      return;
-    }
-    return queryParams.get('page');
-  };
-
   return (
     <div data-testid={dataTestId}>
       {loading || !bodyData?.length ? (
@@ -55,28 +25,20 @@ const Table = ({
             className={className}
             renderItem={renderItem}
             headerData={headerData}
-            bodyData={handleSideEffect ? bodyData : dataSlice}
+            bodyData={bodyData}
             withSorting={withSorting}
             handleSorting={handleSorting}
             dataTestId={'table'}
+            defaultSortingIndex={defaultSortingIndex}
+            defaultSortingStatus={defaultSortingStatus}
           />
-          {(totalNumberOfRecords || bodyData?.length) > recordPerPage && (
-            <Pagination
-              handleNext={handleNext}
-              handlePrev={handlePrev}
-              handleJumpToPage={handleJumpToPage}
-              handleSideEffect={handleSideEffect}
-              totalNumberOfRecords={totalNumberOfRecords || bodyData?.length}
-              recordPerPage={recordPerPage}
-              handleCurrentPage={handleCurrentPage}
-              currentPage={dataSlicePage}
-            />
-          )}
         </>
       )}
     </div>
   );
 };
+
+Table.displayName = 'Table';
 
 Table.propTypes = {
   headerData: PropTypes.object,

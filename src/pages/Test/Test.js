@@ -1,7 +1,8 @@
-import React, {useEffect, useState, useMemo} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import Table from 'components/Table';
+import {Pagination} from 'components/Pagination';
 import {sortData} from 'utils/sortData';
 
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -17,6 +18,10 @@ const Test = () => {
 
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
+  const recordPerPage = 5;
+
+  const orderTableRef = useRef(null);
+
   useEffect(() => {
     dispatch(fetchTestData());
   }, [dispatch]);
@@ -24,6 +29,12 @@ const Test = () => {
   useEffect(() => {
     generateTableRows();
   }, [testData]);
+
+  const handleSorting = (columnIndex, sortingType) => {
+    generateTableRows(
+      sortingType === 'default' ? null : {sortingParams: {columnIndex, sortingType}},
+    );
+  };
 
   const renderItem = (rowItem, key) => {
     switch (key) {
@@ -44,75 +55,73 @@ const Test = () => {
     }
     const rowData = [];
 
-    testData.forEach((row) => {
+    testData.map((row) => {
       let returnValue = {};
       Object.keys(row).forEach((item) => {
-        returnValue = {...returnValue, [item]: renderItem(row, item)};
+        const mappedRowItem = renderItem(row, item);
+        if (mappedRowItem) {
+          returnValue = {...returnValue, [item]: mappedRowItem};
+        }
       });
       rowData.push(returnValue);
     });
-    const returnSortedData = sorting
-      ? sortData(rowData, sorting.columnIndex, sorting.sortingType)
-      : rowData;
+    let returnSortedData = rowData;
+
+    if (sorting?.sortingParams) {
+      returnSortedData = sortData(
+        rowData,
+        sorting?.sortingParams?.columnIndex,
+        sorting?.sortingParams?.sortingType,
+      );
+    }
+    if (sorting?.paginationParams) {
+      returnSortedData = returnSortedData.slice(
+        sorting?.paginationParams?.startItem,
+        sorting?.paginationParams?.endItem,
+      );
+    }
+    if (returnSortedData?.length > recordPerPage) {
+      returnSortedData = returnSortedData.slice(0, recordPerPage);
+    }
+
     setSortedData([...returnSortedData]);
   };
 
-  const handleSorting = (columnIndex, sortingType) => {
-    generateTableRows(sortingType === 'default' ? null : {columnIndex, sortingType});
+  const handleSideEffect = (startItem, endItem) => {
+    if (startItem && endItem && typeof startItem === 'number' && typeof endItem === 'number') {
+      generateTableRows({paginationParams: {startItem: startItem, endItem: endItem}});
+    }
   };
 
-  // if no sorted date
+  const headerData = {
+    _id: {
+      title: 'id',
+    },
+    name: {
+      title: 'name',
+    },
+    trips: {
+      title: 'trips',
+    },
+  };
 
-  const bodyData = useMemo(() => {
-    if (!testData) {
-      return [];
-    }
+  console.log(sortedData);
 
-    const rows = testData.map(({_id, name, trips}) => ({
-      id: {key: 'id', value: `${_id}`},
-      name: {key: 'name', value: `${name}`},
-      trips: {key: 'trips', value: `${trips}`},
-    }));
-    return [
-      ...rows,
-      {
-        id: {key: 'id', value: `test1`},
-        name: {key: 'name', value: `test2`}, //some additional data?
-        trips: {key: 'trips', value: `test3`},
-      },
-    ];
-  }, [testData]);
-
-  const headerData = useMemo(() => {
-    return {
-      _id: {
-        //id for bodyData
-        title: 'id',
-      },
-      name: {
-        title: 'name',
-      },
-      trips: {
-        title: 'trips',
-      },
-    };
-  }, []);
-
-  const content = (
-    <section data-testid="test-container">
+  return (
+    <div className={contentContainer} ref={orderTableRef} data-testid="test-container">
       <Table
         loading={testLoadingExample}
         headerData={headerData}
-        // bodyData={bodyData} //   in no sorting data
-        //  withSorting={false}
         bodyData={sortedData}
-        totalNumberOfRecords={bodyData?.length}
         handleSorting={handleSorting}
       />
-    </section>
+      <Pagination
+        handleSideEffects={handleSideEffect}
+        totalNumberOfRecords={testData?.length}
+        recordPerPage={recordPerPage}
+      />
+    </div>
   );
-
-  return <div className={contentContainer}>{content}</div>;
 };
 
 Test.propTypes = {

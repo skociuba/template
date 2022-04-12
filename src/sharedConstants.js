@@ -7,6 +7,8 @@ const shared = {
       primary: [
         {name: 'Main', to: '/main-page'},
         {name: 'Test', to: '/test-page'},
+        {name: 'StaticTable', to: '/static-table-page'},
+        {name: 'BackendSorting', to: '/backend-sorting-page'},
       ],
     },
   },

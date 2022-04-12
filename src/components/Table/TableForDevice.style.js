@@ -7,8 +7,8 @@ export const sortingContainer = css`
   border: 1px solid black;
   padding: 45px;
 
-  & button {
-    padding: 10px;
+  &:p {
+    padding: 30px;
   }
 `;
 
@@ -36,5 +36,6 @@ export const sorterContainer = (index) => css`
 
 export const dataContainer = css`
   padding: 20px;
+  height: 45px;
   border: 1px solid black;
 `;
