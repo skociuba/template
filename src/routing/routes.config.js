@@ -6,9 +6,11 @@ import Application from '../pages/Application/Application';
 import {shared} from '../sharedConstants';
 
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
-const TestPage = lazy(() => import('../pages/Test/Test'));
+const FrontendPaginationSorting = lazy(() =>
+  import('../pages/FrontendPaginationSorting/FrontendPaginationSorting'),
+);
 const StaticTable = lazy(() => import('../pages/StaticTable/StaticTable'));
-const BackendSorting = lazy(() => import('../pages/BackendSorting/BackendSorting'));
+const BackendControl = lazy(() => import('../pages/BackendControl/BackendResult/BackendResult'));
 const paths = {...shared.routes};
 
 let routes = [
@@ -23,8 +25,8 @@ let routes = [
     exact: true,
   },
   {
-    path: paths.testPage.root,
-    element: TestPage,
+    path: paths.frontendPaginationSorting.root,
+    element: FrontendPaginationSorting,
     exact: true,
   },
   {
@@ -33,8 +35,8 @@ let routes = [
     exact: true,
   },
   {
-    path: paths.backendSorting.root,
-    element: BackendSorting,
+    path: paths.backendControl.root,
+    element: BackendControl,
     exact: true,
   },
   {

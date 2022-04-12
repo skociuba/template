@@ -1,4 +1,4 @@
-import Test from './BackendSorting';
+import Test from './FrontendPaginationSorting';
 
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({

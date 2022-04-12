@@ -1,6 +1,6 @@
 import {createAction} from 'redux-actions';
 
-import actionNames from '../../utils/actionNames';
+import actionNames from '../../../utils/actionNames';
 
 export const FETCH_TEST = 'FETCH_TEST';
 export const FETCH_TEST_SUCCESS = 'FETCH_TEST_SUCCESS';

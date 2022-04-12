@@ -5,14 +5,14 @@ const routes = {
   mainPage: {
     root: generatePrefixedRootContext('main-page'),
   },
-  testPage: {
-    root: generatePrefixedRootContext('test-page'),
+  frontendPaginationSorting: {
+    root: generatePrefixedRootContext('frontend-pagination-sorting'),
   },
   staticTable: {
     root: generatePrefixedRootContext('static-table-page'),
   },
-  backendSorting: {
-    root: generatePrefixedRootContext('backend-sorting-page'),
+  backendControl: {
+    root: generatePrefixedRootContext('backend-control-page'),
   },
 };
 

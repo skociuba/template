@@ -6,9 +6,9 @@ const shared = {
     menu: {
       primary: [
         {name: 'Main', to: '/main-page'},
-        {name: 'Test', to: '/test-page'},
+        {name: 'FrontendPaginationSorting', to: '/frontend-pagination-sorting'},
         {name: 'StaticTable', to: '/static-table-page'},
-        {name: 'BackendSorting', to: '/backend-sorting-page'},
+        {name: 'BackendControl', to: '/backend-control-page'},
       ],
     },
   },

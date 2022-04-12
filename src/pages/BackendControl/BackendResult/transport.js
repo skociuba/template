@@ -1,4 +1,4 @@
-import {$get} from '../../utils/transport';
+import {$get} from '../../../utils/transport';
 
 export const getTestData = ({config}) => {
   const params = {

@@ -1,4 +1,4 @@
-import Test from './Test';
+import Test from './BackendResult';
 
 const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({

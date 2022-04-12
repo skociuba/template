@@ -17,6 +17,14 @@ const StaticTable = () => {
 
   const orderTableRef = useRef(null);
 
+  // this method automatic scroll to bottom or to start - block: 'start' of table
+
+  useEffect(() => {
+    if (testData?.length) {
+      orderTableRef.current.scrollIntoView({block: 'end', behavior: 'smooth'});
+    }
+  }, [testData]);
+
   useEffect(() => {
     dispatch(fetchTestData());
   }, [dispatch]);

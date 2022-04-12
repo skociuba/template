@@ -8,7 +8,7 @@ import {sortData} from 'utils/sortData';
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchTestData} from './actions';
 import {testDataSelector, testLoadingSelector} from './selectors';
-import {contentContainer} from './BackendSorting.style';
+import {contentContainer} from './BackendResult.style';
 
 const sortMapping = {
   _id: '_id',
@@ -16,11 +16,9 @@ const sortMapping = {
   trips: 'trips',
 };
 
-const BackendSorting = ({setSortCriteria, selectedCriteria}) => {
+const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage}) => {
   const dispatch = useDispatch();
   const [sortedData, setSortedData] = useState([]);
-  const [startSearchPageItem, setStartSearchPageItem] = useState(0);
-  const [endSearchPageItem, setEndSearchPageItem] = useState(0);
   const [sortingIndex, setSortingIndex] = useState(2);
   const [sortingStatus, setSortingStatus] = useState(1);
 
@@ -28,27 +26,12 @@ const BackendSorting = ({setSortCriteria, selectedCriteria}) => {
 
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
-  const recordPerPage = 2;
-
   const orderTableRef = useRef(null);
   const paginationRef = useRef();
 
   useEffect(() => {
     dispatch(fetchTestData());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (startSearchPageItem && endSearchPageItem) {
-      //  dispatch(fetchSearchForFundsResults({criteria:selectedCriteria,startItem:startSearchPageItem,endItem:endSearchPageItem,recordPerPage:recordPerPage}));
-      // po kliknięciu funkcji  handleSideEffect startSearchPageItem i endSearchPageItem zmienia sie na niezerowe i w wyniku czego odpalana jest funkcja fetchSearchForFundsResults wraz z przesłaniem parametrów w body, ta sama funkcja przesłana do paginacji powoduje że wartości startItem, endItem przesyłają odpowiednie dane jako parametry
-
-      //selectedCriteria tworzone jest w selectorze i zwraca wartość filtracji sortowania i range???
-
-      //startItem, endItem i recordPerPage są potrzebne do paginacji a selectedCriteria do filtracji i sortowania
-      setStartSearchPageItem(0);
-      setEndSearchPageItem(0);
-    }
-  }, [startSearchPageItem, endSearchPageItem]);
 
   useEffect(() => {
     generateTableRows();
@@ -105,12 +88,6 @@ const BackendSorting = ({setSortCriteria, selectedCriteria}) => {
     setSortedData([...returnSortedData]);
   };
 
-  const handleSideEffect = (startItem = 1, endItem = 5) => {
-    setStartSearchPageItem(startItem);
-    setEndSearchPageItem(endItem);
-  };
-  console.log(startSearchPageItem);
-
   const headerData = {
     _id: {
       title: 'id',
@@ -143,8 +120,8 @@ const BackendSorting = ({setSortCriteria, selectedCriteria}) => {
   );
 };
 
-BackendSorting.propTypes = {
+BackendResult.propTypes = {
   fetchTestData: PropTypes.func,
 };
 
-export default BackendSorting;
+export default BackendResult;

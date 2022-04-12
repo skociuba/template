@@ -8,9 +8,9 @@ import {sortData} from 'utils/sortData';
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchTestData} from './actions';
 import {testDataSelector, testLoadingSelector} from './selectors';
-import {contentContainer} from './Test.style';
+import {contentContainer} from './FrontendPaginationSorting.style';
 
-const Test = () => {
+const FrontendPaginationSorting = () => {
   const dispatch = useDispatch();
   const [sortedData, setSortedData] = useState([]);
 
@@ -124,8 +124,8 @@ const Test = () => {
   );
 };
 
-Test.propTypes = {
+FrontendPaginationSorting.propTypes = {
   fetchTestData: PropTypes.func,
 };
 
-export default Test;
+export default FrontendPaginationSorting;
