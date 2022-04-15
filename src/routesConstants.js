@@ -14,6 +14,9 @@ const routes = {
   backendControl: {
     root: generatePrefixedRootContext('backend-control-page'),
   },
+  frontendControl: {
+    root: generatePrefixedRootContext('frontend-control-page'),
+  },
 };
 
 export {routes};
