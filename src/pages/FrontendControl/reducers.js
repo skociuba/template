@@ -39,6 +39,9 @@ export default handleActions(
           loading: false,
           error: null,
         },
+        filters: {
+          _id: payload.data.data.map(({_id}) => _id),
+        },
       };
     },
     [fetchTestFail](state, {payload}) {
@@ -53,14 +56,12 @@ export default handleActions(
       };
     },
     [filterOrderStatusData](state, {payload}) {
-      const changeInitialState = state?.test?.data?.data.map((item) => item._id);
-      console.log(changeInitialState);
       return {
         ...state,
         filters: {
           ...state?.filters,
           [payload?.type]: {
-            ...changeInitialState?.filters[payload?.type],
+            ...initialState?.filters[payload?.type],
             [payload.value]: {
               ...state?.filters[payload?.type][payload?.value],
               isSelected: true,
