@@ -23,44 +23,16 @@ const shared = {
     },
   },
   names: {
-    55: {
-      title: '55',
+    '603be08a2987d5267f590d2f': {
+      title: '603be08a2987d5267f590d2f',
+      isSelected: false,
+    },
+    '603be21b2987d50c34590d38': {
+      title: '603be21b2987d50c34590d38',
       isSelected: false,
     },
     all: {
       title: 'all',
-      isSelected: false,
-    },
-    jony: {
-      title: 'jony',
-      isSelected: false,
-    },
-    'John Doe': {
-      title: `John Doe`,
-      isSelected: false,
-    },
-    TestingFunda6450: {
-      title: 'TestingFunda6450',
-      isSelected: false,
-    },
-    TestingFunda4366: {
-      title: 'TestingFunda4366',
-      isSelected: false,
-    },
-    'TestingFunda5269`': {
-      title: 'TestingFunda5269',
-      isSelected: false,
-    },
-    TestingFunda6524: {
-      title: 'TestingFunda6524',
-      isSelected: false,
-    },
-    TestingFunda9515: {
-      title: 'TestingFunda9515',
-      isSelected: false,
-    },
-    TestingFunda5963: {
-      title: 'TestingFunda5963',
       isSelected: false,
     },
   },

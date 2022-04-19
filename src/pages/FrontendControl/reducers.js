@@ -57,11 +57,11 @@ export default handleActions(
       return {
         ...state,
         filters: {
-          ...state.filters,
-          [payload.type]: {
-            ...initialState.filters[payload.type],
+          ...state?.filters,
+          [payload?.type]: {
+            ...initialState?.filters[payload?.type],
             [payload.value]: {
-              ...state.filters[payload.type][payload.value],
+              ...state?.filters[payload?.type][payload?.value],
               isSelected: true,
             },
           },

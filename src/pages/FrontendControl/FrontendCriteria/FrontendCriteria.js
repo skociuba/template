@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import '../../../index.scss';
-import {shared} from 'sharedConstants';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchTestData} from '../actions';
@@ -9,46 +8,30 @@ import {testDataSelector} from '../selectors';
 
 const FrontendCriteria = ({filterOrderStatusData}) => {
   const dispatch = useDispatch();
-  const [airlines, setAirlines] = useState(null);
+  const [Id, setId] = useState(null);
   const testData = useSelector((state) => testDataSelector(state));
 
   useEffect(() => {
     dispatch(fetchTestData());
   }, [dispatch]);
 
-  const handleNameChange = (filter, type) => {
-    dispatch(filterOrderStatusData({type, value: filter}));
-  };
-
-  const handleChange = (e) => {
-    setAirlines(testData[e.target.value]?.airline[0]?.name);
+  const handleNameChange = (type, filter) => {
+    console.log(dispatch(filterOrderStatusData({type, value: filter})));
   };
 
   return (
     <div>
       <select
         onChange={(e) => {
-          handleNameChange(shared?.names[e.target.value]?.title, 'names');
+          setId(testData[e.target.value]?._id);
+          handleNameChange('id', Id);
         }}>
-        {Object.keys(shared.names)?.map((name) => (
-          <option value={name} key={name} selected={name === 'all' ? 'selected' : ''}>
-            {shared?.names[name]?.title}
+        {testData?.map(({_id}, i) => (
+          <option value={i} key={i}>
+            {_id}
           </option>
         ))}
       </select>
-
-      <p>
-        <select onChange={handleChange}>
-          {testData?.map(({airline}) =>
-            airline?.map(({name}, i) => (
-              <option value={i} key={i}>
-                {name}
-              </option>
-            )),
-          )}
-        </select>
-        {airlines}
-      </p>
     </div>
   );
 };
