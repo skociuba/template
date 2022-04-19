@@ -7,7 +7,10 @@ export const testDataSelector = createSelector(
   (test) => test?.test?.data?.data || null,
 );
 
-export const filterSelector = createSelector(testSelector, (filter) => filter?.filters?.id || null);
+export const filterSelector = createSelector(
+  testSelector,
+  (filter) => console.log(filter?.filters?._id) || null,
+);
 
 export const filterNamesSelector = createSelector(filterSelector, (names) => {
   const selectedFilter = !names

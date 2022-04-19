@@ -2,9 +2,7 @@ import {handleActions} from 'redux-actions';
 
 import {fetchTestData, fetchTestSuccess, fetchTestFail, filterOrderStatusData} from './actions';
 
-export const initialFilter = {
-  _id: [],
-};
+export const initialFilter = {};
 
 export const initialState = {
   test: {
@@ -40,7 +38,10 @@ export default handleActions(
           error: null,
         },
         filters: {
-          _id: payload.data.data.map(({_id}) => _id),
+          _id: payload.data.data.map((item) => ({
+            title: item._id,
+            isSelected: false,
+          })),
         },
       };
     },
@@ -59,13 +60,10 @@ export default handleActions(
       return {
         ...state,
         filters: {
-          ...state?.filters,
-          [payload?.type]: {
-            ...initialState?.filters[payload?.type],
-            [payload.value]: {
-              ...state?.filters[payload?.type][payload?.value],
-              isSelected: true,
-            },
+          ...state.filters,
+          [payload.type]: {
+            value: payload.value,
+            isSelected: true,
           },
         },
       };
