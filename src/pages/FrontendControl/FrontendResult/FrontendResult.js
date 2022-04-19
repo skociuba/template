@@ -7,7 +7,7 @@ import {sortData} from 'utils/sortData';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchTestData} from '../actions';
-import {testDataSelector, testLoadingSelector} from '../selectors';
+import {testDataSelector, testLoadingSelector, filterNamesSelector} from '../selectors';
 
 import {contentContainer} from './FrontendResult.style';
 
@@ -19,7 +19,16 @@ const FrontendResult = () => {
 
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
+  const testFilterSelector = useSelector((state) => filterNamesSelector(state));
+
   const recordPerPage = 5;
+
+  const filterData = (data) =>
+    data
+      ? data.filter((property) =>
+          testFilterSelector === 'all' ? data : property.name === testFilterSelector,
+        )
+      : [];
 
   const orderTableRef = useRef(null);
 
@@ -27,11 +36,13 @@ const FrontendResult = () => {
     dispatch(fetchTestData());
   }, [dispatch]);
 
+  useEffect(() => {
+    generateTableRows();
+  }, [testData, testFilterSelector]);
+
   const handleSorting = (columnIndex, sortingType) => {
-    useSelector(
-      generateTableRows(
-        sortingType === 'default' ? null : {sortingParams: {columnIndex, sortingType}},
-      ),
+    generateTableRows(
+      sortingType === 'default' ? null : {sortingParams: {columnIndex, sortingType}},
     );
   };
 
@@ -54,7 +65,9 @@ const FrontendResult = () => {
     }
     const rowData = [];
 
-    testData.map((row) => {
+    const filteredData = filterData(testData);
+
+    filteredData.map((row) => {
       let returnValue = {};
       Object.keys(row).forEach((item) => {
         const mappedRowItem = renderItem(row, item);
@@ -103,8 +116,6 @@ const FrontendResult = () => {
       title: 'trips',
     },
   };
-
-  console.log(sortedData);
 
   return (
     <div className={contentContainer} ref={orderTableRef} data-testid="test-container">

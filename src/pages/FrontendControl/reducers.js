@@ -1,20 +1,23 @@
 import {handleActions} from 'redux-actions';
+import {shared} from 'sharedConstants';
 
 import {fetchTestData, fetchTestSuccess, fetchTestFail, filterOrderStatusData} from './actions';
 
+export const initialFilter = {
+  names: shared.names,
+};
+
 export const initialState = {
   test: {
-    data: null,
-    loading: false,
+    data: [],
+    loading: true,
     error: null,
   },
   filters: {
     ...initialFilter,
   },
 };
-export const initialFilter = {
-  names: 'names',
-};
+
 export default handleActions(
   {
     [fetchTestData](state) {
@@ -22,7 +25,7 @@ export default handleActions(
         ...state,
         test: {
           ...state.test,
-          data: null,
+          data: [],
           loading: true,
           error: null,
         },
@@ -44,14 +47,13 @@ export default handleActions(
         ...state,
         test: {
           ...state.test,
-          data: null,
+          data: [],
           loading: false,
           error: payload.message,
         },
       };
     },
     [filterOrderStatusData](state, {payload}) {
-      console.log(payload);
       return {
         ...state,
         filters: {
@@ -59,7 +61,8 @@ export default handleActions(
           [payload.type]: {
             ...initialState.filters[payload.type],
             [payload.value]: {
-              ...state.filters[payload.value],
+              ...state.filters[payload.type][payload.value],
+              isSelected: true,
             },
           },
         },
