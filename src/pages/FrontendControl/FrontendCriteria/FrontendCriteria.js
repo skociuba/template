@@ -24,7 +24,7 @@ const FrontendCriteria = ({filterOrderStatusData}) => {
       <select
         onChange={(e) => {
           setId(testData[e.target.value]?._id);
-          handleNameChange('id', Id);
+          handleNameChange('_id', Id);
         }}>
         {testData?.map(({_id}, i) => (
           <option value={i} key={i}>

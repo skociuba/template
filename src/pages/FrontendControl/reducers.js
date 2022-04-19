@@ -1,10 +1,9 @@
 import {handleActions} from 'redux-actions';
-import {shared} from 'sharedConstants';
 
 import {fetchTestData, fetchTestSuccess, fetchTestFail, filterOrderStatusData} from './actions';
 
 export const initialFilter = {
-  names: shared.names,
+  _id: [],
 };
 
 export const initialState = {
@@ -54,12 +53,14 @@ export default handleActions(
       };
     },
     [filterOrderStatusData](state, {payload}) {
+      const changeInitialState = state?.test?.data?.data.map((item) => item._id);
+      console.log(changeInitialState);
       return {
         ...state,
         filters: {
           ...state?.filters,
           [payload?.type]: {
-            ...initialState?.filters[payload?.type],
+            ...changeInitialState?.filters[payload?.type],
             [payload.value]: {
               ...state?.filters[payload?.type][payload?.value],
               isSelected: true,
