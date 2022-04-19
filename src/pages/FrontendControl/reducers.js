@@ -2,7 +2,7 @@ import {handleActions} from 'redux-actions';
 
 import {fetchTestData, fetchTestSuccess, fetchTestFail, filterOrderStatusData} from './actions';
 
-export const initialFilter = {};
+export const initialFilter = [];
 
 export const initialState = {
   test: {
@@ -57,6 +57,7 @@ export default handleActions(
       };
     },
     [filterOrderStatusData](state, {payload}) {
+      console.log(payload);
       return {
         ...state,
         filters: {

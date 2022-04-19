@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import '../../../index.scss';
 
@@ -8,7 +8,7 @@ import {testDataSelector} from '../selectors';
 
 const FrontendCriteria = ({filterOrderStatusData}) => {
   const dispatch = useDispatch();
-  const [Id, setId] = useState(null);
+
   const testData = useSelector((state) => testDataSelector(state));
 
   useEffect(() => {
@@ -16,16 +16,16 @@ const FrontendCriteria = ({filterOrderStatusData}) => {
   }, [dispatch]);
 
   const handleNameChange = (type, filter) => {
-    console.log(dispatch(filterOrderStatusData({type, value: filter})));
+    dispatch(filterOrderStatusData({type, value: filter}));
   };
 
   return (
     <div>
       <select
         onChange={(e) => {
-          setId(testData[e.target.value]?._id);
-          handleNameChange('_id', Id);
+          handleNameChange('_id', testData[e.target.value]?._id);
         }}>
+        <option value={'all'}>all</option>
         {testData?.map(({_id}, i) => (
           <option value={i} key={i}>
             {_id}

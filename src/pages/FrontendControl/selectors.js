@@ -9,14 +9,12 @@ export const testDataSelector = createSelector(
 
 export const filterSelector = createSelector(
   testSelector,
-  (filter) => console.log(filter?.filters?._id) || null,
+  (filter) => filter?.filters?._id?.value || null,
 );
 
-export const filterNamesSelector = createSelector(filterSelector, (names) => {
-  const selectedFilter = !names
-    ? []
-    : Object.keys(names).filter((nameKey) => names[nameKey].isSelected);
-  return selectedFilter.length ? selectedFilter[0] : 'all';
+export const filterNamesSelector = createSelector(filterSelector, (id) => {
+  const selectedFilter = !id ? [] : id;
+  return selectedFilter?.length ? selectedFilter : 'all';
 });
 
 export const testExampleSelector = createSelector(

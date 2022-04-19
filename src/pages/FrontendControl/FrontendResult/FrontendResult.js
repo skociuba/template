@@ -26,7 +26,7 @@ const FrontendResult = () => {
   const filterData = (data) =>
     data
       ? data.filter((property) =>
-          testFilterSelector === 'all' ? data : property.name === testFilterSelector,
+          testFilterSelector === 'all' ? data : property._id === testFilterSelector,
         )
       : [];
 
