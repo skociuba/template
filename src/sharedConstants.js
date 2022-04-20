@@ -10,6 +10,7 @@ const shared = {
         {name: 'StaticTable', to: '/static-table-page'},
         {name: 'BackendControl', to: '/backend-control-page'},
         {name: 'FrontendControl', to: '/frontend-control-page'},
+        {name: 'FrontendControlWithoutSharedConst', to: '/frontend-control-without-shared-page'},
       ],
     },
   },
