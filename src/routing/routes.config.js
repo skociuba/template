@@ -12,9 +12,6 @@ const FrontendPaginationSorting = lazy(() =>
 const StaticTable = lazy(() => import('../pages/StaticTable/StaticTable'));
 const BackendControl = lazy(() => import('../pages/BackendControl/BackendDisplayComponent'));
 const FrontendControl = lazy(() => import('../pages/FrontendControl/FrontendDisplayComponent'));
-const FrontendControlWithoutSharedConst = lazy(() =>
-  import('../pages/FrontendControlWithoutSharedConst/FrontendDisplayComponent'),
-);
 const paths = {...shared.routes};
 
 let routes = [
@@ -46,11 +43,6 @@ let routes = [
   {
     path: paths.frontendControl.root,
     element: FrontendControl,
-    exact: true,
-  },
-  {
-    path: paths.frontendControlWithoutSharedConst.root,
-    element: FrontendControlWithoutSharedConst,
     exact: true,
   },
   {

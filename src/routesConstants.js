@@ -17,9 +17,6 @@ const routes = {
   frontendControl: {
     root: generatePrefixedRootContext('frontend-control-page'),
   },
-  frontendControlWithoutSharedConst: {
-    root: generatePrefixedRootContext('frontend-control-without-shared-page'),
-  },
 };
 
 export {routes};
