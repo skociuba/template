@@ -1,6 +1,6 @@
 import {all, fork} from 'redux-saga/effects';
 
-import test from './pages/FrontendPaginationSorting/sagas';
+import test from './pages/FrontendControl/sagas';
 import application from './pages/Application/sagas';
 
 const allSagas = [test, application];

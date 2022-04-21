@@ -7,8 +7,8 @@ const paths = {...shared.routes};
 
 const defaultProps = {
   children: <div>Page</div>,
-  path: paths.frontendPaginationSorting.root,
-  redirectTo: paths.frontendPaginationSorting.root,
+  path: paths.frontendControl.root,
+  redirectTo: paths.frontendControl.root,
 };
 
 describe('<RouteNotFound/>', () => {
