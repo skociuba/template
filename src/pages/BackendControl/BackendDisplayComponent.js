@@ -1,18 +1,29 @@
 import React, {useState, useEffect} from 'react';
+import ComponentWrapper from 'seba-container-wrapper';
 import {useDispatch} from 'react-redux';
 
+//import {filterOrderStatusData} from './actions';
 import BackendResult from './BackendResult/BackendResult';
+//import BackendCriteria from './BackendCriteria/BackendCriteria';
 const BackendDisplayComponent = ({
   fetchSearchForFundsResults,
+  fetchSearchForFundsCriteria,
+
+  toggleCriteriaFieldStatus,
   selectedCriteria,
   setSortCriteria,
+  criteriaData,
 }) => {
-  const [startSearchPageItem, setStartSearchPageItem] = useState(0);
+  const [startSearchPageItem, setStartSearchPageItem] = useState(2);
   const [endSearchPageItem, setEndSearchPageItem] = useState(0);
 
   const dispatch = useDispatch();
 
-  const recordPerPage = 2;
+  const recordPerPage = 5;
+
+  // useEffect(() => {
+  //   dispatch(fetchSearchForFundsCriteria());
+  // }, [fetchSearchForFundsCriteria]);
 
   useEffect(() => {
     if (startSearchPageItem && endSearchPageItem) {
@@ -38,15 +49,23 @@ const BackendDisplayComponent = ({
     setStartSearchPageItem(startItem);
     setEndSearchPageItem(endItem);
   };
-  console.log(startSearchPageItem);
 
   return (
     <div>
-      <BackendResult
-        handleSideEffect={handleSideEffect}
-        recordPerPage={recordPerPage}
-        setSortCriteria={setSortCriteria}
-      />
+      <ComponentWrapper hasTopMargin={true}>
+        {/* <BackendCriteria
+          handleSideEffect={handleSideEffect} // to samo co handleSearchResult
+          filterOrderStatusData={filterOrderStatusData} //funkcja updatuje stan w reducerze zamiast setSearchForFundCriteria
+          toggleCriteriaFieldStatus={toggleCriteriaFieldStatus} //funkcja updatuje stan w reducerze
+          criteriaData={criteriaData} //dane ze stanu w moim przypadku z selectora useSelect
+        /> */}
+        <BackendResult
+          handleSideEffect={handleSideEffect}
+          recordPerPage={recordPerPage}
+          setSortCriteria={setSortCriteria}
+          startSearchPageItem={startSearchPageItem}
+        />{' '}
+      </ComponentWrapper>
     </div>
   );
 };

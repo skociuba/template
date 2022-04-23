@@ -1,1 +1,1 @@
-export {default} from './BackendResult';
+export {default} from './FrontendPaginationSorting';

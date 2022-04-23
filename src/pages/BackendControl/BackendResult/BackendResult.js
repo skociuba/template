@@ -6,8 +6,9 @@ import {Pagination} from 'components/Pagination';
 import {sortData} from 'utils/sortData';
 
 import 'react-loading-skeleton/dist/skeleton.css';
-import {fetchTestData} from './actions';
-import {testDataSelector, testLoadingSelector} from './selectors';
+import {fetchBackendData} from '../actions';
+import {testDataSelector, testLoadingSelector} from '../selectors';
+
 import {contentContainer} from './BackendResult.style';
 
 const sortMapping = {
@@ -16,13 +17,13 @@ const sortMapping = {
   trips: 'trips',
 };
 
-const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage}) => {
+const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startSearchPageItem}) => {
   const dispatch = useDispatch();
   const [sortedData, setSortedData] = useState([]);
   const [sortingIndex, setSortingIndex] = useState(2);
   const [sortingStatus, setSortingStatus] = useState(1);
 
-  const testData = useSelector((state) => testDataSelector(state));
+  const testData = useSelector((state) => testDataSelector(state)); //data from result endpoint
 
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
@@ -30,18 +31,25 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage}) => {
   const paginationRef = useRef();
 
   useEffect(() => {
-    dispatch(fetchTestData());
+    dispatch(
+      fetchBackendData({
+        page: startSearchPageItem,
+        size: recordPerPage,
+      }),
+    );
   }, [dispatch]);
 
   useEffect(() => {
     generateTableRows();
-  }, [testData]);
+  }, [sortedData]);
+
+  console.log(handleSorting);
 
   const handleSorting = (columnIndex, sortingType, index, status) => {
     setSortingIndex(index);
     setSortingStatus(status);
     setSortCriteria(
-      //setSortCriteria are coming from backend
+      //setSortCriteria are coming from reducer
       sortingType !== 'default'
         ? [
             {
@@ -72,7 +80,7 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage}) => {
     }
     const rowData = [];
 
-    testData.forEach((row) => {
+    testData?.forEach((row) => {
       let returnValue = {};
       Object.keys(row).forEach((item) => {
         const mappedRowItem = renderItem(row, item);
@@ -106,7 +114,7 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage}) => {
         loading={testLoadingExample}
         headerData={headerData}
         bodyData={sortedData}
-        handleSorting={handleSorting}
+        //  handleSorting={handleSorting}
         defaultSortingIndex={sortingIndex}
         defaultSortingStatus={sortingStatus}
       />
