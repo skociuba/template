@@ -122,7 +122,7 @@ const FrontendResult = () => {
       <Table
         loading={testLoadingExample}
         headerData={headerData}
-        bodyData={sortedData}
+        bodyData={console.log(sortedData)}
         handleSorting={handleSorting}
       />
       <Pagination

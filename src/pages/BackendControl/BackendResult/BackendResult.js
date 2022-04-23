@@ -29,21 +29,20 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startS
 
   const orderTableRef = useRef(null);
   const paginationRef = useRef();
+  console.log(startSearchPageItem);
 
   useEffect(() => {
     dispatch(
       fetchBackendData({
-        page: startSearchPageItem,
+        page: Math.floor(startSearchPageItem / 10),
         size: recordPerPage,
       }),
     );
-  }, [dispatch]);
+  }, [dispatch, startSearchPageItem]);
 
   useEffect(() => {
     generateTableRows();
-  }, [sortedData]);
-
-  console.log(handleSorting);
+  }, [testData]);
 
   const handleSorting = (columnIndex, sortingType, index, status) => {
     setSortingIndex(index);
@@ -80,7 +79,7 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startS
     }
     const rowData = [];
 
-    testData?.forEach((row) => {
+    testData.forEach((row) => {
       let returnValue = {};
       Object.keys(row).forEach((item) => {
         const mappedRowItem = renderItem(row, item);
@@ -108,20 +107,22 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startS
     },
   };
 
+  console.log(sortedData);
+
   return (
     <div className={contentContainer} ref={orderTableRef} data-testid="test-container">
       <Table
         loading={testLoadingExample}
         headerData={headerData}
         bodyData={sortedData}
-        //  handleSorting={handleSorting}
+        handleSorting={handleSorting}
         defaultSortingIndex={sortingIndex}
         defaultSortingStatus={sortingStatus}
       />
       <Pagination
         ref={paginationRef}
         handleSideEffects={handleSideEffect}
-        totalNumberOfRecords={testData?.length}
+        totalNumberOfRecords={5005}
         recordPerPage={recordPerPage}
       />
     </div>

@@ -24,6 +24,6 @@ export const testExampleSelector = createSelector(
   (test) => test?.test?.data?.example || null,
 );
 
-export const testLoadingSelector = createSelector(testSelector, (test) =>
-  test?.test?.loading === undefined ? true : test?.test?.loading,
+export const testLoadingSelector = createSelector(testSelector, (backend) =>
+  backend?.backend?.loading === undefined ? true : backend?.backend?.loading,
 );
