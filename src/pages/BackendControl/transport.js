@@ -6,6 +6,5 @@ export const getTestData = ({config, queryParams}) => {
     url: `${config.urls.backend}?page=${page}&size=${size}`,
     headers: {...config.headers},
   };
-  console.log(queryParams);
   return $get(params);
 };

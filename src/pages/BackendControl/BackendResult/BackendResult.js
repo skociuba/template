@@ -11,17 +11,9 @@ import {testDataSelector, testLoadingSelector} from '../selectors';
 
 import {contentContainer} from './BackendResult.style';
 
-const sortMapping = {
-  _id: '_id',
-  name: 'name',
-  trips: 'trips',
-};
-
-const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startSearchPageItem}) => {
+const BackendResult = ({handleSideEffect, recordPerPage, startSearchPageItem}) => {
   const dispatch = useDispatch();
   const [sortedData, setSortedData] = useState([]);
-  const [sortingIndex, setSortingIndex] = useState(2);
-  const [sortingStatus, setSortingStatus] = useState(1);
 
   const testData = useSelector((state) => testDataSelector(state)); //data from result endpoint
 
@@ -43,22 +35,6 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startS
   useEffect(() => {
     generateTableRows();
   }, [testData]);
-
-  const handleSorting = (columnIndex, sortingType, index, status) => {
-    setSortingIndex(index);
-    setSortingStatus(status);
-    setSortCriteria(
-      //setSortCriteria are coming from reducer
-      sortingType !== 'default'
-        ? [
-            {
-              sortKey: sortMapping[columnIndex],
-              sortOrder: sortingType,
-            },
-          ]
-        : [],
-    );
-  };
 
   const renderItem = (rowItem, key) => {
     switch (key) {
@@ -107,17 +83,13 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startS
     },
   };
 
-  console.log(sortedData);
-
   return (
     <div className={contentContainer} ref={orderTableRef} data-testid="test-container">
       <Table
         loading={testLoadingExample}
         headerData={headerData}
         bodyData={sortedData}
-        handleSorting={handleSorting}
-        defaultSortingIndex={sortingIndex}
-        defaultSortingStatus={sortingStatus}
+        withSorting={false}
       />
       <Pagination
         ref={paginationRef}
