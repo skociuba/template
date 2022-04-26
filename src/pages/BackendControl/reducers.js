@@ -5,32 +5,69 @@ import {
   fetchBackendData,
   fetchBackendSuccess,
   fetchBackendFail,
-  filterOrderStatusData,
+  toggleData,
+  filterData,
+  fetchTestData,
+  fetchTestSuccess,
+  fetchTestFail,
+  resetData,
 } from './actions';
 
-export const initialFilter = {
-  names: shared.names,
-};
-
 export const initialState = {
-  backend: {
-    data: [],
-    loading: true,
+  test: {
+    data: {
+      mappedDataOne: shared.backend.mappedDataOne,
+      mappedDataTwo: shared.backend.mappedDataTwo,
+      sort: shared.defaultSort,
+    },
+    loading: false,
     error: null,
   },
-  filters: {
-    ...initialFilter,
+  backend: {
+    data: [],
+    loading: false,
+    error: null,
   },
 };
 
 export default handleActions(
   {
+    [fetchTestData](state) {
+      return {
+        ...state,
+        test: {
+          ...state.test,
+          loading: true,
+          error: null,
+        },
+      };
+    },
+    [fetchTestSuccess](state, {payload}) {
+      return {
+        ...state,
+        test: {
+          loading: false,
+          ...state.test,
+          data: {...state.test?.data, ...payload?.data},
+          error: null,
+        },
+      };
+    },
+    [fetchTestFail](state, {payload}) {
+      return {
+        ...state,
+        test: {
+          ...state.test,
+          loading: false,
+          error: payload.message,
+        },
+      };
+    },
     [fetchBackendData](state) {
       return {
         ...state,
         backend: {
           ...state.backend,
-          data: [],
           loading: true,
           error: null,
         },
@@ -52,22 +89,56 @@ export default handleActions(
         ...state,
         backend: {
           ...state.backend,
-          data: [],
           loading: false,
           error: payload.message,
         },
       };
     },
-    [filterOrderStatusData](state, {payload}) {
+    [resetData](state) {
       return {
         ...state,
-        filters: {
-          ...state.filters,
-          [payload.type]: {
-            ...initialState.filters[payload.type],
-            [payload.value]: {
-              ...state.filters[payload.type][payload.value],
-              isSelected: true,
+        test: initialState.test,
+      };
+    },
+    [toggleData](state, {payload}) {
+      return {
+        ...state,
+        test: {
+          ...state.test,
+          error: null,
+          data: {
+            ...state.test.data,
+            [payload.type]: {
+              ...state.test.data[payload.type],
+              isActive: payload.value,
+            },
+          },
+        },
+      };
+    },
+    [filterData](state, {payload}) {
+      return {
+        ...state,
+        test: {
+          ...state.test,
+          error: null,
+          data: {
+            ...state.test.data,
+            [payload.type]: {
+              ...state.test.data[payload.type],
+              ...(Object.getOwnPropertyDescriptor(state?.test?.data[payload.type], 'value')
+                ? {value: payload.value}
+                : {
+                    items: state?.test?.data[payload.type]?.items?.map((item, i) => {
+                      return {
+                        ...state?.test?.data[payload.type]?.items[i],
+                        isSelected: Array.isArray(payload.value)
+                          ? payload.value?.filter((nestedItem) => nestedItem === item.key).length >
+                            0
+                          : item.key === payload.value,
+                      };
+                    }),
+                  }),
             },
           },
         },

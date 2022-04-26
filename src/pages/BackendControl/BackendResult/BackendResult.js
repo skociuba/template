@@ -6,8 +6,8 @@ import {Pagination} from 'components/Pagination';
 import {sortData} from 'utils/sortData';
 
 import 'react-loading-skeleton/dist/skeleton.css';
-import {fetchBackendData} from '../actions';
-import {testDataSelector, testLoadingSelector} from '../selectors';
+import {fetchBackendData, fetchTestData} from '../actions';
+import {testDataSelector, testLoadingSelector, criteriaDataSelector} from '../selectors';
 
 import {contentContainer} from './BackendResult.style';
 
@@ -23,13 +23,15 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startS
   const [sortingIndex, setSortingIndex] = useState(2);
   const [sortingStatus, setSortingStatus] = useState(1);
 
-  const testData = useSelector((state) => testDataSelector(state)); //data from result endpoint
+  const testData = useSelector((state) => testDataSelector(state));
+  const criteriaData = useSelector((state) => criteriaDataSelector(state));
+
+  console.log(criteriaData);
 
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
   const orderTableRef = useRef(null);
   const paginationRef = useRef();
-  console.log(startSearchPageItem);
 
   useEffect(() => {
     dispatch(
@@ -39,6 +41,10 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startS
       }),
     );
   }, [dispatch, startSearchPageItem]);
+
+  useEffect(() => {
+    dispatch(fetchTestData());
+  }, [dispatch]);
 
   useEffect(() => {
     generateTableRows();
@@ -106,8 +112,6 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startS
       title: 'trips',
     },
   };
-
-  console.log(sortedData);
 
   return (
     <div className={contentContainer} ref={orderTableRef} data-testid="test-container">

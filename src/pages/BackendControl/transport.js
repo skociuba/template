@@ -1,11 +1,19 @@
 import {$get} from '../../utils/transport';
 
-export const getTestData = ({config, queryParams}) => {
+export const getBackendData = ({config, queryParams}) => {
   const {page, size} = queryParams || {};
   const params = {
     url: `${config.urls.backend}?page=${page}&size=${size}`,
     headers: {...config.headers},
   };
-  console.log(queryParams);
+
+  return $get(params);
+};
+
+export const getTestData = ({config}) => {
+  const params = {
+    url: config.urls.test,
+    headers: {...config.headers},
+  };
   return $get(params);
 };

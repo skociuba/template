@@ -1,4 +1,4 @@
-export const getMappedTestResponse = (response) => {
+export const getMappedBackendResponse = (response) => {
   if (!response?.payload?.data) {
     return null;
   }
@@ -6,5 +6,5 @@ export const getMappedTestResponse = (response) => {
     payload: {data},
   } = response;
 
-  return {data, example: 'hello'};
+  return {data};
 };

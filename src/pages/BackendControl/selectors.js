@@ -6,6 +6,10 @@ export const testDataSelector = createSelector(
   testSelector,
   (backend) => backend?.backend?.data?.data || null,
 );
+export const criteriaDataSelector = createSelector(
+  testSelector,
+  (backend) => backend?.test || null,
+);
 
 export const filterSelector = createSelector(
   testSelector,

@@ -6,10 +6,7 @@ const shared = {
     menu: {
       primary: [
         {name: 'Main', to: '/main-page'},
-        {name: 'FrontendPaginationSorting', to: '/frontend-pagination-sorting'},
-        {name: 'StaticTable', to: '/static-table-page'},
         {name: 'BackendControl', to: '/backend-control-page'},
-        {name: 'FrontendControl', to: '/frontend-control-page'},
       ],
     },
   },
@@ -22,46 +19,54 @@ const shared = {
       title: 'SELL',
     },
   },
-  names: {
-    55: {
-      title: '55',
-      isSelected: false,
+  defaultSort: [
+    {
+      sortKey: 'id',
+      sortOrder: 'desc',
     },
-    all: {
-      title: 'all',
-      isSelected: false,
+  ],
+  getDataFromBackendCriteriaKeys: ['EXAMPLE3', 'EXAMPLE4'],
+  backend: {
+    mappedDataOne: {
+      backendMappingKey: 'EXAMPLE1',
+      items: [
+        {
+          key: 'EXAMPLE1Key1',
+          title: 'EXAMPLE1Key1',
+          isSelected: false,
+        },
+        {
+          key: 'EXAMPLE1Key2',
+          title: 'EXAMPLE1Key2',
+          isSelected: false,
+        },
+        {
+          key: 'EXAMPLE1Key3',
+          title: 'EXAMPLE1Key3',
+          isSelected: false,
+        },
+      ],
     },
-    jony: {
-      title: 'jony',
-      isSelected: false,
-    },
-    'John Doe': {
-      title: `John Doe`,
-      isSelected: false,
-    },
-    TestingFunda6450: {
-      title: 'TestingFunda6450',
-      isSelected: false,
-    },
-    TestingFunda4366: {
-      title: 'TestingFunda4366',
-      isSelected: false,
-    },
-    'TestingFunda5269`': {
-      title: 'TestingFunda5269',
-      isSelected: false,
-    },
-    TestingFunda6524: {
-      title: 'TestingFunda6524',
-      isSelected: false,
-    },
-    TestingFunda9515: {
-      title: 'TestingFunda9515',
-      isSelected: false,
-    },
-    TestingFunda5963: {
-      title: 'TestingFunda5963',
-      isSelected: false,
+
+    mappedDataTwo: {
+      backendMappingKey: 'EXAMPLE2',
+      items: [
+        {
+          key: 'EXAMPLE2Key1',
+          title: 'EXAMPLE2Key1',
+          isSelected: false,
+        },
+        {
+          key: 'EXAMPLE2Key2',
+          title: 'EXAMPLE2Key2',
+          isSelected: false,
+        },
+        {
+          key: 'EXAMPLE2Key3',
+          title: 'EXAMPLE2Key3',
+          isSelected: false,
+        },
+      ],
     },
   },
 };

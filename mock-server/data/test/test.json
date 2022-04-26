@@ -9,11 +9,11 @@
       ]
     },
     {
-      "criteriaKey": "EXAMPLE1",
+      "criteriaKey": "EXAMPLE2",
       "items": [
-        {"itemKey": "EXAMPLE1Key1", "itemValue": "EXAMPLE1Key1", "parent": null},
-        {"itemKey": "EXAMPLE1Key2", "itemValue": "EXAMPLE1Key2", "parent": null},
-        {"itemKey": "EXAMPLE1Key3", "itemValue": "EXAMPLE1Key3", "parent": null}
+        {"itemKey": "EXAMPLE2Key1", "itemValue": "EXAMPLE2Key1", "parent": null},
+        {"itemKey": "EXAMPLE2Key2", "itemValue": "EXAMPLE2Key2", "parent": null},
+        {"itemKey": "EXAMPLE2Key3", "itemValue": "EXAMPLE2Key3", "parent": null}
       ]
     }
   ]
