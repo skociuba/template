@@ -1,13 +1,13 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import Table from 'components/Table';
 import {Pagination} from 'components/Pagination';
 import {sortData} from 'utils/sortData';
 
 import 'react-loading-skeleton/dist/skeleton.css';
-import {fetchBackendData, fetchTestData} from '../actions';
-import {testDataSelector, testLoadingSelector, criteriaDataSelector} from '../selectors';
+
+import {testLoadingSelector} from '../selectors';
 
 import {contentContainer} from './BackendResult.style';
 
@@ -17,34 +17,24 @@ const sortMapping = {
   trips: 'trips',
 };
 
-const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startSearchPageItem}) => {
-  const dispatch = useDispatch();
+const BackendResult = ({
+  setSortCriteria,
+  handleSideEffect,
+  totalNumberOfRecords,
+  recordPerPage,
+  testData,
+  setSortData,
+}) => {
   const [sortedData, setSortedData] = useState([]);
   const [sortingIndex, setSortingIndex] = useState(2);
   const [sortingStatus, setSortingStatus] = useState(1);
 
-  const testData = useSelector((state) => testDataSelector(state));
-  const criteriaData = useSelector((state) => criteriaDataSelector(state));
-
-  console.log(criteriaData);
+  const dispatch = useDispatch();
 
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
   const orderTableRef = useRef(null);
   const paginationRef = useRef();
-
-  useEffect(() => {
-    dispatch(
-      fetchBackendData({
-        page: Math.floor(startSearchPageItem / 10),
-        size: recordPerPage,
-      }),
-    );
-  }, [dispatch, startSearchPageItem]);
-
-  useEffect(() => {
-    dispatch(fetchTestData());
-  }, [dispatch]);
 
   useEffect(() => {
     generateTableRows();
@@ -53,17 +43,19 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startS
   const handleSorting = (columnIndex, sortingType, index, status) => {
     setSortingIndex(index);
     setSortingStatus(status);
-    setSortCriteria(
-      //setSortCriteria are coming from reducer
-      sortingType !== 'default'
-        ? [
-            {
-              sortKey: sortMapping[columnIndex],
-              sortOrder: sortingType,
-            },
-          ]
-        : [],
+    dispatch(
+      setSortData(
+        sortingType !== 'default'
+          ? [
+              {
+                sortKey: sortMapping[columnIndex],
+                sortOrder: sortingType,
+              },
+            ]
+          : [],
+      ),
     );
+    paginationRef.current.jumpToPage(1);
   };
 
   const renderItem = (rowItem, key) => {
@@ -126,7 +118,7 @@ const BackendResult = ({setSortCriteria, handleSideEffect, recordPerPage, startS
       <Pagination
         ref={paginationRef}
         handleSideEffects={handleSideEffect}
-        totalNumberOfRecords={5005}
+        totalNumberOfRecords={totalNumberOfRecords}
         recordPerPage={recordPerPage}
       />
     </div>

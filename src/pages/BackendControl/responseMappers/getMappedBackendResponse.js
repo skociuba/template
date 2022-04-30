@@ -3,8 +3,8 @@ export const getMappedBackendResponse = (response) => {
     return null;
   }
   const {
-    payload: {data},
+    payload: {data, totalPages},
   } = response;
 
-  return {data};
+  return {data, totalPages};
 };

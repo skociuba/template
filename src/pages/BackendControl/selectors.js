@@ -6,6 +6,11 @@ export const testDataSelector = createSelector(
   testSelector,
   (backend) => backend?.backend?.data?.data || null,
 );
+
+export const totalPagesSelector = createSelector(
+  testSelector,
+  (backend) => backend?.backend?.data?.totalPages || null,
+);
 export const criteriaDataSelector = createSelector(
   testSelector,
   (backend) => backend?.test || null,

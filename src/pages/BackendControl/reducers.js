@@ -11,6 +11,7 @@ import {
   fetchTestSuccess,
   fetchTestFail,
   resetData,
+  sortData,
 } from './actions';
 
 export const initialState = {
@@ -91,6 +92,18 @@ export default handleActions(
           ...state.backend,
           loading: false,
           error: payload.message,
+        },
+      };
+    },
+    [sortData](state, {payload}) {
+      return {
+        ...state,
+        test: {
+          ...state.test,
+          data: {
+            ...state.test.data,
+            sort: payload,
+          },
         },
       };
     },
