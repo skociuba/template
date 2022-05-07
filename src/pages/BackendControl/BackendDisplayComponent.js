@@ -2,17 +2,18 @@ import React, {useState, useEffect} from 'react';
 import ComponentWrapper from 'seba-container-wrapper';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {testDataSelector, totalPagesSelector} from './selectors';
+import {testDataSelector, totalPagesSelector, criteriaDataSelector} from './selectors';
 import {fetchBackendData, fetchTestData, sortData} from './actions';
-//import {filterOrderStatusData} from './actions';
+import {filterData, toggleData, resetData} from './actions';
 import BackendResult from './BackendResult/BackendResult';
-//import BackendCriteria from './BackendCriteria/BackendCriteria';
+import BackendCriteria from './BackendCriteria/BackendCriteria';
 const BackendDisplayComponent = () => {
   const dispatch = useDispatch();
   const [startSearchPageItem, setStartSearchPageItem] = useState(0);
   const [endSearchPageItem, setEndSearchPageItem] = useState(0);
   const testData = useSelector((state) => testDataSelector(state));
   const selectedCriteria = useSelector((state) => testDataSelector(state)); // ad this in selector and they going to body in response endpoint
+  const criteriaData = useSelector((state) => criteriaDataSelector(state));
   const totalNumberOfRecords = useSelector((state) => totalPagesSelector(state));
 
   const recordPerPage = 10;
@@ -60,15 +61,20 @@ const BackendDisplayComponent = () => {
     setEndSearchPageItem(endItem);
   };
 
+  console.log(criteriaData);
+
   return (
     <div>
       <ComponentWrapper hasTopMargin={true}>
-        {/* <BackendCriteria
-          handleSideEffect={handleSideEffect} // to samo co handleSearchResult
-          filterOrderStatusData={filterOrderStatusData} //funkcja updatuje stan w reducerze zamiast setSearchForFundCriteria
-          toggleCriteriaFieldStatus={toggleCriteriaFieldStatus} //funkcja updatuje stan w reducerze
-          criteriaData={criteriaData} //dane ze stanu w moim przypadku z selectora useSelect
-        /> */}
+        {
+          <BackendCriteria
+            handleSideEffect={handleSideEffect} // to samo co handleSearchResult
+            filterData={filterData} //funkcja updatuje stan w reducerze zamiast setSearchForFundCriteria
+            toggleData={toggleData} //funkcja updatuje stan w reducerze
+            criteriaData={criteriaData} //dane ze stanu w moim przypadku z selectora useSelect
+            resetData={resetData}
+          />
+        }
         <BackendResult
           testData={testData}
           handleSideEffect={handleSideEffect}

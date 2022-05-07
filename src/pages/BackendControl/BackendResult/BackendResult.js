@@ -18,7 +18,6 @@ const sortMapping = {
 };
 
 const BackendResult = ({
-  setSortCriteria,
   handleSideEffect,
   totalNumberOfRecords,
   recordPerPage,

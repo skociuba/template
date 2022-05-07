@@ -11,10 +11,6 @@ export const totalPagesSelector = createSelector(
   testSelector,
   (backend) => backend?.backend?.data?.totalPages || null,
 );
-export const criteriaDataSelector = createSelector(
-  testSelector,
-  (backend) => backend?.test || null,
-);
 
 export const filterSelector = createSelector(
   testSelector,
@@ -28,9 +24,9 @@ export const filterNamesSelector = createSelector(filterSelector, (names) => {
   return selectedFilter.length ? selectedFilter[0] : 'all';
 });
 
-export const testExampleSelector = createSelector(
+export const criteriaDataSelector = createSelector(
   testSelector,
-  (test) => test?.test?.data?.example || null,
+  (test) => test?.test?.data || null,
 );
 
 export const testLoadingSelector = createSelector(testSelector, (backend) =>
