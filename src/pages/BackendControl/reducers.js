@@ -138,7 +138,7 @@ export default handleActions(
           data: {
             ...state.test.data,
             [payload.type]: {
-              ...state.test.data[payload.type],
+              ...console.log(state?.test?.data[payload.type]),
               ...(Object.getOwnPropertyDescriptor(state?.test?.data[payload.type], 'value')
                 ? {value: payload.value}
                 : {
@@ -146,7 +146,7 @@ export default handleActions(
                       return {
                         ...state?.test?.data[payload.type]?.items[i],
                         isSelected: Array.isArray(payload.value)
-                          ? payload.value?.filter((nestedItem) => nestedItem === item.key).length >
+                          ? payload?.value?.filter((nestedItem) => nestedItem === item.key).length >
                             0
                           : item.key === payload.value,
                       };
