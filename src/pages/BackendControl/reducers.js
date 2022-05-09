@@ -138,7 +138,7 @@ export default handleActions(
           data: {
             ...state.test.data,
             [payload.type]: {
-              ...console.log(state?.test?.data[payload.type]),
+              ...state?.test?.data[payload.type],
               ...(Object.getOwnPropertyDescriptor(state?.test?.data[payload.type], 'value')
                 ? {value: payload.value}
                 : {

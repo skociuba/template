@@ -36,9 +36,22 @@ const BackendCriteria = ({filterData, toggleData, handleSideEffect, criteriaData
     <div>
       <select
         onChange={(e) => {
-          handleNameChange(e, 'EXAMPLE1');
+          handleNameChange(e, 'mappedDataOne');
         }}>
+        <option value={'all'}>all</option>
         {criteriaData.mappedDataOne?.items?.map((item) => (
+          <option value={item.key} key={item.key}>
+            {item.title}
+          </option>
+        ))}
+      </select>
+      <p />
+      <select
+        onChange={(e) => {
+          handleNameChange(e, 'mappedDataTwo');
+        }}>
+        <option value={'all'}>all</option>
+        {criteriaData.mappedDataTwo?.items?.map((item) => (
           <option value={item.key} key={item.key}>
             {item.title}
           </option>
