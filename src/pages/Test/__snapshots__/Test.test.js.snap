@@ -18,7 +18,69 @@ exports[`<Test/> render without crashing 1`] = `
 >
   <section
     data-testid="test-container"
-  />
+  >
+    <div>
+      <form>
+        <input
+          type="text"
+          value=""
+        />
+        <button
+          class="mdc-button"
+          type="submit"
+        >
+          <span
+            class="mdc-button__label"
+          >
+            search
+          </span>
+        </button>
+      </form>
+    </div>
+    <section>
+      <h2>
+        a
+      </h2>
+      <article>
+        <h3>
+          aaaa
+        </h3>
+        <p>
+          aaaa
+        </p>
+      </article>
+      <article>
+        <h3>
+          abbb
+        </h3>
+        <p>
+          abbb
+        </p>
+      </article>
+    </section>
+    <section>
+      <h2>
+        b
+      </h2>
+      <article>
+        <h3>
+          bbbb
+        </h3>
+        <p>
+          bbbb
+        </p>
+      </article>
+      <article>
+        <h3>
+          bccc
+        </h3>
+        <p>
+          bccc
+        </p>
+      </article>
+    </section>
+    <p />
+  </section>
 </div>
 `;
 
@@ -40,7 +102,69 @@ exports[`<Test/> render without crashing with testDataSelector 1`] = `
 >
   <section
     data-testid="test-container"
-  />
+  >
+    <div>
+      <form>
+        <input
+          type="text"
+          value=""
+        />
+        <button
+          class="mdc-button"
+          type="submit"
+        >
+          <span
+            class="mdc-button__label"
+          >
+            search
+          </span>
+        </button>
+      </form>
+    </div>
+    <section>
+      <h2>
+        a
+      </h2>
+      <article>
+        <h3>
+          aaaa
+        </h3>
+        <p>
+          aaaa
+        </p>
+      </article>
+      <article>
+        <h3>
+          abbb
+        </h3>
+        <p>
+          abbb
+        </p>
+      </article>
+    </section>
+    <section>
+      <h2>
+        b
+      </h2>
+      <article>
+        <h3>
+          bbbb
+        </h3>
+        <p>
+          bbbb
+        </p>
+      </article>
+      <article>
+        <h3>
+          bccc
+        </h3>
+        <p>
+          bccc
+        </p>
+      </article>
+    </section>
+    <p />
+  </section>
 </div>
 `;
 
@@ -62,7 +186,69 @@ exports[`<Test/> render without crashing with testExampleSelector 1`] = `
 >
   <section
     data-testid="test-container"
-  />
+  >
+    <div>
+      <form>
+        <input
+          type="text"
+          value=""
+        />
+        <button
+          class="mdc-button"
+          type="submit"
+        >
+          <span
+            class="mdc-button__label"
+          >
+            search
+          </span>
+        </button>
+      </form>
+    </div>
+    <section>
+      <h2>
+        a
+      </h2>
+      <article>
+        <h3>
+          aaaa
+        </h3>
+        <p>
+          aaaa
+        </p>
+      </article>
+      <article>
+        <h3>
+          abbb
+        </h3>
+        <p>
+          abbb
+        </p>
+      </article>
+    </section>
+    <section>
+      <h2>
+        b
+      </h2>
+      <article>
+        <h3>
+          bbbb
+        </h3>
+        <p>
+          bbbb
+        </p>
+      </article>
+      <article>
+        <h3>
+          bccc
+        </h3>
+        <p>
+          bccc
+        </p>
+      </article>
+    </section>
+    <p />
+  </section>
 </div>
 `;
 
@@ -84,6 +270,68 @@ exports[`<Test/> render without crashing with testLoadingSelector 1`] = `
 >
   <section
     data-testid="test-container"
-  />
+  >
+    <div>
+      <form>
+        <input
+          type="text"
+          value=""
+        />
+        <button
+          class="mdc-button"
+          type="submit"
+        >
+          <span
+            class="mdc-button__label"
+          >
+            search
+          </span>
+        </button>
+      </form>
+    </div>
+    <section>
+      <h2>
+        a
+      </h2>
+      <article>
+        <h3>
+          aaaa
+        </h3>
+        <p>
+          aaaa
+        </p>
+      </article>
+      <article>
+        <h3>
+          abbb
+        </h3>
+        <p>
+          abbb
+        </p>
+      </article>
+    </section>
+    <section>
+      <h2>
+        b
+      </h2>
+      <article>
+        <h3>
+          bbbb
+        </h3>
+        <p>
+          bbbb
+        </p>
+      </article>
+      <article>
+        <h3>
+          bccc
+        </h3>
+        <p>
+          bccc
+        </p>
+      </article>
+    </section>
+    <p />
+  </section>
 </div>
 `;
