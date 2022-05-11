@@ -1,0 +1,30 @@
+{
+  "fullContent": [
+    {
+      "character": "a",
+      "content": [
+        {
+          "title": "aaaa",
+          "text": "aaaa"
+        },
+        {
+          "title": "abbb",
+          "text": "abbb"
+        }
+      ]
+    },
+    {
+      "character": "b",
+      "content": [
+        {
+          "title": "bbbb",
+          "text": "bbbb"
+        },
+        {
+          "title": "bccc",
+          "text": "bccc"
+        }
+      ]
+    }
+  ]
+}
