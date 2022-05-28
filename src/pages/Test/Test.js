@@ -4,14 +4,16 @@ import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 
 import 'react-loading-skeleton/dist/skeleton.css';
-import {fetchTestData} from './actions';
-import {testDataSelector, testLoadingSelector} from './selectors';
-import {contentContainer} from './Test.style';
+import {ErrorMessage} from '../../components/ErrorMessage/index';
 
+import {fetchTestData} from './actions';
+import {testDataSelector, testLoadingSelector, errorSelector} from './selectors';
+import {contentContainer} from './Test.style';
 const Test = () => {
   const dispatch = useDispatch();
 
   const testData = useSelector((state) => testDataSelector(state));
+  const errorCode = useSelector((state) => errorSelector(state));
 
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
@@ -23,6 +25,7 @@ const Test = () => {
     <Skeleton count={100} />
   ) : (
     <section data-testid="test-container">
+      {ErrorMessage(errorCode)}
       {testData?.length > 0 &&
         testData.map((user) => (
           <div key={user._id}>

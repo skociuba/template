@@ -6,6 +6,7 @@ export const testDataSelector = createSelector(
   testSelector,
   (test) => test?.test?.data?.data || null,
 );
+export const errorSelector = createSelector(testSelector, (test) => test?.test?.error || null);
 
 export const testExampleSelector = createSelector(
   testSelector,

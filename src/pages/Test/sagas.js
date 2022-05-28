@@ -12,7 +12,6 @@ export function* getTestSaga() {
     }
     yield put(fetchTestSuccess({data: getMappedTestResponse(response) || null}));
   } catch (e) {
-    yield put(console.log(e.message));
     yield put(fetchTestFail(e));
   }
 }
