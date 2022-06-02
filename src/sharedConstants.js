@@ -19,13 +19,24 @@ const shared = {
       title: 'SELL',
     },
   },
+
+  getDataFromBackendCriteriaKeys: ['EXAMPLE3', 'EXAMPLE4'],
+
   defaultSort: [
     {
-      sortKey: 'id',
+      sortKey: '_id',
       sortOrder: 'desc',
     },
   ],
-  getDataFromBackendCriteriaKeys: ['EXAMPLE3', 'EXAMPLE4'],
+
+  defaultDetailedCriteria: [
+    {
+      criteriaKey: 'PST',
+      criteriaValue: 'UT',
+      operator: 'eq',
+    },
+  ],
+
   backend: {
     mappedDataOne: {
       backendMappingKey: 'EXAMPLE1',
@@ -34,18 +45,23 @@ const shared = {
           key: 'EXAMPLE1Key1',
           title: 'EXAMPLE1Key1',
           isSelected: false,
+          range: {min: 1, max: 2},
         },
         {
           key: 'EXAMPLE1Key2',
           title: 'EXAMPLE1Key2',
           isSelected: false,
+          range: {min: 3, max: 4},
         },
         {
           key: 'EXAMPLE1Key3',
           title: 'EXAMPLE1Key3',
           isSelected: false,
+          range: {min: 5, max: 5},
         },
       ],
+      operator: '',
+      type: 'range',
     },
 
     mappedDataTwo: {
@@ -67,6 +83,14 @@ const shared = {
           isSelected: false,
         },
       ],
+      operator: 'in',
+      type: 'detailed',
+    },
+    input: {
+      backendMappingKey: 'keyword',
+      value: '',
+      operator: 'in',
+      type: 'detailed',
     },
   },
 };

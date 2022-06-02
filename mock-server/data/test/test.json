@@ -16,5 +16,17 @@
         {"itemKey": "EXAMPLE2Key3", "itemValue": "EXAMPLE2Key3", "parent": null}
       ]
     }
+  ],
+  "minMaxCriterias": [
+    {
+      "criteriaKey": "WAGA",
+      "minimum": 40,
+      "maximum": 100
+    },
+    {
+      "criteriaKey": "WZROST",
+      "minimum": 150,
+      "maximum": 190
+    }
   ]
 }

@@ -19,6 +19,7 @@ export const initialState = {
     data: {
       mappedDataOne: shared.backend.mappedDataOne,
       mappedDataTwo: shared.backend.mappedDataTwo,
+      input: shared.backend.input,
       sort: shared.defaultSort,
     },
     loading: false,

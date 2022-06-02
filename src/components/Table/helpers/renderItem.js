@@ -9,7 +9,7 @@ const renderItem = (item) => {
     case 'one':
       return <div>{item?.value}</div>;
     case 'bigLetter':
-      return <div>{item?.value.toUpperCase()}</div>;
+      return <div>{item?.value?.toUpperCase()}</div>;
     default:
       return <div>{item?.value}</div>;
   }

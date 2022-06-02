@@ -9,10 +9,31 @@ import {
 } from './actions';
 import {getBackendData, getTestData} from './transport';
 import {getMappedBackendResponse, getMappedTestResponse} from './responseMappers';
+
+export const getDetailedCriteria = (data) => {
+  const detailed = [...data];
+  detailed.push({
+    criteriaKey: 'dodatkowe kryteria dla customera umieszczone w saga',
+    criteriaValue: 'y',
+    operator: 'eq',
+  });
+  return detailed;
+};
+
 export function* getBackendSaga(action) {
   try {
     const config = yield select(({application}) => application.config);
-    const response = yield call(getBackendData, {config, queryParams: action.payload});
+    const response = yield call(getBackendData, {
+      config,
+      queryParams: action.payload,
+      criteria: {
+        ...action.payload.criteria,
+        detailed: yield getDetailedCriteria(action.payload.criteria.detailed),
+      },
+      startItem: action.payload.startItem,
+      endItem: action.payload.endItem,
+      recordPerPage: action.payload.recordPerPage,
+    });
     if (!response) {
       throw console.log('not found');
     }

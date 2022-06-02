@@ -2,7 +2,12 @@ import React, {useState, useEffect} from 'react';
 import ComponentWrapper from 'seba-container-wrapper';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {testDataSelector, totalPagesSelector, criteriaDataSelector} from './selectors';
+import {
+  testDataSelector,
+  totalPagesSelector,
+  criteriaDataSelector,
+  getAllSelectedCriteria,
+} from './selectors';
 import {fetchBackendData, fetchTestData, sortData} from './actions';
 import {filterData, toggleData, resetData} from './actions';
 import BackendResult from './BackendResult/BackendResult';
@@ -12,38 +17,45 @@ const BackendDisplayComponent = () => {
   const [startSearchPageItem, setStartSearchPageItem] = useState(0);
   const [endSearchPageItem, setEndSearchPageItem] = useState(0);
   const testData = useSelector((state) => testDataSelector(state));
-  const selectedCriteria = useSelector((state) => testDataSelector(state)); // ad this in selector and they going to body in response endpoint
+  const selectedCriteria = useSelector((state) => getAllSelectedCriteria(state));
   const criteriaData = useSelector((state) => criteriaDataSelector(state));
   const totalNumberOfRecords = useSelector((state) => totalPagesSelector(state));
 
   const recordPerPage = 10;
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  // tu się trochę miesza bo żebysortować i paginować trzeba mieć zwrucony endpoint, a do tego trzeba inną paginację => page: Math.floor(startSearchPageItem / 10), a jak odpalę ten drugi use efect to nie mam tabeli i nie mogę sortować ani paginować
+
   useEffect(() => {
     dispatch(
       fetchBackendData({
         page: Math.floor(startSearchPageItem / 10),
         size: recordPerPage,
+        criteria: selectedCriteria,
+        startItem: startSearchPageItem,
+        endItem: endSearchPageItem,
+        recordPerPage: recordPerPage,
       }),
     );
-  }, [dispatch, startSearchPageItem]);
+  }, [dispatch, startSearchPageItem, endSearchPageItem]);
 
   //przykład z origin
 
-  useEffect(() => {
-    if (startSearchPageItem && endSearchPageItem) {
-      dispatch(
-        fetchBackendData({
-          criteria: selectedCriteria,
-          startItem: startSearchPageItem,
-          endItem: endSearchPageItem,
-          recordPerPage: recordPerPage,
-        }),
-      );
-      setStartSearchPageItem(0);
-      setEndSearchPageItem(0);
-    }
-  }, [startSearchPageItem, endSearchPageItem]);
+  // useEffect(() => {
+  //   if (startSearchPageItem && endSearchPageItem) {
+  //     dispatch(
+  //       fetchBackendData({
+  //         criteria: selectedCriteria,
+  //         startItem: startSearchPageItem,
+  //         endItem: endSearchPageItem,
+  //         recordPerPage: recordPerPage,
+  //       }),
+  //     );
+  //     setStartSearchPageItem(0);
+  //     setEndSearchPageItem(0);
+  //   }
+  // }, [dispatch, startSearchPageItem, endSearchPageItem]);
 
   //     po kliknięciu funkcji  handleSideEffect startSearchPageItem i endSearchPageItem zmienia sie na niezerowe i w wyniku czego odpalana jest funkcja fetchSearchForFundsResults wraz z przesłaniem parametrów w body, ta sama funkcja przesłana do paginacji powoduje że wartości startItem, endItem przesyłają odpowiednie dane jako parametry
   //     selectedCriteria tworzone jest w selectorze i zwraca wartość filtracji sortowania i range???
@@ -61,14 +73,12 @@ const BackendDisplayComponent = () => {
     setEndSearchPageItem(endItem);
   };
 
-  console.log(criteriaData);
-
   return (
     <div>
       <ComponentWrapper hasTopMargin={true}>
         {
           <BackendCriteria
-            handleSideEffect={handleSideEffect} // to samo co handleSearchResult
+            handleSideEffect={handleSideEffect}
             filterData={filterData} //funkcja updatuje stan w reducerze zamiast setSearchForFundCriteria
             toggleData={toggleData} //funkcja updatuje stan w reducerze
             criteriaData={criteriaData} //dane ze stanu w moim przypadku z selectora useSelect

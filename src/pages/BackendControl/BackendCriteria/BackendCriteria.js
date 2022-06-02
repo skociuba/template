@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import Button from '@material/react-button';
 import {useDispatch} from 'react-redux';
 import '../../../index.scss';
 
@@ -12,11 +13,7 @@ const BackendCriteria = ({filterData, toggleData, handleSideEffect, criteriaData
     dispatch(fetchTestData());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(handleSideEffect()); //czy to potrzebne?
-  // }, [criteriaData]);
-
-  const handleNameChange = (event, criteriaType) => {
+  const handleCriteriaSearch = (event, criteriaType) => {
     const value = event.target ? event.target.value : event.value;
     if (criteriaType) {
       const hasDependant = !!(
@@ -34,9 +31,11 @@ const BackendCriteria = ({filterData, toggleData, handleSideEffect, criteriaData
 
   return (
     <div>
+      <Button onClick={handleSideEffect}>search</Button>
+      <p />
       <select
         onChange={(e) => {
-          handleNameChange(e, 'mappedDataOne');
+          handleCriteriaSearch(e, 'mappedDataOne');
         }}>
         <option value={'all'}>all</option>
         {criteriaData.mappedDataOne?.items?.map((item) => (
@@ -47,8 +46,14 @@ const BackendCriteria = ({filterData, toggleData, handleSideEffect, criteriaData
       </select>
       <p />
       <select
+        // multiple={true}        for multiple select
+        // value={
+        //   criteriaData.mappedDataTwo?.items
+        //     ?.filter(({isSelected}) => isSelected === true)
+        //     ?.map((item) => ({value: item.key, label: item.title})) || []
+        // }
         onChange={(e) => {
-          handleNameChange(e, 'mappedDataTwo');
+          handleCriteriaSearch(e, 'mappedDataTwo');
         }}>
         <option value={'all'}>all</option>
         {criteriaData.mappedDataTwo?.items?.map((item) => (
@@ -57,6 +62,18 @@ const BackendCriteria = ({filterData, toggleData, handleSideEffect, criteriaData
           </option>
         ))}
       </select>
+      <p />
+      <input
+        value={criteriaData?.input?.value}
+        onChange={(e) => {
+          handleCriteriaSearch({value: e?.target?.value}, 'input');
+        }}
+        onKeyDown={({key}) => {
+          if (key === 'Enter') {
+            handleSideEffect();
+          }
+        }}
+      />
     </div>
   );
 };

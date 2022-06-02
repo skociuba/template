@@ -32,7 +32,7 @@ const BackendResult = ({
 
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
-  const orderTableRef = useRef(null);
+  const resultTableRef = useRef(null);
   const paginationRef = useRef();
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const BackendResult = ({
           : [],
       ),
     );
-    paginationRef.current.jumpToPage(1);
+    paginationRef.current.handleJumpToPage(1);
   };
 
   const renderItem = (rowItem, key) => {
@@ -105,7 +105,7 @@ const BackendResult = ({
   };
 
   return (
-    <div className={contentContainer} ref={orderTableRef} data-testid="test-container">
+    <div className={contentContainer} ref={resultTableRef} data-testid="test-container">
       <Table
         loading={testLoadingExample}
         headerData={headerData}
@@ -116,6 +116,7 @@ const BackendResult = ({
       />
       <Pagination
         ref={paginationRef}
+        onChange={() => {}}
         handleSideEffects={handleSideEffect}
         totalNumberOfRecords={totalNumberOfRecords}
         recordPerPage={recordPerPage}
