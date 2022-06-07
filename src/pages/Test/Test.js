@@ -5,6 +5,7 @@ import Skeleton from 'react-loading-skeleton';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {ErrorMessage} from '../../components/ErrorMessage/index';
+import {FallbackIndicator} from '../../components/FallbackIndicator/index';
 
 import {fetchTestData} from './actions';
 import {testDataSelector, testLoadingSelector, errorSelector} from './selectors';
@@ -14,6 +15,8 @@ const Test = () => {
 
   const testData = useSelector((state) => testDataSelector(state));
   const errorCode = useSelector((state) => errorSelector(state));
+
+  const example = null;
 
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
 
@@ -29,10 +32,13 @@ const Test = () => {
       {testData?.length > 0 &&
         testData.map((user) => (
           <div key={user._id}>
-            {user.name}--{user.trips}
+            <FallbackIndicator>{user.name}</FallbackIndicator>--
+            <FallbackIndicator>{user.trips}</FallbackIndicator>
             {user?.airline?.map((item) => (
               <p key={item.id}>
-                {item.name}--{item.head_quaters}
+                <FallbackIndicator>{item.name}</FallbackIndicator>--
+                <FallbackIndicator>{item.head_quaters}</FallbackIndicator>
+                <FallbackIndicator>{example}</FallbackIndicator>
               </p>
             ))}
           </div>
