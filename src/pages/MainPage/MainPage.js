@@ -4,6 +4,8 @@ import {IS_STAFF} from 'config/constants';
 import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
 import {roundNumber, currencyFormatter, positiveInteger} from 'utils/numbers/index';
 
+import {CustomInput} from '../../components/CustomInput/index';
+
 //import ComponentWrapper from 'seba-container-wrapper';
 import {contentContainer} from './MainPage.style';
 const MainPage = () => {
@@ -29,8 +31,19 @@ const MainPage = () => {
   return (
     <div className={contentContainer}>
       {IS_STAFF ? <div>MAIN PAGE for staff</div> : <div>MAIN PAGE for customer</div>}
-
       {deviceSize()}
+      <p>
+        currency input
+        <CustomInput type="currency" />
+      </p>
+      <p>
+        phone input
+        <CustomInput type="phone" />
+      </p>
+      <p>
+        prefix input
+        <CustomInput prefix={<span>GBP</span>} />
+      </p>
     </div>
   );
 };
