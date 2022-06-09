@@ -42,7 +42,7 @@ const MainPage = () => {
       </p>
       <p>
         prefix input
-        <CustomInput prefix={<span>GBP</span>} />
+        <CustomInput prefix={<span>GBP</span>} suffix={<span>suffix</span>} />
       </p>
     </div>
   );

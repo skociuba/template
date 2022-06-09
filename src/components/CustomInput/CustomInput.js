@@ -141,7 +141,7 @@ const CustomInput = forwardRef(
               ? inputValue
               : value
           }
-          className={input}
+          className={input(prefix, suffix)}
           ref={inputRef}
           {...props}
         />
