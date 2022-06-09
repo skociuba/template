@@ -4,11 +4,14 @@ export const input = (prefix, suffix) => css`
   height: 30px;
   border: none;
   box-sizing: border-box;
-  padding-left: ${prefix ? '45px' : '0'};
-  padding-right: ${suffix ? '45px' : '0'};
+  padding-left: ${prefix ? '45px' : '5px'};
+  padding-right: ${suffix ? '45px' : '5px'};
   width: 200px;
+  border: none;
+  outline: none;
 `;
 export const container = css`
+  align-items: center;
   span:first-child {
     position: absolute;
     bottom: 5px;
