@@ -18,7 +18,62 @@ exports[`<Test/> render without crashing 1`] = `
 >
   <section
     data-testid="test-container"
-  />
+  >
+    <p>
+      <div
+        class="mdc-snackbar mdc-snackbar--opening"
+      >
+        <div
+          class="mdc-snackbar__surface"
+        >
+          <div
+            aria-live="polite"
+            class="mdc-snackbar__label"
+            role="status"
+          >
+            Unauthorized
+          </div>
+          <div
+            class="mdc-snackbar__actions"
+          >
+            <button
+              class="mdc-button mdc-snackbar__action"
+              type="button"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </p>
+    <p>
+      <div
+        class="mdc-snackbar mdc-snackbar--opening"
+      >
+        <div
+          class="mdc-snackbar__surface"
+        >
+          <div
+            aria-live="polite"
+            class="mdc-snackbar__label"
+            role="status"
+          >
+             Bad Request
+          </div>
+          <div
+            class="mdc-snackbar__actions"
+          >
+            <button
+              class="mdc-button mdc-snackbar__action"
+              type="button"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </p>
+  </section>
 </div>
 `;
 
@@ -40,7 +95,62 @@ exports[`<Test/> render without crashing with testDataSelector 1`] = `
 >
   <section
     data-testid="test-container"
-  />
+  >
+    <p>
+      <div
+        class="mdc-snackbar mdc-snackbar--opening"
+      >
+        <div
+          class="mdc-snackbar__surface"
+        >
+          <div
+            aria-live="polite"
+            class="mdc-snackbar__label"
+            role="status"
+          >
+            Unauthorized
+          </div>
+          <div
+            class="mdc-snackbar__actions"
+          >
+            <button
+              class="mdc-button mdc-snackbar__action"
+              type="button"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </p>
+    <p>
+      <div
+        class="mdc-snackbar mdc-snackbar--opening"
+      >
+        <div
+          class="mdc-snackbar__surface"
+        >
+          <div
+            aria-live="polite"
+            class="mdc-snackbar__label"
+            role="status"
+          >
+             Bad Request
+          </div>
+          <div
+            class="mdc-snackbar__actions"
+          >
+            <button
+              class="mdc-button mdc-snackbar__action"
+              type="button"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </p>
+  </section>
 </div>
 `;
 
@@ -62,7 +172,62 @@ exports[`<Test/> render without crashing with testExampleSelector 1`] = `
 >
   <section
     data-testid="test-container"
-  />
+  >
+    <p>
+      <div
+        class="mdc-snackbar mdc-snackbar--opening"
+      >
+        <div
+          class="mdc-snackbar__surface"
+        >
+          <div
+            aria-live="polite"
+            class="mdc-snackbar__label"
+            role="status"
+          >
+            Unauthorized
+          </div>
+          <div
+            class="mdc-snackbar__actions"
+          >
+            <button
+              class="mdc-button mdc-snackbar__action"
+              type="button"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </p>
+    <p>
+      <div
+        class="mdc-snackbar mdc-snackbar--opening"
+      >
+        <div
+          class="mdc-snackbar__surface"
+        >
+          <div
+            aria-live="polite"
+            class="mdc-snackbar__label"
+            role="status"
+          >
+             Bad Request
+          </div>
+          <div
+            class="mdc-snackbar__actions"
+          >
+            <button
+              class="mdc-button mdc-snackbar__action"
+              type="button"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </p>
+  </section>
 </div>
 `;
 
@@ -84,6 +249,61 @@ exports[`<Test/> render without crashing with testLoadingSelector 1`] = `
 >
   <section
     data-testid="test-container"
-  />
+  >
+    <p>
+      <div
+        class="mdc-snackbar mdc-snackbar--opening"
+      >
+        <div
+          class="mdc-snackbar__surface"
+        >
+          <div
+            aria-live="polite"
+            class="mdc-snackbar__label"
+            role="status"
+          >
+            Unauthorized
+          </div>
+          <div
+            class="mdc-snackbar__actions"
+          >
+            <button
+              class="mdc-button mdc-snackbar__action"
+              type="button"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </p>
+    <p>
+      <div
+        class="mdc-snackbar mdc-snackbar--opening"
+      >
+        <div
+          class="mdc-snackbar__surface"
+        >
+          <div
+            aria-live="polite"
+            class="mdc-snackbar__label"
+            role="status"
+          >
+             Bad Request
+          </div>
+          <div
+            class="mdc-snackbar__actions"
+          >
+            <button
+              class="mdc-button mdc-snackbar__action"
+              type="button"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </p>
+  </section>
 </div>
 `;
