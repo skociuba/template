@@ -1,7 +1,8 @@
 import {routes} from './routesConstants';
-
+import config from './config/dynamicConfig';
 const shared = {
   routes: routes,
+  config,
   header: {
     menu: {
       primary: [

@@ -5,6 +5,7 @@ import Skeleton from 'react-loading-skeleton';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {ErrorMessage} from '../../components/ErrorMessage/index';
+import {ErrorNotification} from '../../components/ErrorNotification/index';
 import {FallbackIndicator} from '../../components/FallbackIndicator/index';
 
 import {fetchTestData} from './actions';
@@ -24,11 +25,14 @@ const Test = () => {
     dispatch(fetchTestData());
   }, [dispatch]);
 
+  const error = {errors: [{reasonCode: '401'}, {reasonCode: '400'}]};
+
   const componentContent = testLoadingExample ? (
     <Skeleton count={100} />
   ) : (
     <section data-testid="test-container">
       {ErrorMessage(errorCode)}
+      <ErrorNotification errors={error} />
       {testData?.length > 0 &&
         testData.map((user) => (
           <div key={user._id}>
