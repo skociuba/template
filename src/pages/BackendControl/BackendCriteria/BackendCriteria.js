@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import Button from '@material/react-button';
 import {useDispatch} from 'react-redux';
 import '../../../index.scss';
+import Multiselect from 'multiselect-react-dropdown';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {fetchTestData} from '../actions';
@@ -14,7 +15,7 @@ const BackendCriteria = ({filterData, toggleData, handleSideEffect, criteriaData
   }, [dispatch]);
 
   const handleCriteriaSearch = (event, criteriaType) => {
-    const value = event.target ? event.target.value : event.value;
+    const value = event.target ? event.target.value : event.value ? event.value : event;
     if (criteriaType) {
       const hasDependant = !!(
         criteriaData[criteriaType]?.dependant && criteriaData[criteriaType]?.dependant.length
@@ -25,7 +26,6 @@ const BackendCriteria = ({filterData, toggleData, handleSideEffect, criteriaData
         });
       }
     }
-
     dispatch(filterData({type: criteriaType, value}));
   };
 
@@ -45,13 +45,25 @@ const BackendCriteria = ({filterData, toggleData, handleSideEffect, criteriaData
         ))}
       </select>
       <p />
-      <select
-        // multiple={true}        for multiple select
-        // value={
-        //   criteriaData.mappedDataTwo?.items
-        //     ?.filter(({isSelected}) => isSelected === true)
-        //     ?.map((item) => ({value: item.key, label: item.title})) || []
-        // }
+      <Multiselect
+        value={
+          criteriaData.mappedDataTwo?.items
+            ?.filter(({isSelected}) => isSelected === true)
+            ?.map((item) => ({value: item.key, label: item.title})) || []
+        }
+        options={criteriaData?.mappedDataTwo?.items?.map((item) => item)}
+        onSelect={(e) => {
+          handleCriteriaSearch(e, 'mappedDataTwo');
+        }}
+        displayValue="title"
+      />
+      {/* <select
+        multiple={true}
+        value={
+          criteriaData.mappedDataTwo?.items
+            ?.filter(({isSelected}) => isSelected === true)
+            ?.map((item) => ({value: item.key, label: item.title})) || []
+        }
         onChange={(e) => {
           handleCriteriaSearch(e, 'mappedDataTwo');
         }}>
@@ -61,7 +73,7 @@ const BackendCriteria = ({filterData, toggleData, handleSideEffect, criteriaData
             {item.title}
           </option>
         ))}
-      </select>
+      </select> */}
       <p />
       <input
         value={criteriaData?.input?.value}

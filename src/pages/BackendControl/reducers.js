@@ -131,6 +131,8 @@ export default handleActions(
       };
     },
     [filterData](state, {payload}) {
+      const payloadValue = // add to custom multiselect
+        typeof payload.value !== 'string' ? payload.value.map((item) => item.title) : payload.value;
       return {
         ...state,
         test: {
@@ -141,15 +143,14 @@ export default handleActions(
             [payload.type]: {
               ...state?.test?.data[payload.type],
               ...(Object.getOwnPropertyDescriptor(state?.test?.data[payload.type], 'value')
-                ? {value: payload.value}
+                ? {value: payloadValue}
                 : {
                     items: state?.test?.data[payload.type]?.items?.map((item, i) => {
                       return {
                         ...state?.test?.data[payload.type]?.items[i],
-                        isSelected: Array.isArray(payload.value)
-                          ? payload?.value?.filter((nestedItem) => nestedItem === item.key).length >
-                            0
-                          : item.key === payload.value,
+                        isSelected: Array.isArray(payloadValue)
+                          ? payloadValue?.filter((nestedItem) => nestedItem === item.key).length > 0
+                          : item.key === payloadValue,
                       };
                     }),
                   }),
