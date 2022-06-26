@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 
 import 'react-loading-skeleton/dist/skeleton.css';
-import {ErrorMessage} from '../../components/ErrorMessage/index';
-import {ErrorNotification} from '../../components/ErrorNotification/index';
-import {FallbackIndicator} from '../../components/FallbackIndicator/index';
+import {ErrorMessage} from '../../components/Modules/ErrorMessage/index';
+import {ErrorNotification} from '../../components/Packages/ErrorNotification/index';
+import {FallbackIndicator} from '../../components/Packages/FallbackIndicator/index';
 
 import {fetchTestData} from './actions';
 import {testDataSelector, testLoadingSelector, errorSelector} from './selectors';
@@ -33,16 +33,16 @@ const Test = () => {
     <section data-testid="test-container">
       {ErrorMessage(errorCode)}
       <ErrorNotification errors={error} />
+      <FallbackIndicator>{example}</FallbackIndicator>
       {testData?.length > 0 &&
         testData.map((user) => (
           <div key={user._id}>
-            <FallbackIndicator>{user.name}</FallbackIndicator>--
+            <FallbackIndicator>{user.name}</FallbackIndicator>
             <FallbackIndicator>{user.trips}</FallbackIndicator>
             {user?.airline?.map((item) => (
               <p key={item.id}>
-                <FallbackIndicator>{item.name}</FallbackIndicator>--
+                <FallbackIndicator>{item.name}</FallbackIndicator>
                 <FallbackIndicator>{item.head_quaters}</FallbackIndicator>
-                <FallbackIndicator>{example}</FallbackIndicator>
               </p>
             ))}
           </div>

@@ -5,8 +5,8 @@ import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
 import {roundNumber, currencyFormatter, positiveInteger} from 'utils/numbers/index';
 import {getFormattedDate} from 'utils/dates/index';
 
-import {ErrorMessage} from '../../components/ErrorMessage/index';
-import {convertData, validateData} from '../../components/validation/index';
+import {ErrorMessage} from '../../components/Modules/ErrorMessage/index';
+import {convertData, validateData} from '../../components/Modules/validation/index';
 import {exampleValidation} from '../MainPage/Example.validationSchema';
 
 //import ComponentWrapper from 'seba-container-wrapper';

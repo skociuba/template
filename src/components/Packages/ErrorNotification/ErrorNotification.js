@@ -6,7 +6,7 @@ const {
   config: {channelType},
 } = shared;
 
-import {ErrorMessage} from '../ErrorMessagesEnhancement/';
+import {ErrorMessage} from '../../Modules/ErrorMessagesEnhancement';
 
 const ErrorNotification = ({errors}) =>
   errors?.errors?.length
