@@ -73,6 +73,11 @@ exports[`<Test/> render without crashing 1`] = `
         </div>
       </div>
     </p>
+    <span
+      data-testid="fallbackIndicator"
+    >
+      -
+    </span>
   </section>
 </div>
 `;
@@ -150,6 +155,11 @@ exports[`<Test/> render without crashing with testDataSelector 1`] = `
         </div>
       </div>
     </p>
+    <span
+      data-testid="fallbackIndicator"
+    >
+      -
+    </span>
   </section>
 </div>
 `;
@@ -227,6 +237,11 @@ exports[`<Test/> render without crashing with testExampleSelector 1`] = `
         </div>
       </div>
     </p>
+    <span
+      data-testid="fallbackIndicator"
+    >
+      -
+    </span>
   </section>
 </div>
 `;
@@ -304,6 +319,11 @@ exports[`<Test/> render without crashing with testLoadingSelector 1`] = `
         </div>
       </div>
     </p>
+    <span
+      data-testid="fallbackIndicator"
+    >
+      -
+    </span>
   </section>
 </div>
 `;
