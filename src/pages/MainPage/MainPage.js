@@ -3,6 +3,7 @@ import {media, useMedia} from 'components/Media';
 import {IS_STAFF} from 'config/constants';
 import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
 import {roundNumber, currencyFormatter, positiveInteger} from 'utils/numbers/index';
+import {getFormattedDate} from 'utils/dates/index';
 
 import {ErrorMessage} from '../../components/ErrorMessage/index';
 import {convertData, validateData} from '../../components/validation/index';
@@ -22,6 +23,7 @@ const MainPage = () => {
   console.log(positiveInteger(-222.5, 'intParam'));
   console.log(roundNumber(222.44444445));
   console.log(currencyFormatter(222333.3335));
+  console.log(getFormattedDate('2022-06-15'));
 
   const handleValidation = (schema, data, key = null) => {
     const dataToValidate = key
