@@ -6,7 +6,11 @@ import Application from '../pages/Application/Application';
 import {shared} from '../sharedConstants';
 
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
-const TestPage = lazy(() => import('../pages/Test/Test'));
+const ErrorsDisplay = lazy(() => import('../pages/ErrorsDisplay/ErrorDisplay'));
+const ValidationDisplay = lazy(() => import('../pages/ValidationDisplay/ValidationDisplay'));
+const WizardDisplay = lazy(() => import('../pages/WizardDisplay/WizardDisplay'));
+const ListDisplay = lazy(() => import('../pages/ListDisplay/ListDisplay'));
+const SearchDisplay = lazy(() => import('../pages/SearchDisplay/SearchDisplay'));
 const paths = {...shared.routes};
 
 let routes = [
@@ -21,8 +25,28 @@ let routes = [
     exact: true,
   },
   {
-    path: paths.testPage.root,
-    element: TestPage,
+    path: paths.errorPage.root,
+    element: ErrorsDisplay,
+    exact: true,
+  },
+  {
+    path: paths.validationDisplay.root,
+    element: ValidationDisplay,
+    exact: true,
+  },
+  {
+    path: paths.wizardDisplay.root,
+    element: WizardDisplay,
+    exact: true,
+  },
+  {
+    path: paths.listDisplay.root,
+    element: ListDisplay,
+    exact: true,
+  },
+  {
+    path: paths.searchDisplay.root,
+    element: SearchDisplay,
     exact: true,
   },
   {

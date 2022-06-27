@@ -5,8 +5,20 @@ const routes = {
   mainPage: {
     root: generatePrefixedRootContext('main-page'),
   },
-  testPage: {
-    root: generatePrefixedRootContext('test-page'),
+  errorPage: {
+    root: generatePrefixedRootContext('error-page'),
+  },
+  validationDisplay: {
+    root: generatePrefixedRootContext('validation-page'),
+  },
+  wizardDisplay: {
+    root: generatePrefixedRootContext('wizard-page'),
+  },
+  listDisplay: {
+    root: generatePrefixedRootContext('list-page'),
+  },
+  searchDisplay: {
+    root: generatePrefixedRootContext('search-page'),
   },
 };
 

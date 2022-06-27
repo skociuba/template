@@ -1,3 +1,5 @@
+import {render} from '@testing-library/react';
+
 import Test from './Test';
 
 const mockDispatch = jest.fn();
@@ -63,7 +65,7 @@ describe('<Test/>', () => {
     expect(getByTestId('test-container')).toBeInTheDocument();
   });
 
-  it('handle fetch fetchTestData', () => {
+  it('handle fetch data action', () => {
     const fetchTestData = jest.fn();
     render(
       <Test

@@ -10,7 +10,7 @@ import {FallbackIndicator} from '../../components/Packages/FallbackIndicator/ind
 
 import {fetchTestData} from './actions';
 import {testDataSelector, testLoadingSelector, errorSelector} from './selectors';
-import {contentContainer} from './Test.style';
+import {contentContainer} from './ErrorDisplay.style';
 const Test = () => {
   const dispatch = useDispatch();
 

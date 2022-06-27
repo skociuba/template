@@ -7,7 +7,11 @@ const shared = {
     menu: {
       primary: [
         {name: 'Main', to: '/main-page'},
-        {name: 'Test', to: '/test-page'},
+        {name: 'Error', to: '/error-page'},
+        {name: 'Validation', to: '/validation-page'},
+        {name: 'Wizard', to: '/wizard-page'},
+        {name: 'List', to: '/list-page'},
+        {name: 'Search', to: '/search-page'},
       ],
     },
   },
