@@ -8,7 +8,7 @@ const paths = {...shared.routes};
 const RequireSearchParam = ({children, path}) => {
   const [searchParam] = useSearchParams();
 
-  if (path === paths.testPage.root) {
+  if (path === paths.errorPage.root) {
     try {
       const paramForUrl = searchParam.get('paramForUrl');
       const paramForComponent = searchParam.get('paramForComponent');
@@ -20,7 +20,7 @@ const RequireSearchParam = ({children, path}) => {
             paramForComponent,
           }),
         );
-        return <Navigate to={`${paths.testPage.root}/${paramForUrl}`} />;
+        return <Navigate to={`${paths.errorPage.root}/${paramForUrl}`} />;
       } else {
         return <Navigate to={paths.mainPage.root} />;
       }
