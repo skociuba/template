@@ -9,8 +9,6 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 import {testLoadingSelector} from '../selectors';
 
-import {} from './BackendResult.style';
-
 const sortMapping = {
   _id: '_id',
   name: 'name',
