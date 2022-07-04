@@ -4,7 +4,7 @@ import {BsChevronDoubleUp, BsChevronDoubleDown} from 'react-icons/bs';
 
 const MAP_SORTING_OPTION = ['default', 'desc', 'asc'];
 
-import {sorterContainer, sortingContainer, dataContainer} from './TableForDevice.style';
+import {sorterContainer, sortingContainer, dataContainer, table} from './TableForDevice.style';
 const TableForDevice = ({
   className,
   renderItem,
@@ -39,7 +39,7 @@ const TableForDevice = ({
   };
 
   return (
-    <table data-testid={dataTestId}>
+    <table data-testid={dataTestId} className={table}>
       <thead>
         <tr>
           {Object.keys(headerData).map((itemKey, index) => (
@@ -57,10 +57,8 @@ const TableForDevice = ({
         {bodyData.map((rowData, rowIndex) => (
           <React.Fragment key={rowIndex}>
             <tr>
-              {' '}
               {Object.keys(headerData).map((itemKey, index) => (
                 <td key={index}>
-                  {' '}
                   <div className={dataContainer}>{renderItem(rowData[itemKey])} </div>
                 </td>
               ))}

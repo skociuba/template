@@ -73,11 +73,6 @@ const shared = {
           isSelected: false,
         },
         {
-          key: 'All',
-          title: 'All',
-          isSelected: false,
-        },
-        {
           key: 'EXAMPLE2Key2',
           title: 'EXAMPLE2Key2',
           isSelected: false,

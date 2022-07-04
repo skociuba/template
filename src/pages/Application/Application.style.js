@@ -2,11 +2,12 @@ import {css} from 'emotion.instance';
 
 export const applicationWrapper = css`
   min-height: 100vh;
+  width: 100%;
+  display: flex;
   background: #6a899c;
   flex-direction: column;
   overflow: hidden;
   margin: 20px;
-  position: relative;
 `;
 export const mobileApplicationWrapper = css`
   min-height: 100vh;

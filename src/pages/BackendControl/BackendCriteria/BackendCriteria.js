@@ -55,7 +55,12 @@ const BackendCriteria = ({filterData, toggleData, handleSideEffect, criteriaData
         onSelect={(e) => {
           handleCriteriaSearch(e, 'mappedDataTwo');
         }}
+        showCheckbox={true}
+        placeholder="All"
         displayValue="title"
+        onRemove={(e) => {
+          handleCriteriaSearch(e, 'mappedDataTwo');
+        }}
       />
       {/* <select
         multiple={true}

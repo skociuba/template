@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import ComponentWrapper from 'seba-container-wrapper';
 import {useDispatch, useSelector} from 'react-redux';
+
+import {ComponentWrapper} from '../../components/ComponentWrapper/index';
 
 import {
   testDataSelector,
@@ -21,23 +22,25 @@ const BackendDisplayComponent = () => {
   const criteriaData = useSelector((state) => criteriaDataSelector(state));
   const totalNumberOfRecords = useSelector((state) => totalPagesSelector(state));
 
-  const recordPerPage = 10;
+  const recordPerPage = 5;
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // tu się trochę miesza bo żebysortować i paginować trzeba mieć zwrucony endpoint, a do tego trzeba inną paginację => page: Math.floor(startSearchPageItem / 10), a jak odpalę ten drugi use efect to nie mam tabeli i nie mogę sortować ani paginować
 
   useEffect(() => {
-    dispatch(
-      fetchBackendData({
-        page: Math.floor(startSearchPageItem / 10),
-        size: recordPerPage,
-        criteria: selectedCriteria,
-        startItem: startSearchPageItem,
-        endItem: endSearchPageItem,
-        recordPerPage: recordPerPage,
-      }),
-    );
+    if (startSearchPageItem && endSearchPageItem) {
+      dispatch(
+        fetchBackendData({
+          page: Math.floor(startSearchPageItem / 5),
+          size: recordPerPage,
+          criteria: selectedCriteria,
+          startItem: startSearchPageItem,
+          endItem: endSearchPageItem,
+          recordPerPage: recordPerPage,
+        }),
+      );
+    }
   }, [dispatch, startSearchPageItem, endSearchPageItem]);
 
   //przykład z origin
@@ -74,27 +77,25 @@ const BackendDisplayComponent = () => {
   };
 
   return (
-    <div>
-      <ComponentWrapper hasTopMargin={true}>
-        {
-          <BackendCriteria
-            handleSideEffect={handleSideEffect}
-            filterData={filterData} //funkcja updatuje stan w reducerze zamiast setSearchForFundCriteria
-            toggleData={toggleData} //funkcja updatuje stan w reducerze
-            criteriaData={criteriaData} //dane ze stanu w moim przypadku z selectora useSelect
-            resetData={resetData}
-          />
-        }
-        <BackendResult
-          testData={testData}
+    <ComponentWrapper hasTopMargin={true} hasBottomMargin={true}>
+      {
+        <BackendCriteria
           handleSideEffect={handleSideEffect}
-          recordPerPage={recordPerPage}
-          startSearchPageItem={startSearchPageItem}
-          totalNumberOfRecords={totalNumberOfRecords}
-          setSortData={sortData}
-        />{' '}
-      </ComponentWrapper>
-    </div>
+          filterData={filterData} //funkcja updatuje stan w reducerze zamiast setSearchForFundCriteria
+          toggleData={toggleData} //funkcja updatuje stan w reducerze
+          criteriaData={criteriaData} //dane ze stanu w moim przypadku z selectora useSelect
+          resetData={resetData}
+        />
+      }
+      <BackendResult
+        testData={testData}
+        handleSideEffect={handleSideEffect}
+        recordPerPage={recordPerPage}
+        startSearchPageItem={startSearchPageItem}
+        totalNumberOfRecords={totalNumberOfRecords}
+        setSortData={sortData}
+      />{' '}
+    </ComponentWrapper>
   );
 };
 

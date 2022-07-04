@@ -9,7 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 import {testLoadingSelector} from '../selectors';
 
-import {contentContainer} from './BackendResult.style';
+import {} from './BackendResult.style';
 
 const sortMapping = {
   _id: '_id',
@@ -105,7 +105,7 @@ const BackendResult = ({
   };
 
   return (
-    <div className={contentContainer} ref={resultTableRef} data-testid="test-container">
+    <div ref={resultTableRef} data-testid="test-container">
       <Table
         loading={testLoadingExample}
         headerData={headerData}

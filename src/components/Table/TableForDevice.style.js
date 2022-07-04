@@ -1,5 +1,15 @@
 import {css} from 'emotion.instance';
 
+export const table = css`
+  overflow-y: hidden;
+  padding: 0;
+  margin: 0;
+  height: auto;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+`;
+
 export const sortingContainer = css`
   display: flex;
   align-items: baseline;

@@ -90,16 +90,15 @@ const Application = ({children}) => {
       );
     } else {
       return (
-        <>
+        <div className={applicationWrapper}>
           <Menu
             data={headerData}
             handleNavigation={handleNavigation}
             rightSideMenuElements={<div />}
           />
-          <div className={applicationWrapper}>
-            <Suspense fallback={<div />}>{children}</Suspense>
-          </div>
-        </>
+
+          <Suspense fallback={<div />}>{children}</Suspense>
+        </div>
       );
     }
   };
