@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {emptyTable} from './Table.style';
 import renderItem from './helpers/renderItem';
 import TableForDevice from './TableForDevice';
 
@@ -18,7 +19,7 @@ const Table = ({
   return (
     <div data-testid={dataTestId}>
       {loading || !bodyData?.length ? (
-        <div>NO DATA</div>
+        <div className={emptyTable}>NO DATA</div>
       ) : (
         <>
           <TableForDevice

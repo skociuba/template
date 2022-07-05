@@ -2,8 +2,8 @@ import React from 'react';
 import {media, useMedia} from 'components/Media';
 import {IS_STAFF} from 'config/constants';
 import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
+import ComponentWrapper from 'seba-container-wrapper';
 
-import {contentContainer} from './MainPage.style';
 const MainPage = () => {
   const isMobile = useMedia(media.device.mobile);
   const isTablet = useMedia(media.device.tablet);
@@ -22,11 +22,11 @@ const MainPage = () => {
   };
   //process.env.REACT_APP_CHANNEL_TYPE === 'staff' better way then IS_STAFF
   return (
-    <div className={contentContainer}>
+    <ComponentWrapper hasTopMargin={true} hasBottomMargin={true}>
       {IS_STAFF ? <div>MAIN PAGE for staff</div> : <div>MAIN PAGE for customer</div>}
 
       {deviceSize()}
-    </div>
+    </ComponentWrapper>
   );
 };
 
