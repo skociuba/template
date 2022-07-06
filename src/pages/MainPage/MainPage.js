@@ -4,6 +4,7 @@ import {IS_STAFF} from 'config/constants';
 import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
 import {roundNumber, currencyFormatter, positiveInteger} from 'utils/numbers/index';
 import {getFormattedDate} from 'utils/dates/index';
+import {QuoteIndicator} from 'components/Packages/QuoteIndicator/index';
 
 //import ComponentWrapper from 'seba-container-wrapper';
 import {contentContainer} from './MainPage.style';
@@ -32,6 +33,8 @@ const MainPage = () => {
     <div className={contentContainer}>
       {IS_STAFF ? <div>MAIN PAGE for staff</div> : <div>MAIN PAGE for customer</div>}
       {deviceSize()}
+      <p />
+      <QuoteIndicator value={-10} prefix={'GBP'} suffix={'suffix'} />
     </div>
   );
 };
