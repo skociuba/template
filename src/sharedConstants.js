@@ -12,6 +12,12 @@ const shared = {
     },
   },
   mapping: [{value: 'testData', label: 'MappedData'}],
+
+  selectExample: [
+    {value: 'B', label: 'BUY'},
+    {value: 'S', label: 'SELL'},
+  ],
+
   statuses: {
     B: {
       title: 'BUY',

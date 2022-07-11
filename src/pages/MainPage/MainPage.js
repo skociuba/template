@@ -1,20 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {media, useMedia} from 'components/Media';
 import {IS_STAFF} from 'config/constants';
 import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
 import {roundNumber, currencyFormatter, positiveInteger} from 'utils/numbers/index';
 import {getFormattedDate} from 'utils/dates/index';
+import {shared} from 'sharedConstants';
 
-import {ErrorMessage} from '../../components/Modules/ErrorMessage/index';
-import {convertData, validateData} from '../../components/Modules/validation/index';
-import {exampleValidation} from '../MainPage/Example.validationSchema';
-
-//import ComponentWrapper from 'seba-container-wrapper';
 import {contentContainer} from './MainPage.style';
 const MainPage = () => {
-  const [errors, setErrors] = useState({});
-  const [inputValue, setInputValue] = useState('');
-
+  const [select, setSelect] = useState(shared.selectExample[0].value);
   const isMobile = useMedia(media.device.mobile);
   const isTablet = useMedia(media.device.tablet);
 
@@ -24,45 +18,43 @@ const MainPage = () => {
   console.log(roundNumber(222.44444445));
   console.log(currencyFormatter(222333.3335));
   console.log(getFormattedDate('2022-06-15'));
+  //example how to check and display right data from backend
+  //  below data from backend
+  const someData = [
+    {
+      transactionType: 'B',
+      value: 2,
+    },
+  ];
 
-  const handleValidation = (schema, data, key = null) => {
-    const dataToValidate = key
-      ? {
-          dataToValidate: data,
-          singleDataElementToCheck: {[key]: convertData(data, key)},
-        }
-      : data;
-    const validatedData = validateData({schema, dataToValidate, errors});
+  const getCorrectData = someData?.find(
+    ({transactionType}) => shared.statuses[transactionType]?.title === 'BUY',
+  );
+  const displayCorrectData = getCorrectData ? getCorrectData?.value : '-';
 
-    setErrors({...validatedData.errors});
+  console.log(displayCorrectData);
+  //////////////////////////////////////////////////////////////
 
-    return validatedData.isValid;
-  };
+  useEffect(() => {
+    const {value} = select || {};
 
-  const handleValue = ({target: {value}}) => {
-    setInputValue(value < 0 ? value * -1 : value);
-  };
-
-  const handleCheck = () => {
-    const value = inputValue || null;
-
-    const isValid = handleValidation(
-      exampleValidation({
-        minimum: 1,
-        maximum: 1000,
-        value: value,
-      }),
-      {
-        value: value,
-      },
-    );
-
-    if (isValid) {
-      console.log(value);
-    } else {
-      console.log(errors?.value?.message);
+    switch (value) {
+      case 'B':
+        setSelect('B');
+        break;
+      case 'S':
+        setSelect('S');
+        break;
     }
+  }, []);
+
+  const handleChange = (e) => {
+    setSelect(shared.selectExample[e.target.value].value);
   };
+
+  console.log(select);
+
+  ////////////////////////////////////////////////////////////////////////////////////////
 
   const deviceSize = () => {
     if (isMobile) {
@@ -76,13 +68,15 @@ const MainPage = () => {
   //process.env.REACT_APP_CHANNEL_TYPE === 'staff' better way then IS_STAFF
   return (
     <div className={contentContainer}>
-      {ErrorMessage(errors?.value?.message)}
       {IS_STAFF ? <div>MAIN PAGE for staff</div> : <div>MAIN PAGE for customer</div>}
       {deviceSize()}
-      <p>
-        <input value={inputValue} onChange={handleValue} />
-      </p>
-      <button onClick={handleCheck}>check validation</button>
+      <select onChange={handleChange}>
+        {shared.selectExample?.map(({label}, i) => (
+          <option value={i} key={i}>
+            {label}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
