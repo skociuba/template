@@ -34,6 +34,10 @@ const shared = {
     404: {title: 'Not Found'},
     405: {title: 'Method Not Allowed'},
   },
+  subscriptionType: {
+    subscription: 'SUBSCRIPTION',
+    derive: 'DERIVE',
+  },
 };
 
 export {shared};

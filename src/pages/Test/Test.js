@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
+// import {shared} from 'sharedConstants';
 
 import 'react-loading-skeleton/dist/skeleton.css';
 import {ErrorMessage} from '../../components/Modules/ErrorMessage/index';
@@ -11,6 +12,9 @@ import {FallbackIndicator} from '../../components/Packages/FallbackIndicator/ind
 import {fetchTestData} from './actions';
 import {testDataSelector, testLoadingSelector, errorSelector} from './selectors';
 import {contentContainer} from './Test.style';
+
+// const {subscriptionType} = shared || {};
+
 const Test = () => {
   const dispatch = useDispatch();
 
@@ -20,6 +24,14 @@ const Test = () => {
   const example = null;
 
   const testLoadingExample = useSelector((state) => testLoadingSelector(state));
+
+  // const subscriptionParams = (type) => ({
+  //   ...(type === subscriptionType.subscription ? {} : {}),
+  // });
+
+  // useEffect(() => {
+  //   dispatch(fetchTestData(subscriptionParams(subscriptionType.subscription)));
+  // }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchTestData());
