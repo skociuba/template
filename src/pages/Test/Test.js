@@ -98,6 +98,50 @@ const Test = () => {
     };
   }, []);
 
+  const exampleHeaderData = useMemo(() => {
+    return {
+      fundName: {
+        title: 'fundName',
+      },
+      currency: {
+        title: 'currency',
+      },
+    };
+  }, []);
+
+  const exampleTableData = useMemo(() => {
+    if (!testData) {
+      return [];
+    }
+
+    return [
+      {
+        fundName: {
+          key: 'fundName',
+          value: [
+            {
+              key: 'name',
+              value: testData[0].name,
+            },
+            {key: 'code', value: '12345'},
+          ],
+          type: 'nestedIndicator',
+        },
+        currency: {
+          key: 'currency',
+          value: [
+            {
+              key: 'name',
+              value: 'GBP',
+            },
+            {key: 'value', value: '12345'},
+          ],
+          type: 'nestedIndicator',
+        },
+      },
+    ];
+  }, [testData]);
+
   const content = (
     <section data-testid="test-container">
       <Table
@@ -108,6 +152,13 @@ const Test = () => {
         bodyData={sortedData}
         totalNumberOfRecords={bodyData?.length}
         handleSorting={handleSorting}
+      />
+      <p />
+      <Table
+        withSorting={false}
+        headerData={exampleHeaderData}
+        bodyData={exampleTableData}
+        loading={testLoadingExample}
       />
     </section>
   );

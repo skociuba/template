@@ -18,6 +18,8 @@ const TableForDevice = ({
   const [sortingIndex, setSortingIndex] = useState(null);
   const [currentSortingStatus, setCurrentSortingStatus] = useState(0);
 
+  console.log(bodyData);
+
   const Sorter = ({index}) => (
     <div className={sorterContainer(index === sortingIndex ? currentSortingStatus : 0)}>
       <Button>top</Button>
@@ -34,6 +36,7 @@ const TableForDevice = ({
       handleSorting(item, MAP_SORTING_OPTION[sortingStatus]);
     }
   };
+
   return (
     <table data-testid={dataTestId} {...props}>
       <thead>
@@ -41,7 +44,6 @@ const TableForDevice = ({
           {Object.keys(headerData).map((itemKey, index) => (
             <th key={index} onClick={withSorting ? handleSortBy.bind(this, index, itemKey) : null}>
               <div className={sortingContainer}>
-                {' '}
                 {headerData[itemKey]?.title}
                 {withSorting && <Sorter index={index} />}
               </div>
@@ -53,10 +55,8 @@ const TableForDevice = ({
         {bodyData.map((rowData, rowIndex) => (
           <React.Fragment key={rowIndex}>
             <tr>
-              {' '}
               {Object.keys(headerData).map((itemKey, index) => (
                 <td key={index}>
-                  {' '}
                   <div className={dataContainer}>{renderItem(rowData[itemKey])} </div>
                 </td>
               ))}

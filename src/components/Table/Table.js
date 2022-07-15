@@ -44,7 +44,7 @@ const Table = ({
     }
     return queryParams.get('page');
   };
-
+  console.log(dataSlice);
   return (
     <div data-testid={dataTestId}>
       {loading || !bodyData?.length ? (
