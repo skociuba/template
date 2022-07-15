@@ -26,6 +26,14 @@ exports[`<Test/> render without crashing 1`] = `
         NO DATA
       </div>
     </div>
+    <p />
+    <div
+      data-testid="table"
+    >
+      <div>
+        NO DATA
+      </div>
+    </div>
   </section>
 </div>
 `;
@@ -49,6 +57,14 @@ exports[`<Test/> render without crashing with testDataSelector 1`] = `
   <section
     data-testid="test-container"
   >
+    <div
+      data-testid="table"
+    >
+      <div>
+        NO DATA
+      </div>
+    </div>
+    <p />
     <div
       data-testid="table"
     >
@@ -86,6 +102,14 @@ exports[`<Test/> render without crashing with testExampleSelector 1`] = `
         NO DATA
       </div>
     </div>
+    <p />
+    <div
+      data-testid="table"
+    >
+      <div>
+        NO DATA
+      </div>
+    </div>
   </section>
 </div>
 `;
@@ -109,6 +133,14 @@ exports[`<Test/> render without crashing with testLoadingSelector 1`] = `
   <section
     data-testid="test-container"
   >
+    <div
+      data-testid="table"
+    >
+      <div>
+        NO DATA
+      </div>
+    </div>
+    <p />
     <div
       data-testid="table"
     >
