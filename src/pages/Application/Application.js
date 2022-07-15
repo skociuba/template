@@ -50,12 +50,13 @@ const Application = ({children}) => {
     menu: {
       ...shared.header.menu,
       primary: [
-        ...shared.header.menu.primary.map((menuItem) => {
-          return {
-            name: menuItem.name,
-            to: menuItem.to,
-          };
-        }),
+        ...shared.header.menu.primary.map(
+          (menuItem) =>
+            menuItem.showFor.includes(process.env.REACT_APP_CHANNEL_TYPE) && {
+              name: menuItem.name,
+              to: menuItem.to,
+            },
+        ),
       ],
     },
   };

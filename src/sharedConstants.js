@@ -6,8 +6,10 @@ const shared = {
   header: {
     menu: {
       primary: [
-        {name: 'Main', to: '/main-page'},
-        {name: 'Test', to: '/test-page'},
+        {name: 'Main', to: '/main-page', showFor: ['staff', 'customer']},
+        {name: 'Test', to: '/test-page', showFor: ['staff', 'customer']},
+        {name: 'for Staff', to: '/', showFor: ['staff']},
+        {name: 'for Customer', to: '/', showFor: ['customer']},
       ],
     },
   },
