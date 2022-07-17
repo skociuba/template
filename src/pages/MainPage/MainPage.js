@@ -4,6 +4,7 @@ import {IS_STAFF} from 'config/constants';
 import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
 import {roundNumber, currencyFormatter, positiveInteger} from 'utils/numbers/index';
 import {getFormattedDate} from 'utils/dates/index';
+import {getLinkWithParameter} from 'utils/urls/index';
 import {shared} from 'sharedConstants';
 
 import {contentContainer} from './MainPage.style';
@@ -70,6 +71,7 @@ const MainPage = () => {
     <div className={contentContainer}>
       {IS_STAFF ? <div>MAIN PAGE for staff</div> : <div>MAIN PAGE for customer</div>}
       {deviceSize()}
+      <p />
       <select onChange={handleChange}>
         {shared.selectExample?.map(({label}, i) => (
           <option value={i} key={i}>
@@ -77,6 +79,11 @@ const MainPage = () => {
           </option>
         ))}
       </select>
+      <p />
+
+      <a href={getLinkWithParameter('index2.html')} target="_blank" rel="noreferrer">
+        Link przesyłany z parametrem
+      </a>
     </div>
   );
 };
