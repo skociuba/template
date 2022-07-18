@@ -13,3 +13,14 @@ export const currencyFormatter = (param) =>
     .format(param)
     .replace('USD', '')
     .trim();
+
+export const limitFractionalDigits = (e, maxDecimalsLength = 2) => {
+  const value = e.target.value;
+  const decimals = value.split(',')[1] || value.split('.')[1];
+  const decimalsLength = decimals?.length || 0;
+  if (decimalsLength >= maxDecimalsLength) {
+    e.preventDefault();
+    return false;
+  }
+  return true;
+};

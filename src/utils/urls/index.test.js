@@ -1,4 +1,4 @@
-import {getLinkWithParameter} from '.';
+import {getLinkWithParameter, encodeQueryData} from '.';
 
 describe('getLinkWithParameter()', () => {
   const parameter = 'index2.html';
@@ -47,5 +47,16 @@ describe('getLinkWithParameter()', () => {
         `${process.env.REACT_APP_URLS_WEB_DEVELOPER_BLOG}/${parameter}`,
       );
     });
+  });
+});
+
+describe('encodeQueryData()', () => {
+  const data = {
+    market: 'HK',
+    productType: 'BP',
+  };
+
+  it('encode data', () => {
+    expect(encodeQueryData(data)).toEqual(`market=HK&productType=BP`);
   });
 });

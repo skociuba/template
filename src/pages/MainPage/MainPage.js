@@ -5,6 +5,7 @@ import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
 import {roundNumber, currencyFormatter, positiveInteger} from 'utils/numbers/index';
 import {getFormattedDate} from 'utils/dates/index';
 import {getLinkWithParameter} from 'utils/urls/index';
+import {limitFractionalDigits} from 'utils/numbers/index';
 import {shared} from 'sharedConstants';
 
 import {contentContainer} from './MainPage.style';
@@ -84,6 +85,8 @@ const MainPage = () => {
       <a href={getLinkWithParameter('index2.html')} target="_blank" rel="noreferrer">
         Link przesyłany z parametrem
       </a>
+      <p />
+      <input onKeyPress={(e) => limitFractionalDigits(e, 4)} />
     </div>
   );
 };
