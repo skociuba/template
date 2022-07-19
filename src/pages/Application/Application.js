@@ -5,10 +5,14 @@ import {shared} from 'sharedConstants';
 import {Cell, Grid, Row} from '@material/react-layout-grid';
 import {media, useMedia} from 'components/Media';
 import Button from '@material/react-button';
+import {useTranslation} from 'react-i18next';
+import {useTranslationResource} from 'utils/hooks/useTranslationResources';
 
 import Menu from './Menu/Menu';
 import {appCheckConfig} from './actions';
 import {applicationWrapper, mobileApplicationWrapper} from './Application.style';
+
+const importer = (lng) => import(`./translations/${lng}`);
 
 export const handleNavigate = (navigate, to) => {
   const toElements = to?.split(':') || [];
@@ -21,11 +25,17 @@ export const handleNavigate = (navigate, to) => {
 };
 
 const Application = ({children}) => {
+  const {t: translate, i18n} = useTranslation();
   const [checked, setChecked] = useState(true);
   const isMobile = useMedia(media.device.mobile);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const config = useSelector((state) => state.application.config);
+
+  useTranslationResource({
+    ns: 'application',
+    importer,
+  });
 
   useLayoutEffect(() => {
     if (!config || !('urls' in config)) {
@@ -53,7 +63,7 @@ const Application = ({children}) => {
         ...shared.header.menu.primary.map(
           (menuItem) =>
             menuItem.showFor.includes(process.env.REACT_APP_CHANNEL_TYPE) && {
-              name: menuItem.name,
+              name: translate(`application:${menuItem.name}`),
               to: menuItem.to,
             },
         ),
@@ -92,6 +102,12 @@ const Application = ({children}) => {
     } else {
       return (
         <>
+          <Button onClick={() => i18n.changeLanguage('en')}>
+            {translate(`application:English`)}
+          </Button>
+          <Button onClick={() => i18n.changeLanguage('pl')}>
+            {translate(`application:Polish`)}
+          </Button>
           <Menu
             data={headerData}
             handleNavigation={handleNavigation}
