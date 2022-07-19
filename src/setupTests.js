@@ -6,6 +6,8 @@ global.act = require('@testing-library/react').act;
 global.renderWithRouter = require('./utils/tests/renderWithRouter');
 global.enhancedRender = require('./utils/tests/enhancedRenderer');
 
+window.scroll = jest.fn();
+
 process.env.TZ = 'UTC';
 
 const crypto = require('crypto');
@@ -32,6 +34,44 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   }),
 });
+
+jest.mock('react-i18next', () => ({
+  __esModule: true,
+  useTranslation: () => ({
+    t: (key) => key?.replace(/^(.*?):/, ''),
+    i18n: {
+      language: 'en',
+      addResourceBundle: () => {
+        return;
+      },
+      options: {fallbackLng: 'en'},
+      changeLanguage: () => {
+        return;
+      },
+      exists: () => true,
+    },
+  }),
+
+  initReactI18next: {
+    type: '3rdParty',
+    init: () => {
+      return;
+    },
+  },
+}));
+
+jest.mock('utils/hooks/useTranslationResources', () => ({
+  __esModule: true,
+  useTranslationResource: () => {
+    return {loading: false};
+  },
+}));
+
+jest.mock('components/Modules/validation', () => () => ({
+  // in app is component from packages?
+  validateData: jest.fn(),
+  convertData: jest.fn(),
+}));
 
 jest.mock('react-router-dom', () => {
   const originalModule = jest.requireActual('react-router-dom');
