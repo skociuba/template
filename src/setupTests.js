@@ -12,9 +12,9 @@ process.env.TZ = 'UTC';
 
 const crypto = require('crypto');
 
-const replaceAllInserter = require('string.prototype.replaceall');
+// const replaceAllInserter = require('string.prototype.replaceall');
 
-replaceAllInserter.shim();
+// replaceAllInserter.shim(); //is removing from app- check that.
 
 Object.defineProperty(global.self, 'crypto', {
   value: {
@@ -68,7 +68,6 @@ jest.mock('utils/hooks/useTranslationResources', () => ({
 }));
 
 jest.mock('components/Modules/validation', () => () => ({
-  // in app is component from packages?
   validateData: jest.fn(),
   convertData: jest.fn(),
 }));
