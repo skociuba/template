@@ -12,7 +12,7 @@ import Menu from './Menu/Menu';
 import {appCheckConfig} from './actions';
 import {applicationWrapper, mobileApplicationWrapper} from './Application.style';
 
-const importer = (lng) => import(`./translations/${lng}`);
+const importer = (lng) => import(/* webpackChunkName: "i18n/[request]" */ `./translations/${lng}`);
 
 export const handleNavigate = (navigate, to) => {
   const toElements = to?.split(':') || [];

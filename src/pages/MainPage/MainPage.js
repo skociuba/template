@@ -7,12 +7,21 @@ import {getFormattedDate} from 'utils/dates/index';
 import {getLinkWithParameter} from 'utils/urls/index';
 import {limitFractionalDigits} from 'utils/numbers/index';
 import {shared} from 'sharedConstants';
+import {useTranslation} from 'react-i18next';
+import {useTranslationResource} from 'utils/hooks/useTranslationResources';
 
+const importer = (lng) => import(/* webpackChunkName: "i18n/[request]" */ `./translations/${lng}`);
 import {contentContainer} from './MainPage.style';
 const MainPage = () => {
+  const {t: translate} = useTranslation();
   const [select, setSelect] = useState(shared.selectExample[0].value);
   const isMobile = useMedia(media.device.mobile);
   const isTablet = useMedia(media.device.tablet);
+  const number = 6;
+  useTranslationResource({
+    ns: 'main',
+    importer,
+  });
 
   console.log(getMapping('testData'));
   console.log(simpleMappersExample('B')?.title);
@@ -81,12 +90,19 @@ const MainPage = () => {
         ))}
       </select>
       <p />
-
       <a href={getLinkWithParameter('index2.html')} target="_blank" rel="noreferrer">
         Link przesyłany z parametrem
       </a>
       <p />
       <input onKeyPress={(e) => limitFractionalDigits(e, 4)} />
+      <p />
+      Translation using variable:
+      <p />
+      {translate('main:hello guest', {number})}
+      <p />
+      {`${translate('main:Today is')}${getFormattedDate('2022-01-01')}${translate(
+        'main: so it mean we got New Year',
+      )}`}
     </div>
   );
 };
