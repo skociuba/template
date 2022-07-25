@@ -12,6 +12,7 @@ const shared = {
         {name: 'Wizard', to: '/wizard-page'},
         {name: 'List', to: '/list-page'},
         {name: 'Search', to: '/search-page'},
+        {name: 'Input', to: '/input-page'},
       ],
     },
   },

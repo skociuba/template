@@ -1,25 +1,37 @@
 import {css} from 'emotion.instance';
 
-export const input = (prefix, suffix) => css`
-  height: 30px;
+export const input = css`
+  background-color: transparent;
+  height: 100%;
   border: none;
   box-sizing: border-box;
-  padding-left: ${prefix ? '45px' : '5px'};
-  padding-right: ${suffix ? '45px' : '5px'};
-  width: 200px;
+  width: 100%;
+  margin: 0 6px;
   border: none;
   outline: none;
 `;
-export const container = css`
+export const container = ({disabled, focused, error}) => css`
   align-items: center;
-  span:first-child {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
+  box-sizing: border-box;
+  background-color: ${error ? '#edbfbe' : ' white'};
+  border: 1px solid ${error ? 'red' : 'grey'};
+  display: flex;
+  height: 46px;
+  padding: 0 6px;
+  transition: background-color 0.2s, border-color 0.2s;
+  &:focus,
+  &:hover {
+    border-color: 'blue';
   }
-  span:last-child {
-    position: absolute;
-    bottom: 5px;
-    right: 5%;
-  }
+  ${disabled &&
+  `
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+  `}
+
+  ${focused &&
+  `
+   border-color: 'blue';
+  `}
 `;

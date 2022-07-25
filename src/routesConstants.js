@@ -20,6 +20,9 @@ const routes = {
   searchDisplay: {
     root: generatePrefixedRootContext('search-page'),
   },
+  inputDisplay: {
+    root: generatePrefixedRootContext('input-page'),
+  },
 };
 
 export {routes};

@@ -91,8 +91,29 @@ const getModifiedEventObject = (e) => {
 };
 
 const CustomInput = forwardRef(
-  ({type, value, inputRef, onChange, onClick, prefix, className, suffix, ...props}, ref) => {
+  (
+    {
+      isLoading,
+      type,
+      value,
+      defaultValue,
+      disabled,
+      onFocus,
+      onBlur,
+      autoFocus,
+      error,
+      inputRef,
+      onChange,
+      onClick,
+      prefix,
+      className,
+      suffix,
+      ...props
+    },
+    ref,
+  ) => {
     const [inputValue, setInputValue] = useState('');
+    const [focused, setFocus] = useState(autoFocus);
 
     const isCurrencyType = type === 'currency';
     const isPhoneNumberType = type === 'phone';
@@ -127,13 +148,42 @@ const CustomInput = forwardRef(
       }
     };
 
+    const handleFocus = (e) => {
+      setFocus(true);
+      if (isCurrencyType) {
+        if (onFocus) {
+          onFocus(getModifiedEventObject(e));
+        }
+      } else {
+        if (onFocus) {
+          onFocus(e);
+        }
+      }
+    };
+
+    const handleBlur = (e) => {
+      setFocus(false);
+      if (isCurrencyType) {
+        if (onBlur) {
+          onBlur(getModifiedEventObject(e));
+        }
+      } else {
+        if (onBlur) {
+          onBlur(e);
+        }
+      }
+    };
+
     return (
-      <div ref={ref} className={cx(container, className)}>
-        <span>{prefix}</span>
+      <div ref={ref} className={cx(container({disabled, focused, error}), className)}>
+        {prefix}
         <input
+          autoFocus={autoFocus}
           type={isCurrencyType || isPhoneNumberType ? 'text' : type}
           onChange={handleChange}
           onClick={handleClick}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           value={
             isCurrencyType && value
               ? addSeparators(formatValue(value))
@@ -141,11 +191,19 @@ const CustomInput = forwardRef(
               ? inputValue
               : value
           }
-          className={input(prefix, suffix)}
+          defaultValue={
+            isCurrencyType && defaultValue
+              ? addSeparators(formatValue(defaultValue))
+              : defaultValue || (isPhoneNumberType && inputValue)
+              ? inputValue
+              : defaultValue
+          }
+          className={input}
+          disabled={disabled}
           ref={inputRef}
           {...props}
         />
-        <span>{suffix}</span>
+        {suffix}
       </div>
     );
   },
@@ -157,10 +215,16 @@ CustomInput.PropTypes = {
   suffix: PropTypes.any,
   inputRef: PropTypes.any,
   value: PropTypes.string,
+  defaultValue: PropTypes.string,
   className: PropTypes.string,
   type: PropTypes.string,
+  error: PropTypes.string,
   onChange: PropTypes.func,
   onClick: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  disabled: PropTypes.bool,
+  autoFocus: PropTypes.bool,
 };
 
 export default CustomInput;

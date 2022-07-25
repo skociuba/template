@@ -11,6 +11,7 @@ const ValidationDisplay = lazy(() => import('../pages/ValidationDisplay/Validati
 const WizardDisplay = lazy(() => import('../pages/WizardDisplay/WizardDisplay'));
 const ListDisplay = lazy(() => import('../pages/ListDisplay/ListDisplay'));
 const SearchDisplay = lazy(() => import('../pages/SearchDisplay/SearchDisplay'));
+const InputDisplay = lazy(() => import('../pages/InputDisplay/InputDisplay'));
 const paths = {...shared.routes};
 
 let routes = [
@@ -47,6 +48,11 @@ let routes = [
   {
     path: paths.searchDisplay.root,
     element: SearchDisplay,
+    exact: true,
+  },
+  {
+    path: paths.inputDisplay.root,
+    element: InputDisplay,
     exact: true,
   },
   {
