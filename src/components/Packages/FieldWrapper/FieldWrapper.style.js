@@ -20,7 +20,7 @@ export const errorTxt = css`
   display: flex;
   font-size: 0.875rem;
   margin-top: 8px;
- > span {
+  > span {
     margin-left: 10px;
     padding-top: 5px;
   }
