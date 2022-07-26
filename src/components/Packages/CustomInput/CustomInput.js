@@ -184,13 +184,7 @@ const CustomInput = forwardRef(
           onClick={handleClick}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          value={
-            isCurrencyType && value
-              ? addSeparators(formatValue(value))
-              : value || (isPhoneNumberType && inputValue)
-              ? inputValue
-              : value
-          }
+          value={isCurrencyType && value ? addSeparators(formatValue(value)) : value}
           defaultValue={
             isCurrencyType && defaultValue
               ? addSeparators(formatValue(defaultValue))

@@ -4,6 +4,8 @@ import {ErrorMessage} from '../../components/Modules/ErrorMessage/index';
 import {convertData, validateData} from '../../components/Modules/validation/index';
 import {contentContainer} from '../../pages/MainPage/MainPage.style';
 
+import CustomInput from './../../components/Packages/CustomInput/index';
+import FieldWrapper from './../../components/Packages/FieldWrapper/index';
 import {exampleValidation} from './Example.validationSchema';
 const ValidationDisplay = () => {
   const [errors, setErrors] = useState({});
@@ -52,7 +54,9 @@ const ValidationDisplay = () => {
     <div className={contentContainer}>
       {ErrorMessage(errors?.value?.message)}
       <p>
-        <input value={inputValue} onChange={handleValue} />
+        <FieldWrapper errorText={errors?.value?.message} error={!!errors?.value?.message}>
+          <CustomInput value={inputValue} onChange={handleValue} />
+        </FieldWrapper>
       </p>
       <button onClick={handleCheck}>check validation</button>
     </div>
