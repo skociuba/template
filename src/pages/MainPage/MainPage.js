@@ -5,6 +5,8 @@ import {getMapping, simpleMappersExample} from 'utils/mappingHelpers/index';
 import {roundNumber, currencyFormatter, positiveInteger} from 'utils/numbers/index';
 import {getFormattedDate} from 'utils/dates/index';
 import {QuoteIndicator} from 'components/Packages/QuoteIndicator/index';
+import {ColorIndicator} from 'components/Packages/ColorIndicator/index';
+import {LevelIndicator} from 'components/Packages/LevelIndicator/index';
 
 //import ComponentWrapper from 'seba-container-wrapper';
 import {contentContainer} from './MainPage.style';
@@ -35,6 +37,10 @@ const MainPage = () => {
       {deviceSize()}
       <p />
       <QuoteIndicator value={-10} prefix={'GBP'} suffix={'suffix'} />
+      <ColorIndicator data={1} />
+      <ColorIndicator data={2} />
+      <ColorIndicator data={3} />
+      <LevelIndicator checked={3} length={5} />
     </div>
   );
 };
