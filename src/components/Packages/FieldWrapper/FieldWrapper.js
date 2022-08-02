@@ -8,7 +8,7 @@ import AnnouncementIcon from '@mui/icons-material/Announcement';
 import {label, hint, errorTxt} from './FieldWrapper.style';
 
 // clone error only this components
-const allowedTypes = ['CustomInput', 'input', 'select', 'radio'];
+const allowedTypes = ['CustomInput', 'input', 'select', 'Select', 'radio'];
 
 const recursiveMap = (children, err, fn) =>
   React.Children.map(children, (child) => {
